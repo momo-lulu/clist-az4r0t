@@ -1,0 +1,610 @@
+﻿<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>크리에이터 리스트</title><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>크리에이터 리스트 — PI · 윗유 · 크리플래닛</title>
+<style>
+:root {
+  --primary: #0A6B5D;
+  --accent: #2BB79B;
+  --wash: #E6F6F1;
+  --bg: #FFFFFF;
+  --bg-subtle: #F6F7F7;
+  --text: #111827;
+  --text-muted: #6B7280;
+  --text-faint: #9CA3AF;
+  --border: #E5E7EB;
+  --shadow: rgba(10, 107, 93, 0.08);
+  --row-hover: #F2FAF7;
+  --badge-bg: #EEF0F1;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #4CCBB0; --accent: #2BB79B; --wash: #10332C;
+    --bg: #101413; --bg-subtle: #181D1C;
+    --text: #E7ECEA; --text-muted: #9AA5A2; --text-faint: #6B7572;
+    --border: #2A322F; --shadow: rgba(0,0,0,0.3);
+    --row-hover: #16211E; --badge-bg: #222927;
+  }
+}
+:root[data-theme="light"] {
+  --primary: #0A6B5D; --accent: #2BB79B; --wash: #E6F6F1;
+  --bg: #FFFFFF; --bg-subtle: #F6F7F7;
+  --text: #111827; --text-muted: #6B7280; --text-faint: #9CA3AF;
+  --border: #E5E7EB; --shadow: rgba(10,107,93,0.08);
+  --row-hover: #F2FAF7; --badge-bg: #EEF0F1;
+}
+:root[data-theme="dark"] {
+  --primary: #4CCBB0; --accent: #2BB79B; --wash: #10332C;
+  --bg: #101413; --bg-subtle: #181D1C;
+  --text: #E7ECEA; --text-muted: #9AA5A2; --text-faint: #6B7572;
+  --border: #2A322F; --shadow: rgba(0,0,0,0.3);
+  --row-hover: #16211E; --badge-bg: #222927;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  word-break: keep-all;
+  padding: 32px 28px 60px;
+}
+.wrap { max-width: 1320px; margin: 0 auto; }
+
+h1 { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
+h1 .accent { color: var(--primary); }
+.meta-line { margin-top: 6px; font-size: 13.5px; color: var(--text-muted); }
+
+/* Tabs */
+.tabs { display: flex; gap: 8px; margin-top: 20px; border-bottom: 2px solid var(--border); }
+.tab {
+  font-family: inherit; font-size: 15px; font-weight: 700;
+  color: var(--text-muted);
+  background: none; border: none; cursor: pointer;
+  padding: 11px 22px;
+  border-radius: 10px 10px 0 0;
+  position: relative; bottom: -2px;
+  border-bottom: 3px solid transparent;
+  transition: color 0.15s ease;
+}
+.tab:hover { color: var(--text); background: var(--bg-subtle); }
+.tab.on { color: var(--primary); border-bottom-color: var(--primary); }
+.panel { display: none; margin-top: 20px; }
+.panel.on { display: block; }
+
+.notes {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 20px 15px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.notes strong { color: var(--text); font-weight: 700; }
+.note-head {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 800; color: var(--text);
+  margin-bottom: 10px;
+}
+.conf-chip {
+  font-size: 11px; font-weight: 700;
+  color: #B4232A; background: rgba(196, 60, 66, 0.1);
+  border: 1px solid rgba(196, 60, 66, 0.3);
+  border-radius: 999px; padding: 2px 10px;
+}
+.note-list {
+  list-style: none;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 7px 28px;
+}
+.note-list li { display: flex; gap: 10px; line-height: 1.5; align-items: baseline; }
+.note-list li b {
+  flex-shrink: 0; min-width: 74px;
+  font-weight: 700; color: var(--primary); font-size: 12.5px;
+}
+@media (max-width: 900px) { .note-list { grid-template-columns: 1fr; } }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 16px; }
+.stat {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-bottom: 3px solid var(--accent);
+  border-radius: 12px;
+  padding: 13px 18px;
+  box-shadow: 0 1px 6px var(--shadow);
+}
+.stat .num { font-size: 21px; font-weight: 800; color: var(--primary); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.stat .lbl { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+
+.controls { display: flex; gap: 12px; align-items: center; margin: 20px 0 12px; flex-wrap: wrap; }
+.controls input, .controls select {
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 9px 14px;
+}
+.controls input { width: 230px; }
+.controls input:focus, .controls select:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+.count { font-size: 13px; color: var(--text-muted); margin-left: auto; font-variant-numeric: tabular-nums; }
+
+.table-box { border: 1px solid var(--border); border-radius: 12px; overflow: auto; max-height: 72vh; box-shadow: 0 2px 12px var(--shadow); }
+table { border-collapse: separate; border-spacing: 0; width: 100%; font-size: 13.5px; }
+#pi-table table, .pi-min { min-width: 1150px; }
+thead th {
+  position: sticky; top: 0; z-index: 2;
+  background: var(--primary);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+  padding: 10px 12px;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+thead th.txt { text-align: left; }
+thead th.nosort { cursor: default; }
+thead th .dir { font-size: 10px; opacity: 0.9; margin-left: 3px; }
+tbody td {
+  padding: 8px 12px;
+  border-top: 1px solid var(--border);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+tbody td.txt { text-align: left; }
+tbody tr:hover td { background: var(--row-hover); }
+td.rank { color: var(--text-faint); font-size: 12px; }
+td.hi { font-weight: 700; color: var(--primary); }
+td.nil { color: var(--text-faint); }
+.rg { display: inline-flex; gap: 4px; }
+.rg span {
+  font-size: 11px; font-weight: 700;
+  background: var(--badge-bg);
+  color: var(--text-muted);
+  border-radius: 6px;
+  padding: 2px 7px;
+}
+.rg span:first-child { background: var(--wash); color: var(--primary); }
+.name-cell { font-weight: 700; color: var(--text); }
+.cat-chip {
+  font-size: 11px; font-weight: 600;
+  background: var(--badge-bg); color: var(--text-muted);
+  border-radius: 6px; padding: 2px 8px;
+}
+.tag-mini { font-size: 11.5px; color: var(--text-faint); }
+.sub { color: var(--text-faint); font-size: 11px; margin-left: 4px; }
+.footnote { margin-top: 12px; font-size: 12px; color: var(--text-faint); line-height: 1.7; }
+.footnote a { color: var(--primary); }
+
+/* witU extra rate cards */
+h2.sec { font-size: 17px; font-weight: 800; margin: 30px 0 12px; letter-spacing: -0.01em; }
+h2.sec .accent { color: var(--primary); }
+.rate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.rate-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 6px var(--shadow);
+}
+.rate-card h3 { font-size: 15px; font-weight: 800; }
+.rate-card .rc-sub { font-size: 12px; color: var(--text-faint); margin: 3px 0 12px; line-height: 1.5; }
+.rate-row { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-top: 1px dashed var(--border); font-size: 13.5px; }
+.rate-row:first-of-type { border-top: none; }
+.rate-row .k { color: var(--text-muted); }
+.rate-row .k small { display: block; font-size: 11.5px; color: var(--text-faint); margin-top: 1px; }
+.rate-row .v { font-weight: 700; color: var(--primary); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.rate-card .rc-note { margin-top: 10px; font-size: 11.5px; color: var(--text-faint); line-height: 1.6; }
+.rate-row .k a { color: var(--text); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--accent); }
+.rate-row .k a:hover { color: var(--primary); border-bottom-width: 2px; }
+.rate-row .k a::after { content: " ↗"; font-size: 11px; color: var(--accent-mid, var(--accent)); }
+@media (max-width: 900px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .rate-grid { grid-template-columns: 1fr; }
+}
+</style>
+<div class="wrap">
+  <h1>크리에이터 리스트</h1>
+  <div class="meta-line" id="metaLine"></div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab on" id="tab-pi" role="tab" aria-selected="true">PI 코퍼레이션</button>
+    <button class="tab" id="tab-witu" role="tab" aria-selected="false">윗유 witU</button>
+    <button class="tab" id="tab-cre" role="tab" aria-selected="false">크리플래닛</button>
+  </div>
+
+  <!-- ================= PI PANEL ================= -->
+  <div class="panel on" id="panel-pi">
+    <div class="notes">
+      <div class="note-head">참고 사항 <span class="conf-chip">대외비</span></div>
+      <ul class="note-list">
+        <li><b>데이터 기간</b><span>6/1 ~ 7/12 (약 6주)</span></li>
+        <li><b>크리에이터 아이디</b><span>대외비로 공유 불가 (익명 리스트)</span></li>
+        <li><b>노출 수</b><span>피드에 라이브가 노출된 수</span></li>
+        <li><b>기여도 높은 지역</b><span>팬 비율이 높은 국가 순위 (1~3위)</span></li>
+        <li><b>섭외 비용</b><span>룰루닷 → 크리에이터 직접 지급 (PI에서 단가표 산정 어려움)</span></li>
+        <li><b>PI 역할</b><span>희망 크리에이터 전달 시 해당 크리에이터와 연결만 담당</span></li>
+      </ul>
+    </div>
+    <div class="stats" id="pi-stats"></div>
+    <div class="controls">
+      <input id="pi-search" type="search" placeholder="지역 검색 (예: JP, TH, BR)">
+      <select id="pi-regionSel"><option value="">전체 지역</option></select>
+      <select id="pi-rankSel">
+        <option value="any">기여 지역 전체(1~3위)</option>
+        <option value="top">1위 기여 지역만</option>
+      </select>
+      <span class="count" id="pi-count"></span>
+    </div>
+    <div class="table-box" id="pi-table">
+      <table class="pi-min">
+        <thead><tr id="pi-headRow"></tr></thead>
+        <tbody id="pi-tbody"></tbody>
+      </table>
+    </div>
+    <p class="footnote">
+      * 원본 엑셀의 '크리에이터 아이디' 열은 비어 있고 '다이아몬드' 열 위치에 값이 없어, 첫 번째 숫자 열을 다이아몬드(크리에이터 수익)로 해석해 정리했습니다.<br>
+      * 지역 코드의 UNKNOWN은 '미상'으로 표기했습니다. 뒤에 +가 붙은 코드(UK+, ES+ 등)는 인접 권역 묶음입니다.
+    </p>
+  </div>
+
+  <!-- ================= WITU PANEL ================= -->
+  <div class="panel" id="panel-witu">
+    <div class="notes">
+      <div class="note-head">참고 사항 <span class="conf-chip">대외비</span></div>
+      <ul class="note-list">
+        <li><b>단가 단위</b><span><strong>만원</strong> · 모든 비용 VAT 별도</span></li>
+        <li><b>유효 기간</b><span><strong>2026. 06. 30</strong>까지</span></li>
+        <li><b>견적 기준</b><span>조회수 보장·성과 분석 [윗유 케어] 포함 All-in-One 패키지</span></li>
+        <li><b>라이선스 열</b><span>광고 활용 라이선스 비용 (플랫폼 3개 · 30일)</span></li>
+        <li><b>팔로워 표기</b><span>유튜브(쇼츠) / 인스타그램(릴스) / 틱톡 순</span></li>
+        <li><b>이름 마우스오버</b><span>크리에이터 소개 문구 표시</span></li>
+      </ul>
+    </div>
+    <div class="stats" id="wt-stats"></div>
+    <div class="controls">
+      <input id="wt-search" type="search" placeholder="이름·해시태그 검색 (예: 뷰티, 댄스)">
+      <select id="wt-catSel"><option value="">전체 분야</option></select>
+      <select id="wt-platSel">
+        <option value="">전체 플랫폼</option>
+        <option value="s">쇼츠 단가 보유</option>
+        <option value="r">릴스 단가 보유</option>
+        <option value="t">틱톡 단가 보유</option>
+      </select>
+      <span class="count" id="wt-count"></span>
+    </div>
+    <div class="table-box">
+      <table style="min-width:1400px">
+        <thead><tr id="wt-headRow"></tr></thead>
+        <tbody id="wt-tbody"></tbody>
+      </table>
+    </div>
+
+    <h2 class="sec">그 외 <span class="accent">단가표</span> 요약</h2>
+    <div class="rate-grid">
+      <div class="rate-card">
+        <h3>영상 제작 대행 — 제작비</h3>
+        <div class="rc-sub">크리에이터 채널 게시 없이, 브랜드용 숏폼 영상만 제작·납품하는 상품 (원본 목차 1-2)</div>
+        <div class="rate-row"><span class="k">퍼포먼스 숏폼 — 스탠다드 / AI<small>자사 스튜디오·장비·의상 활용, 1시간 내외 촬영, 노출 제품 5개 이하</small></span><span class="v">200만원</span></div>
+        <div class="rate-row"><span class="k">브랜딩 숏폼 — CG (VFX, FOOH)</span><span class="v">800만원~</span></div>
+        <div class="rate-row"><span class="k">글로벌 숏폼 (미국·일본·동남아)</span><span class="v">+100만원~</span></div>
+        <div class="rate-row"><span class="k">베리에이션 (스탠다드 기반 변형)</span><span class="v">+1편 30만원 / +2편 50만원</span></div>
+        <div class="rc-note">추가 비용: 스튜디오 외 대관, 크리에이터·셀럽 출연(섭외), 기타 촬영·편집·출장·소품</div>
+      </div>
+      <div class="rate-card">
+        <h3>영상 제작 대행 — 라이선스</h3>
+        <div class="rc-sub">위 제작 대행 영상을 광고·공식 채널·커머스에 활용할 때의 조건 (원본 목차 1-2)</div>
+        <div class="rate-row"><span class="k">광고 활용 — 국내<small>플랫폼 3개 · 3개월 기본(제작비 내 포함)</small></span><span class="v">1년 30만원 · 영구 50만원</span></div>
+        <div class="rate-row"><span class="k">광고 활용 — 국외<small>플랫폼 3개</small></span><span class="v">3개월 50만원 · 1년 70만원 · 영구 90만원</span></div>
+        <div class="rate-row"><span class="k">공식 채널 활용 — 국내 / 국외<small>영구 · 플랫폼 5개 (온라인 쇼핑몰 제외, 2차 가공 불가)</small></span><span class="v">50만원 / 100만원</span></div>
+        <div class="rate-row"><span class="k">커머스 활용 — 국내<small>플랫폼 3개 (국외 별도 협의)</small></span><span class="v">6개월 100만원 · 1년 200만원</span></div>
+      </div>
+      <div class="rate-card">
+        <h3>크리에이터 광고 콘텐츠 — 라이선스 조건</h3>
+        <div class="rc-sub">위 크리에이터 78명 테이블 단가(브랜디드 콘텐츠)에 적용되는 활용 조건 (원본 목차 1-1)</div>
+        <div class="rate-row"><span class="k">광고 활용 라이선스<small>온·오프라인 매체 광고 소재 활용</small></span><span class="v">플랫폼 3개 · 30일 (표의 '라이선스' 열)</span></div>
+        <div class="rate-row"><span class="k">공식 채널 활용 라이선스<small>공식 홈페이지·SNS 등 (커머스 사이트 제외)</small></span><span class="v">플랫폼 5개 · 180일</span></div>
+        <div class="rate-row"><span class="k">커머스 라이선스<small>상품 패키지·상세 페이지·판매 활용</small></span><span class="v">플랫폼 5개 · 30일</span></div>
+        <div class="rate-row"><span class="k">퍼블리시티권 (초상·성명)</span><span class="v">협의 · 30일</span></div>
+      </div>
+      <div class="rate-card">
+        <h3>AR 필터 · 틱톡 챌린지 패키지</h3>
+        <div class="rc-sub">틱톡 필터 제작과 해시태그 챌린지 운영 패키지 (원본 목차 1-3)</div>
+        <div class="rate-row"><span class="k">필터 제작 및 등록</span><span class="v">800만원~</span></div>
+        <div class="rate-row"><span class="k">숏폼 음원 제작(15초) / 랜딩 페이지</span><span class="v">각 300만원~</span></div>
+        <div class="rate-row"><span class="k">챌린지 기획</span><span class="v">협의</span></div>
+        <div class="rate-row"><span class="k">TikTok 미디어 (BM/BE)</span><span class="v">5,300만원~</span></div>
+        <div class="rate-row"><span class="k">TikTok In-feed 광고 (R&amp;F)</span><span class="v">2,500만원~</span></div>
+        <div class="rate-row"><span class="k">크리에이터 섭외</span><span class="v">2,000만원~</span></div>
+        <div class="rc-note">상품 구성·분기별 미디어 비용 변경으로 상세 견적은 이메일 문의</div>
+      </div>
+    </div>
+    <p class="footnote">
+      * 출처: [윗유witU] 숏폼 마케팅 솔루션(쇼츠·릴스·틱톡) 26.06 — 문의 <a href="mailto:hi@witu.co.kr">hi@witu.co.kr</a> · 010-2583-5678 · witu.co.kr<br>
+      * 크리에이터 표의 팔로워 수·해시태그·대표 브랜드는 소개 페이지 기준, 단가는 단가표 페이지 기준으로 이름을 매칭해 결합했습니다.
+    </p>
+  </div>
+
+  <!-- ================= CREPLANET PANEL ================= -->
+  <div class="panel" id="panel-cre">
+    <div class="notes">
+      <div class="note-head">참고 사항</div>
+      <ul class="note-list">
+        <li><b>단가 기준</b><span>기존 협업가 기준 <strong>제안 단가</strong> (확정가 아님, "~선"은 대략적인 수준)</span></li>
+        <li><b>세부 조건</b><span>콘텐츠 형식·2차 활용 등은 컨택 시 협의</span></li>
+        <li><b>링크플레이 제안</b><span>기존 PPL 협업가 기준 3명 (유튜브)</span></li>
+        <li><b>튜베룰루 제안</b><span>기존 릴스 협업가 기준 4명 (인스타그램)</span></li>
+      </ul>
+    </div>
+    <div class="rate-grid" style="margin-top:16px">
+      <div class="rate-card">
+        <h3>링크플레이 컨택 제안</h3>
+        <div class="rc-sub">기존 PPL 협업가 기준 · 3명</div>
+        <div class="rate-row"><span class="k"><a href="https://www.youtube.com/@hwiyun_live" target="_blank" rel="noopener">휘윤</a><small>유튜브</small></span><span class="v">300만원 선</span></div>
+        <div class="rate-row"><span class="k"><a href="https://www.youtube.com/@lastorigin_KR/videos" target="_blank" rel="noopener">라스트오리진</a><small>유튜브</small></span><span class="v">200만원 선</span></div>
+        <div class="rate-row"><span class="k"><a href="https://www.youtube.com/@%EC%8B%A0%ED%8A%B8%EB%A6%AC/videos" target="_blank" rel="noopener">신트리</a><small>유튜브</small></span><span class="v">300만원 선</span></div>
+      </div>
+      <div class="rate-card">
+        <h3>튜베룰루 컨택 제안</h3>
+        <div class="rc-sub">기존 릴스 협업가 기준 · 4명</div>
+        <div class="rate-row"><span class="k"><a href="https://www.instagram.com/_elliegancy/reels/" target="_blank" rel="noopener">_elliegancy</a><small>인스타그램</small></span><span class="v">80만원</span></div>
+        <div class="rate-row"><span class="k"><a href="https://www.instagram.com/yuna__ax/" target="_blank" rel="noopener">yuna__ax</a><small>인스타그램</small></span><span class="v">40만원 선</span></div>
+        <div class="rate-row"><span class="k"><a href="https://www.instagram.com/minji2ppu/reels/" target="_blank" rel="noopener">minji2ppu</a><small>인스타그램</small></span><span class="v">40만원 선</span></div>
+        <div class="rate-row"><span class="k"><a href="https://www.instagram.com/dodo_hara/reels/" target="_blank" rel="noopener">dodo_hara</a><small>인스타그램</small></span><span class="v">40만원 선</span></div>
+      </div>
+    </div>
+    <p class="footnote">* 출처: 크리플래닛 컨택 제안 · 세부 조건(콘텐츠 형식, 2차 활용 등)은 컨택 시 협의 필요</p>
+  </div>
+</div>
+
+<script>
+const PI_DATA = [{"dia":3671,"region":["SG","UNKNOWN","JP"],"imp":3543,"view":115,"view1m":34,"cmt":170,"cmtu":17,"gift":30,"giftu":12,"fan":2375},{"dia":3587,"region":["JP","UNKNOWN","SG"],"imp":1359,"view":189,"view1m":24,"cmt":262,"cmtu":20,"gift":45,"giftu":14,"fan":36},{"dia":19080,"region":["UNKNOWN","TW","SG"],"imp":2068,"view":282,"view1m":31,"cmt":261,"cmtu":31,"gift":80,"giftu":20,"fan":1298},{"dia":5574,"region":["UK+","UNKNOWN","GLOBAL OTHERS"],"imp":4182,"view":299,"view1m":37,"cmt":631,"cmtu":36,"gift":148,"giftu":15,"fan":198},{"dia":6203,"region":["BE","ES+","VN"],"imp":1502,"view":336,"view1m":36,"cmt":209,"cmtu":13,"gift":65,"giftu":14,"fan":6600},{"dia":312,"region":["PH","BR"],"imp":2158,"view":406,"view1m":31,"cmt":421,"cmtu":22,"gift":99,"giftu":16,"fan":89},{"dia":16480,"region":["JP","NL","LATAM"],"imp":4578,"view":439,"view1m":60,"cmt":321,"cmtu":59,"gift":70,"giftu":20,"fan":192},{"dia":2992,"region":["UNKNOWN","TH","LATAM"],"imp":33317,"view":510,"view1m":84,"cmt":664,"cmtu":75,"gift":107,"giftu":34,"fan":1024},{"dia":2144,"region":["CA","PH","MY"],"imp":4938,"view":537,"view1m":65,"cmt":193,"cmtu":21,"gift":149,"giftu":12,"fan":165},{"dia":4967,"region":["TH","BR","ES+"],"imp":5535,"view":539,"view1m":44,"cmt":461,"cmtu":51,"gift":158,"giftu":24,"fan":98},{"dia":119,"region":["BR","ID","VN"],"imp":3007,"view":583,"view1m":27,"cmt":81,"cmtu":26,"gift":48,"giftu":7,"fan":4},{"dia":119459,"region":["JP","NL","MENA"],"imp":7963,"view":672,"view1m":106,"cmt":1068,"cmtu":109,"gift":778,"giftu":55,"fan":132},{"dia":199,"region":["UNKNOWN"],"imp":2137,"view":688,"view1m":46,"cmt":419,"cmtu":75,"gift":101,"giftu":1,"fan":3},{"dia":43425,"region":["TH","JP","TW"],"imp":12559,"view":824,"view1m":91,"cmt":487,"cmtu":65,"gift":166,"giftu":40,"fan":40635},{"dia":12036,"region":["UNKNOWN","JP","TH"],"imp":19804,"view":1081,"view1m":239,"cmt":756,"cmtu":67,"gift":191,"giftu":46,"fan":3185},{"dia":3365,"region":["UNKNOWN","HU+","BR"],"imp":5643,"view":1286,"view1m":124,"cmt":309,"cmtu":38,"gift":67,"giftu":17,"fan":574},{"dia":1806,"region":["DE+","CA","SE+"],"imp":33467,"view":1300,"view1m":136,"cmt":1266,"cmtu":114,"gift":165,"giftu":40,"fan":902},{"dia":144,"region":["LATAM","JP"],"imp":3178,"view":1308,"view1m":41,"cmt":28,"cmtu":19,"gift":48,"giftu":8,"fan":27},{"dia":2533,"region":["UNKNOWN","SG","JP"],"imp":13423,"view":1506,"view1m":272,"cmt":393,"cmtu":60,"gift":85,"giftu":25,"fan":3128},{"dia":29941,"region":["TH","TW","SG"],"imp":20511,"view":1510,"view1m":121,"cmt":883,"cmtu":77,"gift":245,"giftu":46,"fan":35745},{"dia":4215,"region":["TW","JP","SE+"],"imp":6833,"view":1593,"view1m":68,"cmt":661,"cmtu":62,"gift":136,"giftu":30,"fan":555},{"dia":7479,"region":["SE+","JP","TH"],"imp":16216,"view":1603,"view1m":134,"cmt":1407,"cmtu":120,"gift":465,"giftu":63,"fan":575},{"dia":372,"region":["JP","LATAM","HU+"],"imp":146315,"view":1625,"view1m":78,"cmt":182,"cmtu":47,"gift":188,"giftu":13,"fan":1333},{"dia":6396,"region":["JP","UNKNOWN","LATAM"],"imp":73646,"view":1687,"view1m":88,"cmt":499,"cmtu":75,"gift":127,"giftu":34,"fan":886},{"dia":19912,"region":["DE+","UNKNOWN","PT+"],"imp":145792,"view":1832,"view1m":184,"cmt":2095,"cmtu":141,"gift":429,"giftu":78,"fan":1192},{"dia":32463,"region":["UNKNOWN","JP","FR+"],"imp":23206,"view":1890,"view1m":210,"cmt":3724,"cmtu":201,"gift":666,"giftu":68,"fan":35},{"dia":1518,"region":["BR","JP","TW"],"imp":17148,"view":1951,"view1m":190,"cmt":568,"cmtu":82,"gift":545,"giftu":88,"fan":1301},{"dia":198137,"region":["UNKNOWN","IT+","FR+"],"imp":65648,"view":2182,"view1m":220,"cmt":5349,"cmtu":238,"gift":761,"giftu":76,"fan":1233},{"dia":50057,"region":["TW","CA","JP"],"imp":25839,"view":2204,"view1m":1039,"cmt":24050,"cmtu":645,"gift":2068,"giftu":462,"fan":754},{"dia":94386,"region":["UNKNOWN","AU+","LATAM"],"imp":30709,"view":2413,"view1m":231,"cmt":4818,"cmtu":199,"gift":876,"giftu":128,"fan":834},{"dia":3077,"region":["JP","HU+","UK+"],"imp":107127,"view":2511,"view1m":273,"cmt":1804,"cmtu":158,"gift":204,"giftu":41,"fan":1353},{"dia":3002,"region":["JP","MY","LATAM"],"imp":83724,"view":3338,"view1m":304,"cmt":2336,"cmtu":283,"gift":336,"giftu":61,"fan":45},{"dia":95,"region":["LATAM","PH","CCA"],"imp":22882,"view":3706,"view1m":248,"cmt":2852,"cmtu":230,"gift":83,"giftu":22,"fan":8},{"dia":311,"region":["LATAM","IL","BR"],"imp":63360,"view":3862,"view1m":342,"cmt":829,"cmtu":276,"gift":106,"giftu":49,"fan":161},{"dia":12943,"region":["JP","PH","MY"],"imp":45098,"view":3957,"view1m":310,"cmt":3459,"cmtu":418,"gift":2734,"giftu":75,"fan":141},{"dia":242,"region":["SE+","TH","VN"],"imp":14703,"view":4006,"view1m":284,"cmt":2548,"cmtu":430,"gift":85,"giftu":27,"fan":14},{"dia":1298,"region":["UK+","MY","AU+"],"imp":91164,"view":4200,"view1m":462,"cmt":659,"cmtu":245,"gift":43,"giftu":17,"fan":149},{"dia":7506,"region":["UNKNOWN","JP","FR+"],"imp":813484,"view":4498,"view1m":357,"cmt":1624,"cmtu":333,"gift":257,"giftu":53,"fan":2560},{"dia":410913,"region":["MENA","TH","UNKNOWN"],"imp":96153,"view":4581,"view1m":745,"cmt":7420,"cmtu":414,"gift":12381,"giftu":214,"fan":1491},{"dia":45,"region":["CCA","TR","PL"],"imp":297782,"view":4663,"view1m":702,"cmt":5668,"cmtu":603,"gift":38,"giftu":16,"fan":408},{"dia":121771,"region":["ID","JP","PH"],"imp":23757,"view":4755,"view1m":361,"cmt":2377,"cmtu":159,"gift":2852,"giftu":103,"fan":130},{"dia":812,"region":["ES+","MY","ID"],"imp":14134,"view":4761,"view1m":165,"cmt":1771,"cmtu":101,"gift":255,"giftu":19,"fan":8},{"dia":7954,"region":["JP","TH","MENA"],"imp":66968,"view":4926,"view1m":355,"cmt":4762,"cmtu":252,"gift":520,"giftu":121,"fan":573},{"dia":38984,"region":["JP","LATAM","TW"],"imp":60141,"view":5133,"view1m":2430,"cmt":25995,"cmtu":1278,"gift":5090,"giftu":942,"fan":1472},{"dia":26268,"region":["UNKNOWN","JP","APAC OTHERS"],"imp":137629,"view":5214,"view1m":470,"cmt":9735,"cmtu":419,"gift":771,"giftu":112,"fan":758},{"dia":26464,"region":["UNKNOWN","HU+","MENA"],"imp":28720,"view":5300,"view1m":431,"cmt":1949,"cmtu":276,"gift":759,"giftu":170,"fan":1322},{"dia":15328,"region":["UNKNOWN","ID","BR"],"imp":206866,"view":5509,"view1m":585,"cmt":4463,"cmtu":708,"gift":248,"giftu":59,"fan":1887},{"dia":110644,"region":["UNKNOWN","ID","VN"],"imp":39211,"view":5576,"view1m":698,"cmt":4646,"cmtu":344,"gift":2277,"giftu":358,"fan":2565},{"dia":264,"region":["PH","JP","IT+"],"imp":23192,"view":5597,"view1m":236,"cmt":1343,"cmtu":229,"gift":199,"giftu":23,"fan":18},{"dia":199214,"region":["TH","AU+","MY"],"imp":64398,"view":6081,"view1m":841,"cmt":674,"cmtu":147,"gift":870,"giftu":157,"fan":10665},{"dia":42659,"region":["JP","SG","UNKNOWN"],"imp":32518,"view":6284,"view1m":418,"cmt":2806,"cmtu":262,"gift":1779,"giftu":161,"fan":1825},{"dia":45299,"region":["LATAM","JP","TH"],"imp":71582,"view":6469,"view1m":583,"cmt":3597,"cmtu":733,"gift":1184,"giftu":107,"fan":526},{"dia":9950,"region":["BR","LATAM","UNKNOWN"],"imp":120454,"view":6813,"view1m":884,"cmt":6082,"cmtu":726,"gift":1102,"giftu":256,"fan":1993},{"dia":86835,"region":["JP","UNKNOWN","DE+"],"imp":131350,"view":6824,"view1m":937,"cmt":4061,"cmtu":580,"gift":1832,"giftu":191,"fan":3999},{"dia":38511,"region":["TH","UK+","LATAM"],"imp":71510,"view":6845,"view1m":527,"cmt":7085,"cmtu":593,"gift":918,"giftu":131,"fan":516},{"dia":31030,"region":["UNKNOWN","RO","TH"],"imp":302102,"view":6930,"view1m":611,"cmt":3609,"cmtu":599,"gift":831,"giftu":105,"fan":946},{"dia":6515,"region":["SG","AU+","TH"],"imp":136828,"view":7001,"view1m":533,"cmt":1287,"cmtu":315,"gift":109,"giftu":28,"fan":190},{"dia":1104,"region":["JP","TH"],"imp":46786,"view":7353,"view1m":737,"cmt":575,"cmtu":280,"gift":742,"giftu":140,"fan":3918},{"dia":6362,"region":["MENA","CCA","ID"],"imp":279611,"view":7800,"view1m":1004,"cmt":5372,"cmtu":1264,"gift":234,"giftu":60,"fan":767},{"dia":68045,"region":["UNKNOWN","PL","LATAM"],"imp":267355,"view":8101,"view1m":1025,"cmt":6888,"cmtu":838,"gift":3620,"giftu":623,"fan":1533},{"dia":1101412,"region":["FR+","IL","VN"],"imp":123867,"view":8653,"view1m":1392,"cmt":19622,"cmtu":914,"gift":15117,"giftu":696,"fan":432},{"dia":101842,"region":["FR+","UNKNOWN","LATAM"],"imp":301695,"view":8833,"view1m":686,"cmt":2679,"cmtu":583,"gift":2140,"giftu":147,"fan":2212},{"dia":478210,"region":["JP","AU+","UNKNOWN"],"imp":63563,"view":8937,"view1m":677,"cmt":7996,"cmtu":392,"gift":3833,"giftu":296,"fan":1592},{"dia":7200,"region":["UNKNOWN","LATAM","AU+"],"imp":71898,"view":9259,"view1m":672,"cmt":3164,"cmtu":539,"gift":570,"giftu":101,"fan":50},{"dia":44245,"region":["TH","MY","AU+"],"imp":103035,"view":11152,"view1m":979,"cmt":11037,"cmtu":1297,"gift":1200,"giftu":221,"fan":2402},{"dia":156193,"region":["UNKNOWN","SG","LATAM"],"imp":388065,"view":11613,"view1m":1300,"cmt":23514,"cmtu":1322,"gift":4803,"giftu":633,"fan":766},{"dia":502,"region":["UNKNOWN","AU+","RO"],"imp":255525,"view":11672,"view1m":776,"cmt":8531,"cmtu":1272,"gift":348,"giftu":62,"fan":288},{"dia":934759,"region":["BR","UNKNOWN","DE+"],"imp":173244,"view":12221,"view1m":1396,"cmt":9365,"cmtu":1312,"gift":1743,"giftu":366,"fan":4475},{"dia":175367,"region":["DE+","ID","JP"],"imp":120149,"view":12923,"view1m":1137,"cmt":7095,"cmtu":852,"gift":4365,"giftu":381,"fan":1147},{"dia":185971,"region":["JP","UNKNOWN","SG"],"imp":234302,"view":13510,"view1m":1084,"cmt":5251,"cmtu":584,"gift":4985,"giftu":370,"fan":1602},{"dia":3957,"region":["UNKNOWN","UK+","LATAM"],"imp":81788,"view":13757,"view1m":480,"cmt":971,"cmtu":240,"gift":289,"giftu":66,"fan":187},{"dia":486584,"region":["UNKNOWN","ID","TH"],"imp":95037,"view":14169,"view1m":1045,"cmt":21724,"cmtu":601,"gift":3950,"giftu":473,"fan":1035},{"dia":567028,"region":["SG","JP","ID"],"imp":202854,"view":14202,"view1m":2017,"cmt":32532,"cmtu":898,"gift":8436,"giftu":645,"fan":1095},{"dia":152,"region":["APAC OTHERS","LATAM"],"imp":60357,"view":14340,"view1m":395,"cmt":1129,"cmtu":132,"gift":131,"giftu":49,"fan":36},{"dia":65311,"region":["TW","FR+","SE+"],"imp":98172,"view":14832,"view1m":651,"cmt":3366,"cmtu":266,"gift":962,"giftu":176,"fan":656},{"dia":698686,"region":["TH","JP","FR+"],"imp":292825,"view":15213,"view1m":2207,"cmt":20418,"cmtu":1313,"gift":25363,"giftu":1166,"fan":2387},{"dia":2482778,"region":["UNKNOWN","TH","FR+"],"imp":361861,"view":15278,"view1m":1695,"cmt":21418,"cmtu":791,"gift":12458,"giftu":479,"fan":2792},{"dia":293339,"region":["MY","SG","UNKNOWN"],"imp":262788,"view":15499,"view1m":1884,"cmt":14590,"cmtu":1120,"gift":5797,"giftu":768,"fan":6472},{"dia":12088,"region":["ID","PH","LATAM"],"imp":217227,"view":16381,"view1m":1808,"cmt":15859,"cmtu":2037,"gift":1833,"giftu":427,"fan":186},{"dia":486420,"region":["CA","JP","DE+"],"imp":309705,"view":17258,"view1m":3520,"cmt":14888,"cmtu":2317,"gift":49974,"giftu":1462,"fan":5992},{"dia":637840,"region":["JP","LATAM","UNKNOWN"],"imp":394095,"view":17294,"view1m":2357,"cmt":19716,"cmtu":1648,"gift":5923,"giftu":918,"fan":6996},{"dia":56544,"region":["JP","VN","TH"],"imp":325497,"view":18463,"view1m":1720,"cmt":9132,"cmtu":1369,"gift":2604,"giftu":473,"fan":199},{"dia":165812,"region":["ID","LATAM","MY"],"imp":101378,"view":18604,"view1m":2000,"cmt":15606,"cmtu":660,"gift":6316,"giftu":641,"fan":1607},{"dia":95683,"region":["UNKNOWN","ID","MENA"],"imp":453428,"view":18612,"view1m":3231,"cmt":16009,"cmtu":2116,"gift":7872,"giftu":1929,"fan":1187},{"dia":836053,"region":["LATAM","DE+","TW"],"imp":193653,"view":19568,"view1m":2612,"cmt":13067,"cmtu":1132,"gift":9273,"giftu":662,"fan":3558},{"dia":4410,"region":["UNKNOWN","MY","SG"],"imp":138726,"view":19611,"view1m":865,"cmt":2058,"cmtu":737,"gift":588,"giftu":167,"fan":1726},{"dia":566811,"region":["BE","UNKNOWN","AU+"],"imp":251809,"view":19702,"view1m":2550,"cmt":40087,"cmtu":1678,"gift":16354,"giftu":1459,"fan":4349},{"dia":138675,"region":["JP","ID","TW"],"imp":105566,"view":19820,"view1m":1732,"cmt":2486,"cmtu":349,"gift":1439,"giftu":285,"fan":1298},{"dia":105262,"region":["UNKNOWN","SG","AU+"],"imp":2655271,"view":19847,"view1m":905,"cmt":7756,"cmtu":900,"gift":1832,"giftu":217,"fan":1605},{"dia":626557,"region":["LATAM","ID","UNKNOWN"],"imp":281746,"view":19970,"view1m":2501,"cmt":16399,"cmtu":2297,"gift":6623,"giftu":1206,"fan":9913},{"dia":348115,"region":["DE+","CCA","LATAM"],"imp":120026,"view":20048,"view1m":1540,"cmt":28584,"cmtu":1046,"gift":8046,"giftu":659,"fan":310},{"dia":408627,"region":["UNKNOWN","BE","IT+"],"imp":378624,"view":20112,"view1m":1896,"cmt":10005,"cmtu":1204,"gift":5451,"giftu":688,"fan":12424},{"dia":1644062,"region":["UNKNOWN","ID","AU+"],"imp":390197,"view":20275,"view1m":1646,"cmt":10987,"cmtu":1201,"gift":8551,"giftu":658,"fan":2064},{"dia":171765,"region":["TW","UNKNOWN","JP"],"imp":115610,"view":21738,"view1m":1863,"cmt":8242,"cmtu":689,"gift":2433,"giftu":344,"fan":673},{"dia":434660,"region":["UNKNOWN","AU+","CA"],"imp":795825,"view":22685,"view1m":1528,"cmt":6300,"cmtu":756,"gift":9502,"giftu":574,"fan":1829},{"dia":58060,"region":["LATAM","SG","TW"],"imp":108232,"view":23467,"view1m":1113,"cmt":13301,"cmtu":828,"gift":1509,"giftu":237,"fan":297},{"dia":690426,"region":["FR+","UNKNOWN","IT+"],"imp":256973,"view":24640,"view1m":2886,"cmt":11100,"cmtu":700,"gift":3698,"giftu":759,"fan":8157},{"dia":489047,"region":["UNKNOWN","MENA","CA"],"imp":1078332,"view":24872,"view1m":2884,"cmt":25397,"cmtu":2482,"gift":9101,"giftu":1086,"fan":645},{"dia":328291,"region":["UNKNOWN","UK+","TR"],"imp":353113,"view":25503,"view1m":3587,"cmt":29261,"cmtu":1755,"gift":7293,"giftu":2353,"fan":7959},{"dia":554855,"region":["JP","UNKNOWN","TH"],"imp":200230,"view":25761,"view1m":2056,"cmt":16409,"cmtu":1033,"gift":8508,"giftu":827,"fan":2178},{"dia":1082364,"region":["JP","SG","UNKNOWN"],"imp":206704,"view":26538,"view1m":1608,"cmt":44030,"cmtu":1345,"gift":11996,"giftu":691,"fan":364},{"dia":327560,"region":["UNKNOWN","TH","FR+"],"imp":327168,"view":26804,"view1m":2124,"cmt":18618,"cmtu":2175,"gift":6412,"giftu":712,"fan":706},{"dia":1084790,"region":["UNKNOWN","MY","MENA"],"imp":632618,"view":26826,"view1m":3008,"cmt":40065,"cmtu":3189,"gift":17129,"giftu":1263,"fan":2387},{"dia":2733142,"region":["UNKNOWN","LATAM","DE+"],"imp":252313,"view":26830,"view1m":4156,"cmt":20454,"cmtu":1168,"gift":8032,"giftu":1139,"fan":4710},{"dia":415570,"region":["UNKNOWN","TH","JP"],"imp":308767,"view":27019,"view1m":6973,"cmt":37868,"cmtu":10456,"gift":5086,"giftu":1242,"fan":8505},{"dia":521034,"region":["UNKNOWN","BR","NL"],"imp":1376329,"view":27209,"view1m":2094,"cmt":14731,"cmtu":1645,"gift":9133,"giftu":878,"fan":2317},{"dia":1674297,"region":["JP","SG","TW"],"imp":380109,"view":28319,"view1m":2736,"cmt":41493,"cmtu":1340,"gift":8961,"giftu":1525,"fan":1866},{"dia":657621,"region":["HU+","UNKNOWN","TR"],"imp":123350,"view":28588,"view1m":2253,"cmt":17073,"cmtu":688,"gift":14895,"giftu":396,"fan":380},{"dia":740124,"region":["FR+","VN","ID"],"imp":232662,"view":29016,"view1m":3124,"cmt":65477,"cmtu":2041,"gift":18427,"giftu":2027,"fan":2455},{"dia":8378,"region":["MENA","SG","ID"],"imp":84403,"view":29631,"view1m":1919,"cmt":7917,"cmtu":1586,"gift":1261,"giftu":143,"fan":47},{"dia":864077,"region":["FR+","MENA","LATAM"],"imp":585871,"view":29648,"view1m":2380,"cmt":20269,"cmtu":1577,"gift":15376,"giftu":1009,"fan":4235},{"dia":33695,"region":["UNKNOWN","JP","ID"],"imp":328339,"view":30590,"view1m":1897,"cmt":14323,"cmtu":2812,"gift":1498,"giftu":257,"fan":75},{"dia":121131,"region":["PH","MENA","SG"],"imp":627763,"view":30873,"view1m":11025,"cmt":18261,"cmtu":3487,"gift":10471,"giftu":2101,"fan":13128},{"dia":272638,"region":["CCA","JP","TH"],"imp":389822,"view":31061,"view1m":5134,"cmt":74972,"cmtu":3792,"gift":11546,"giftu":2119,"fan":984},{"dia":2671,"region":["ID","BR","UK+"],"imp":106532,"view":32575,"view1m":1484,"cmt":17619,"cmtu":2176,"gift":811,"giftu":172,"fan":49},{"dia":669721,"region":["UNKNOWN","DE+","UK+"],"imp":254101,"view":33011,"view1m":2745,"cmt":34340,"cmtu":1945,"gift":7543,"giftu":525,"fan":1386},{"dia":652542,"region":["DE+","TW","BR"],"imp":878935,"view":33563,"view1m":3259,"cmt":41460,"cmtu":2333,"gift":11101,"giftu":1314,"fan":9019},{"dia":5115,"region":["UNKNOWN","SE+","UK+"],"imp":1554126,"view":33722,"view1m":6892,"cmt":20280,"cmtu":5062,"gift":1335,"giftu":225,"fan":2509},{"dia":1169717,"region":["SG","UNKNOWN","JP"],"imp":374354,"view":34570,"view1m":3354,"cmt":10794,"cmtu":1404,"gift":4799,"giftu":1001,"fan":4709},{"dia":1455673,"region":["UNKNOWN","ID","UK+"],"imp":426453,"view":35360,"view1m":3733,"cmt":21745,"cmtu":1401,"gift":11895,"giftu":2207,"fan":5054},{"dia":167428,"region":["BR","LATAM","AU+"],"imp":362619,"view":35620,"view1m":3366,"cmt":58920,"cmtu":3408,"gift":17950,"giftu":1251,"fan":285},{"dia":1986215,"region":["LATAM","JP","UNKNOWN"],"imp":1233279,"view":35682,"view1m":5860,"cmt":41136,"cmtu":2268,"gift":98177,"giftu":1873,"fan":8500},{"dia":451854,"region":["TH","UNKNOWN","PH"],"imp":1885328,"view":35937,"view1m":4449,"cmt":41119,"cmtu":2844,"gift":10769,"giftu":1387,"fan":5671},{"dia":1260048,"region":["UNKNOWN","TW","JP"],"imp":301272,"view":36607,"view1m":3610,"cmt":34532,"cmtu":1803,"gift":10149,"giftu":1372,"fan":4446},{"dia":120988,"region":["TH","PL","AFRICA+"],"imp":298010,"view":36687,"view1m":3322,"cmt":24077,"cmtu":1668,"gift":9981,"giftu":894,"fan":341},{"dia":978131,"region":["UNKNOWN","LATAM","TH"],"imp":916571,"view":37232,"view1m":4972,"cmt":13653,"cmtu":1850,"gift":6143,"giftu":949,"fan":20914},{"dia":17272,"region":["JP","PH","VN"],"imp":293664,"view":37423,"view1m":6131,"cmt":4434,"cmtu":1685,"gift":3746,"giftu":1290,"fan":2824},{"dia":1752546,"region":["UNKNOWN","MY","SE+"],"imp":479192,"view":37975,"view1m":6283,"cmt":52936,"cmtu":2860,"gift":20794,"giftu":3063,"fan":5420},{"dia":448369,"region":["UNKNOWN","JP","ID"],"imp":147309,"view":39870,"view1m":5577,"cmt":9163,"cmtu":926,"gift":6236,"giftu":696,"fan":2345},{"dia":792224,"region":["JP","UNKNOWN","TH"],"imp":1030444,"view":41368,"view1m":4774,"cmt":43449,"cmtu":4234,"gift":7241,"giftu":862,"fan":6568},{"dia":693862,"region":["JP","MENA","UK+"],"imp":908890,"view":41732,"view1m":4056,"cmt":18334,"cmtu":1791,"gift":14012,"giftu":1168,"fan":11208},{"dia":575009,"region":["MY","CA","UNKNOWN"],"imp":285149,"view":41779,"view1m":3897,"cmt":19272,"cmtu":1549,"gift":7789,"giftu":1022,"fan":472},{"dia":772707,"region":["BR","DE+","IT+"],"imp":617035,"view":44991,"view1m":5060,"cmt":73535,"cmtu":3001,"gift":22604,"giftu":1742,"fan":644},{"dia":638770,"region":["UK+","APAC OTHERS","PH"],"imp":1065501,"view":45620,"view1m":7461,"cmt":11142,"cmtu":2540,"gift":8668,"giftu":3977,"fan":19939},{"dia":461407,"region":["ID","TH","AU+"],"imp":348726,"view":45759,"view1m":6111,"cmt":11164,"cmtu":2132,"gift":6282,"giftu":1646,"fan":2698},{"dia":853092,"region":["UNKNOWN","JP","DE+"],"imp":1377541,"view":46978,"view1m":3040,"cmt":27087,"cmtu":1234,"gift":13412,"giftu":846,"fan":3560},{"dia":909546,"region":["UNKNOWN","JP","DE+"],"imp":831396,"view":48394,"view1m":4513,"cmt":35390,"cmtu":4152,"gift":7931,"giftu":764,"fan":1138},{"dia":29635,"region":["TH","FR+","LATAM"],"imp":484440,"view":48963,"view1m":4108,"cmt":20784,"cmtu":4124,"gift":3375,"giftu":697,"fan":204},{"dia":302907,"region":["UNKNOWN","JP","LATAM"],"imp":672589,"view":49721,"view1m":4932,"cmt":26907,"cmtu":2770,"gift":3271,"giftu":470,"fan":554},{"dia":17598,"region":["JP","MY","TH"],"imp":2961781,"view":51198,"view1m":5035,"cmt":18658,"cmtu":4319,"gift":1796,"giftu":195,"fan":824},{"dia":401069,"region":["UNKNOWN","JP","TH"],"imp":178380,"view":51380,"view1m":8729,"cmt":12544,"cmtu":935,"gift":3648,"giftu":707,"fan":3229},{"dia":91971,"region":["JP","TH","ID"],"imp":1679708,"view":52442,"view1m":7677,"cmt":20096,"cmtu":5572,"gift":6749,"giftu":808,"fan":250},{"dia":1956048,"region":["AU+","TH","JP"],"imp":1011066,"view":53268,"view1m":5284,"cmt":54927,"cmtu":4179,"gift":21187,"giftu":1504,"fan":791},{"dia":69695,"region":["UNKNOWN","UK+","GLOBAL OTHERS"],"imp":11265613,"view":53651,"view1m":1933,"cmt":4614,"cmtu":1469,"gift":1288,"giftu":161,"fan":1897},{"dia":789771,"region":["UNKNOWN","GLOBAL OTHERS","SE+"],"imp":806561,"view":53760,"view1m":4450,"cmt":63466,"cmtu":5915,"gift":11947,"giftu":1357,"fan":690},{"dia":1303378,"region":["UNKNOWN","AU+","SG"],"imp":533674,"view":54433,"view1m":6407,"cmt":28709,"cmtu":4331,"gift":10408,"giftu":2672,"fan":7294},{"dia":1559114,"region":["JP","UNKNOWN","TH"],"imp":1275530,"view":57690,"view1m":5320,"cmt":30363,"cmtu":3311,"gift":7445,"giftu":1340,"fan":5471},{"dia":2168207,"region":["UNKNOWN","JP","SE+"],"imp":861479,"view":58311,"view1m":5918,"cmt":65699,"cmtu":2557,"gift":26469,"giftu":1872,"fan":3460},{"dia":1961153,"region":["UNKNOWN","JP","TR"],"imp":849581,"view":59443,"view1m":5255,"cmt":41307,"cmtu":4008,"gift":11822,"giftu":2146,"fan":8099},{"dia":6453108,"region":["TH","SG","DE+"],"imp":2485327,"view":60196,"view1m":8131,"cmt":85671,"cmtu":5937,"gift":184656,"giftu":4323,"fan":12719},{"dia":326039,"region":["UNKNOWN","IT+","SG"],"imp":486704,"view":62417,"view1m":4103,"cmt":28587,"cmtu":4725,"gift":5575,"giftu":740,"fan":222},{"dia":524467,"region":["SG","UNKNOWN","LATAM"],"imp":375314,"view":62810,"view1m":5192,"cmt":4977,"cmtu":1157,"gift":6181,"giftu":948,"fan":5579},{"dia":70711,"region":["ID","TW","MY"],"imp":472222,"view":63052,"view1m":4407,"cmt":10485,"cmtu":2744,"gift":5100,"giftu":758,"fan":296},{"dia":2041280,"region":["UNKNOWN","JP","SG"],"imp":1316751,"view":63058,"view1m":12962,"cmt":36197,"cmtu":4071,"gift":18057,"giftu":5488,"fan":8604},{"dia":66060,"region":["UNKNOWN","MY","IL"],"imp":5877263,"view":63309,"view1m":6506,"cmt":26742,"cmtu":5172,"gift":5781,"giftu":738,"fan":1481},{"dia":2077483,"region":["SG","GLOBAL OTHERS","SE+"],"imp":1492410,"view":64597,"view1m":12784,"cmt":70078,"cmtu":3801,"gift":34427,"giftu":5668,"fan":10335},{"dia":1456009,"region":["TW","TH","UNKNOWN"],"imp":434362,"view":64829,"view1m":5159,"cmt":21649,"cmtu":1816,"gift":26638,"giftu":1823,"fan":2861},{"dia":1490786,"region":["JP","LATAM","UNKNOWN"],"imp":633330,"view":64905,"view1m":7671,"cmt":69147,"cmtu":2434,"gift":59282,"giftu":1659,"fan":854},{"dia":2546392,"region":["UNKNOWN","DE+","JP"],"imp":1349450,"view":67802,"view1m":6669,"cmt":42571,"cmtu":4058,"gift":21933,"giftu":1759,"fan":25282},{"dia":7539272,"region":["UNKNOWN","SG","VN"],"imp":871680,"view":68771,"view1m":12507,"cmt":29425,"cmtu":2575,"gift":15316,"giftu":3318,"fan":11098},{"dia":3976,"region":["LATAM","PH","ID"],"imp":169217,"view":69114,"view1m":3448,"cmt":4311,"cmtu":609,"gift":701,"giftu":241,"fan":235},{"dia":11031924,"region":["TH","TW","SG"],"imp":1426586,"view":69490,"view1m":10423,"cmt":83207,"cmtu":4223,"gift":1309880,"giftu":2790,"fan":1707},{"dia":2614066,"region":["UNKNOWN","SG","AU+"],"imp":964137,"view":73839,"view1m":14670,"cmt":47876,"cmtu":5344,"gift":17181,"giftu":5701,"fan":10236},{"dia":1916840,"region":["UNKNOWN","AU+","LATAM"],"imp":1157465,"view":75511,"view1m":10541,"cmt":38073,"cmtu":3416,"gift":18799,"giftu":4895,"fan":12300},{"dia":134390,"region":["DE+","JP","CCA"],"imp":397337,"view":76513,"view1m":10354,"cmt":19105,"cmtu":2487,"gift":14711,"giftu":1605,"fan":1404},{"dia":1331392,"region":["UNKNOWN","AU+","BC"],"imp":1318079,"view":82424,"view1m":7282,"cmt":25748,"cmtu":7802,"gift":11869,"giftu":2032,"fan":4586},{"dia":934597,"region":["AU+","ID","JP"],"imp":649277,"view":83285,"view1m":12949,"cmt":32449,"cmtu":4131,"gift":31585,"giftu":5659,"fan":4102},{"dia":1575541,"region":["BR","MENA","JP"],"imp":649269,"view":84170,"view1m":10953,"cmt":63523,"cmtu":4065,"gift":95082,"giftu":5591,"fan":2737},{"dia":805572,"region":["JP","SG","PH"],"imp":487611,"view":92237,"view1m":14295,"cmt":37949,"cmtu":2462,"gift":36959,"giftu":1829,"fan":2697},{"dia":2321162,"region":["TR","ID","JP"],"imp":1026071,"view":92549,"view1m":14842,"cmt":64912,"cmtu":9804,"gift":45282,"giftu":6974,"fan":6059},{"dia":7610209,"region":["UNKNOWN","UK+","AU+"],"imp":1243851,"view":92876,"view1m":25656,"cmt":23910,"cmtu":4463,"gift":393070,"giftu":10576,"fan":42409},{"dia":209494,"region":["TH","PH","ID"],"imp":1948386,"view":94028,"view1m":9228,"cmt":51972,"cmtu":12184,"gift":6829,"giftu":1029,"fan":198},{"dia":934359,"region":["UNKNOWN","AU+","SG"],"imp":2358882,"view":99739,"view1m":8479,"cmt":52091,"cmtu":4988,"gift":19679,"giftu":2277,"fan":6994},{"dia":528411,"region":["SG","TH","SE+"],"imp":1475711,"view":100000,"view1m":15324,"cmt":15733,"cmtu":3035,"gift":10120,"giftu":1802,"fan":22640},{"dia":368337,"region":["JP","UNKNOWN","FR+"],"imp":4472144,"view":100432,"view1m":9935,"cmt":69452,"cmtu":8814,"gift":10912,"giftu":1493,"fan":352},{"dia":111233,"region":["UNKNOWN","RO","ID"],"imp":1516279,"view":101671,"view1m":8734,"cmt":46342,"cmtu":10716,"gift":16019,"giftu":1164,"fan":310},{"dia":371961,"region":["UNKNOWN","AU+","SG"],"imp":1232413,"view":101994,"view1m":8054,"cmt":35051,"cmtu":7207,"gift":7087,"giftu":941,"fan":348},{"dia":5823900,"region":["ID","PH","JP"],"imp":2808617,"view":105915,"view1m":7739,"cmt":77211,"cmtu":5222,"gift":25018,"giftu":2284,"fan":2192},{"dia":1859193,"region":["JP","MY","PH"],"imp":1161328,"view":106630,"view1m":5565,"cmt":50532,"cmtu":3043,"gift":9076,"giftu":1207,"fan":1211},{"dia":6097143,"region":["TH","JP","SG"],"imp":1479530,"view":107567,"view1m":13341,"cmt":38100,"cmtu":8773,"gift":19047,"giftu":2879,"fan":5678},{"dia":925833,"region":["VN","UNKNOWN","JP"],"imp":2552374,"view":108624,"view1m":8797,"cmt":19785,"cmtu":3554,"gift":14259,"giftu":2415,"fan":2921},{"dia":791118,"region":["DE+","SG","FR+"],"imp":702780,"view":108784,"view1m":7403,"cmt":21626,"cmtu":3485,"gift":16769,"giftu":1600,"fan":1831},{"dia":484400,"region":["JP","UNKNOWN","TH"],"imp":989908,"view":109168,"view1m":10020,"cmt":13116,"cmtu":1232,"gift":5134,"giftu":605,"fan":833},{"dia":6403464,"region":["JP","UNKNOWN","ID"],"imp":1622312,"view":109973,"view1m":13860,"cmt":54663,"cmtu":8590,"gift":31489,"giftu":4925,"fan":6969},{"dia":15303449,"region":["VN","CA","SG"],"imp":1776011,"view":112994,"view1m":18623,"cmt":49454,"cmtu":3400,"gift":22596,"giftu":2430,"fan":10611},{"dia":1598043,"region":["JP","UNKNOWN","TW"],"imp":615581,"view":115458,"view1m":5749,"cmt":12398,"cmtu":1635,"gift":4822,"giftu":1027,"fan":1896},{"dia":44369,"region":["UNKNOWN","UK+","BK"],"imp":8931519,"view":116324,"view1m":15275,"cmt":59555,"cmtu":12363,"gift":5423,"giftu":1301,"fan":7432},{"dia":2684324,"region":["UNKNOWN","PH","AU+"],"imp":6489617,"view":123479,"view1m":9304,"cmt":23924,"cmtu":3650,"gift":11049,"giftu":1550,"fan":11009},{"dia":149037,"region":["ID","BR","UNKNOWN"],"imp":1144498,"view":125198,"view1m":8192,"cmt":55817,"cmtu":9065,"gift":11419,"giftu":1680,"fan":393},{"dia":284680,"region":["TH","IT+","VN"],"imp":1179695,"view":126641,"view1m":8232,"cmt":52274,"cmtu":5759,"gift":42546,"giftu":1915,"fan":3117},{"dia":147992,"region":["UNKNOWN","LATAM","DE+"],"imp":17673090,"view":130117,"view1m":10241,"cmt":23449,"cmtu":6864,"gift":5739,"giftu":1039,"fan":7435},{"dia":1177826,"region":["PH","SG","UNKNOWN"],"imp":1213484,"view":137503,"view1m":14146,"cmt":45088,"cmtu":4568,"gift":37739,"giftu":3698,"fan":7717},{"dia":959397,"region":["UNKNOWN","ID","JP"],"imp":761557,"view":141201,"view1m":13037,"cmt":36311,"cmtu":3260,"gift":54651,"giftu":2253,"fan":3128},{"dia":823157,"region":["UNKNOWN","JP","TH"],"imp":1047253,"view":145688,"view1m":9492,"cmt":54432,"cmtu":5972,"gift":23414,"giftu":2206,"fan":545},{"dia":535390,"region":["UK+","UNKNOWN","MY"],"imp":1760119,"view":150643,"view1m":12010,"cmt":68565,"cmtu":12830,"gift":19083,"giftu":2463,"fan":617},{"dia":818190,"region":["IT+","UNKNOWN","CA"],"imp":995855,"view":150762,"view1m":13829,"cmt":25767,"cmtu":4382,"gift":54530,"giftu":3858,"fan":2323},{"dia":1814053,"region":["JP","SG","UNKNOWN"],"imp":1024181,"view":151010,"view1m":26613,"cmt":76703,"cmtu":9137,"gift":52045,"giftu":11515,"fan":6743},{"dia":6082681,"region":["UNKNOWN","MENA","LATAM"],"imp":2606575,"view":164011,"view1m":41983,"cmt":40009,"cmtu":8578,"gift":34533,"giftu":13567,"fan":27014},{"dia":1896398,"region":["MENA","FR+","UK+"],"imp":15015215,"view":165301,"view1m":4757,"cmt":31282,"cmtu":2300,"gift":13224,"giftu":738,"fan":306},{"dia":2889987,"region":["UNKNOWN","TW","LATAM"],"imp":5603224,"view":169206,"view1m":14004,"cmt":61929,"cmtu":6364,"gift":28501,"giftu":6564,"fan":15118},{"dia":1328266,"region":["UNKNOWN","RO","TH"],"imp":4583480,"view":208062,"view1m":15370,"cmt":42394,"cmtu":8558,"gift":27925,"giftu":3460,"fan":9427},{"dia":22097923,"region":["JP","AU+","MENA"],"imp":5096975,"view":215066,"view1m":27533,"cmt":144756,"cmtu":15303,"gift":209633,"giftu":8046,"fan":40831},{"dia":3499725,"region":["UNKNOWN","JP","TR"],"imp":1754859,"view":225551,"view1m":10979,"cmt":72653,"cmtu":4342,"gift":21802,"giftu":2692,"fan":3349},{"dia":190443,"region":["JP","SG","SE+"],"imp":5649386,"view":403888,"view1m":56221,"cmt":70493,"cmtu":30544,"gift":22063,"giftu":8164,"fan":3775},{"dia":1282912,"region":["JP","UNKNOWN","PH"],"imp":7421836,"view":431819,"view1m":29617,"cmt":44510,"cmtu":8494,"gift":23664,"giftu":3941,"fan":5019},{"dia":270900,"region":["UNKNOWN","JP","AU+"],"imp":3805679,"view":455354,"view1m":47549,"cmt":34639,"cmtu":14029,"gift":17788,"giftu":5567,"fan":8128},{"dia":701810,"region":["UNKNOWN","JP","MY"],"imp":2574521,"view":637836,"view1m":94148,"cmt":26714,"cmtu":8075,"gift":55530,"giftu":9858,"fan":8200},{"dia":13936464,"region":["TH","JP","SE+"],"imp":15810449,"view":814176,"view1m":142409,"cmt":315836,"cmtu":64008,"gift":6325335,"giftu":73356,"fan":129153},{"dia":3161249,"region":["UNKNOWN","ID","SG"],"imp":142588431,"view":1680772,"view1m":190897,"cmt":287121,"cmtu":76362,"gift":30858,"giftu":3848,"fan":5020},{"dia":33387138,"region":["JP","AU+","UNKNOWN"],"imp":34246592,"view":2283030,"view1m":447863,"cmt":580722,"cmtu":69531,"gift":1409768,"giftu":75964,"fan":125264}];
+const WT_DATA = [{"name":"나나","cat":"뷰티","s":950,"r":1050,"t":800,"sr":1500,"st":1313,"rt":1388,"srt":1680,"lic":182,"ytf":160000,"igf":169000,"ttf":1300000,"tags":["#자기관리","#뷰티","#리뷰"],"brands":["랩노쉬","코스알엑스","올리브영"],"desc":"윗유를 대표하는 청순 여신. 뚜비들을 위한 갓생 살기, 훈녀 생정 정보로 사랑받는 숏폼 최고 뷰티 크리에이터"},{"name":"김켈리","cat":"코미디","s":750,"r":650,"t":700,"sr":1050,"st":1088,"rt":1013,"srt":1260,"lic":137,"ytf":1280000,"igf":55000,"ttf":519000,"tags":["#초등교사","#공감","#역할극"],"brands":["치킨플러스","롯데웰푸드","농심"],"desc":"구독자 사연을 패러디하여 1인 3역까지 소화하는 능력자. 다양한 이야기들로 공감과 웃음을 전하는 교사 출신 초통령 크리에이터"},{"name":"람누끼","cat":"뷰티","s":700,"r":1050,"t":750,"sr":1313,"st":1088,"rt":1350,"srt":1500,"lic":182,"ytf":52000,"igf":67000,"ttf":214000,"tags":["#뷰티","#일상","#공감"],"brands":["체이싱래빗","메디큐브","베리썸"],"desc":"자신의 시그니처 사운드로 영상에 빠져들게 한다. 믿고 보는 제품 소개와 귀여운 스토리라인을 만들어내는 크리에이터"},{"name":"플리즈","cat":"뷰티, 패션","s":700,"r":1050,"t":600,"sr":1313,"st":975,"rt":1238,"srt":1410,"lic":182,"ytf":112000,"igf":141000,"ttf":213000,"tags":["#뷰티","#패션","#브이로그"],"brands":["샤이샤이샤이","슬로우글로우","라네즈"],"desc":"패션, 뷰티, 손민수템까지 다양한 콘텐츠를 선보이는 팔방미인. 구독자를 위한 정보 전달에 진심인 크리에이터"},{"name":"혜찌","cat":"코미디","s":700,"r":700,"t":700,"sr":1050,"st":1050,"rt":1050,"srt":1260,"lic":129,"ytf":716000,"igf":194000,"ttf":1200000,"tags":["#챌린지","#댄스","#캐릭터"],"brands":["유튜브코리아","투썸플레이스","컬러그램"],"desc":"아빠 앞에서 추는 댄스로 트렌드를 이끄는 완소 반장. 귀엽고 다양한 캐릭터로 10대 사이에서 높은 인지도를 자랑하는 엉뚱 발랄 캐릭터"},{"name":"쉐리","cat":"라이프스타일","s":660,"r":660,"t":660,"sr":990,"st":990,"rt":990,"srt":1188,"lic":123,"ytf":555000,"igf":110000,"ttf":2200000,"tags":["#영어표현","#뷰티","#챌린지"],"brands":["시원스쿨","메이블린뉴욕","맥도날드"],"desc":"한국과 미국 문화를 재치 있게 비교하는 유학파. 유용한 영어 표현과 전문적인 제품 리뷰까지 더해 트렌드를 선도하는 다재다능 크리에이터"},{"name":"난두팔","cat":"애니메이션","s":600,"r":450,"t":null,"sr":788,"st":null,"rt":null,"srt":null,"lic":114,"ytf":1020000,"igf":138000,"ttf":157000,"tags":["#애니메이션","#푸드","#코믹"],"brands":["러시로얄","스텔라떡볶이","치킨플러스"],"desc":"탄탄한 남성 팬층을 보유한 쇼츠 애니메이션 1등. 생동감 있는 영상 효과로 음식, 게임, 앱 등 무엇이든 매력적으로 표현 가능한 크리에이터"},{"name":"차옳은","cat":"뷰티","s":550,"r":755,"t":550,"sr":979,"st":825,"rt":979,"srt":1113,"lic":137,"ytf":15000,"igf":131000,"ttf":14000,"tags":["#뷰티","#자기관리","#무용"],"brands":["메디큐브","파넬","그로우어스"],"desc":"무용과 출신의 자기관리에 진심인 그녀. 뷰티, 패션, 다이어트까지 고급지게 풀어낼 수 있는 크리에이터"},{"name":"히로캐미","cat":"라이프스타일","s":500,"r":660,"t":580,"sr":870,"st":810,"rt":930,"srt":1044,"lic":123,"ytf":141000,"igf":160000,"ttf":null,"tags":["#데이트","#일상","#국제커플"],"brands":["서울시","에이블리","배달의민족"],"desc":"엉뚱하고 귀여운 일상을 담아내는 한일 커플. 부러움과 대리만족을 동시에 유발하는 크리에이터"},{"name":"강현이어라","cat":"라이프스타일","s":500,"r":550,"t":440,"sr":788,"st":705,"rt":743,"srt":894,"lic":105,"ytf":243000,"igf":98000,"ttf":104000,"tags":["#일상","#가족힐링","#아빠와딸"],"brands":["멕시카나치필링","스텔라떡볶이","네오게임즈"],"desc":"지속적으로 큰 인기를 끄는 '아빠 몰래~' 콘텐츠로 시청자들의 효심을 자극하고 따뜻한 공감을 전해주는 크리에이터"},{"name":"세얼간이","cat":"코미디","s":500,"r":450,"t":460,"sr":713,"st":720,"rt":683,"srt":846,"lic":96,"ytf":440000,"igf":13000,"ttf":1800000,"tags":["#트리오","#상황극","#코미디"],"brands":["삼성전자","BBQ","하나은행"],"desc":"재치 넘치는 아이디어로 웃음을 전달하는 코미디 크리에이터 크루. 특유의 감성으로 한 번 빠지면 헤어나올 수 없는 크리에이터"},{"name":"조닭발","cat":"라이프스타일","s":450,"r":550,"t":500,"sr":750,"st":713,"rt":788,"srt":900,"lic":105,"ytf":106000,"igf":59000,"ttf":418000,"tags":["#노래","#뷰티","#챌린지"],"brands":["유튜브코리아","아모레퍼시픽","스푼"],"desc":"현실 대학생의 일상과 유익한 라이프스타일 꿀팁을 전수하며, 트렌디한 감성으로 대학 생활의 질을 높여주는 크리에이터"},{"name":"윤재","cat":"뷰티","s":500,"r":650,"t":null,"sr":863,"st":null,"rt":null,"srt":null,"lic":122,"ytf":24000,"igf":180000,"ttf":null,"tags":["#패션","#뷰티","#리뷰"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"패션·뷰티에 대한 감각적인 콘텐츠로 많은 사랑을 받으며, 리뷰형 콘텐츠부터 공동구매까지 섭렵한 크리에이터"},{"name":"잰히","cat":"뷰티","s":320,"r":550,"t":330,"sr":653,"st":488,"rt":660,"srt":720,"lic":105,"ytf":18000,"igf":41000,"ttf":26000,"tags":["#메이크업","#튜토리얼","#뷰티"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"메이크업과 뷰티 콘텐츠를 주로 다루며, 다양한 메이크업 팁과 제품 소개로 팔로워와 소통하는 크리에이터"},{"name":"투현커플","cat":"라이프스타일","s":300,"r":400,"t":300,"sr":525,"st":450,"rt":525,"srt":600,"lic":78,"ytf":96000,"igf":127000,"ttf":39000,"tags":["#일상","#데이트","#리뷰"],"brands":["제주관광공사","리얼월드","모아나2"],"desc":"데이트 핫플이라면 어디든 찾아가는 유쾌한 커플. 함께하는 데일리 라이프와 정보력 가득한 영상을 담아내는 크리에이터"},{"name":"윤mini","cat":"라이프스타일","s":300,"r":390,"t":390,"sr":518,"st":518,"rt":585,"srt":648,"lic":76,"ytf":126000,"igf":96000,"ttf":2200000,"tags":["#댄스","#뷰티","#연기"],"brands":["유튜브코리아","매일유업","소니픽쳐스코리아"],"desc":"자신만의 스타일과 매력으로 새로운 즐거움을 선사. 뛰어난 댄스 실력과 아름다운 외모를 겸비한 팔방미인 크리에이터"},{"name":"지현쿡","cat":"푸드","s":300,"r":350,"t":220,"sr":488,"st":390,"rt":428,"srt":522,"lic":69,"ytf":188000,"igf":214000,"ttf":74000,"tags":["#푸드","#30초","#베이킹"],"brands":["에미","호식이두마리치킨","밀카"],"desc":"어디서도 볼 수 없는 신박한 30초 음식 레시피. 직접 따라 할 수 있는 쉬운 레시피를 공유하며 유저들과 소통하는 크리에이터"},{"name":"댕댕부부","cat":"라이프스타일","s":280,"r":380,"t":250,"sr":495,"st":398,"rt":473,"srt":546,"lic":74,"ytf":40000,"igf":82000,"ttf":19000,"tags":["#부부","#일상","#스토리텔링"],"brands":["AI","사람","시된"],"desc":"남편의 철부지 같은 모습을 재미있게 풀어내며 많은 이들의 공감을 불러일으키는 크리에이터"},{"name":"코딱즈","cat":"라이프스타일","s":280,"r":400,"t":null,"sr":510,"st":null,"rt":null,"srt":null,"lic":78,"ytf":14000,"igf":20000,"ttf":null,"tags":["#직장인","#공감","#사내짝꿍"],"brands":["라엘","마몽드","올록담"],"desc":"누구나 겪어본 '현실 직장 생활'을 유쾌하게 풀어내는 두 입사 동기! 뛰어난 연기력과 디테일로 폭풍 공감을 부르는 2030 여성들의 최애 채널"},{"name":"쩜","cat":"교육","s":250,"r":350,"t":290,"sr":450,"st":405,"rt":480,"srt":534,"lic":69,"ytf":121000,"igf":201000,"ttf":863000,"tags":["#연기","#댄스","#공감"],"brands":["지누스","리파","카스"],"desc":"독서부터 춤까지 반전 매력의 소유자. 남다른 표현력으로 공감 상황극을 제작하며 탄탄한 팬덤을 보유한 크리에이터"},{"name":"삼십센치","cat":"라이프스타일","s":250,"r":320,"t":290,"sr":428,"st":405,"rt":458,"srt":516,"lic":64,"ytf":29000,"igf":22000,"ttf":37000,"tags":["#커플","#키차이","#일상"],"brands":["네이버플러스","오가닉콘텐츠","오가닉콘텐츠"],"desc":"틱톡 대표 크리에이터 쉐리의 커플 계정. 30cm 키 차이만큼이나 유쾌하고 설레는 일상을 전하는 커플 크리에이터"},{"name":"양아띠","cat":"푸드","s":200,"r":230,"t":240,"sr":323,"st":330,"rt":353,"srt":402,"lic":48,"ytf":79000,"igf":5900,"ttf":121000,"tags":["#쿡방","#먹방","#직장인"],"brands":["동서식품","혜성처럼등장한푸드의슈퍼루키"],"desc":"엉뚱한 매력의 소유자로 다양한 음식 리뷰와 꿀조합을 소개하는 크리에이터"},{"name":"장진영","cat":"뷰티, 패션","s":200,"r":250,"t":170,"sr":338,"st":278,"rt":315,"srt":372,"lic":50,"ytf":14000,"igf":24000,"ttf":13000,"tags":["#패션","#코디","#하울"],"brands":["라네즈","투에딧","테무"],"desc":"옷 잘 입고 화장 잘하는 예쁜 옆집 언니. MZ세대의 핫한 스타일링을 보여주며 따라 입고 싶게 만드는 크리에이터"},{"name":"욱셰프","cat":"푸드","s":200,"r":200,"t":150,"sr":300,"st":263,"rt":263,"srt":330,"lic":40,"ytf":122000,"igf":82000,"ttf":9000,"tags":["#푸드","#레시피","#파인다이닝"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"미쉐린 1스타 출신의 현역 헤드 셰프. 고화질 푸드 씨즐컷으로 먹음직스러운 레시피를 소개하는 크리에이터"},{"name":"하리미쿡","cat":"푸드","s":180,"r":230,"t":null,"sr":308,"st":null,"rt":null,"srt":null,"lic":46,"ytf":64000,"igf":85000,"ttf":12000,"tags":["#집밥","#간식","#간편요리"],"brands":["테팔","동원","모흐"],"desc":"쉽게 따라 할 수 있는 따뜻한 집밥 레시피. 가족들과 함께하는 행복한 라이프스타일을 보여주는 크리에이터"},{"name":"모닝이","cat":"푸드","s":180,"r":190,"t":null,"sr":278,"st":null,"rt":null,"srt":null,"lic":38,"ytf":60000,"igf":23000,"ttf":209,"tags":["#푸드","#리뷰","#먹조합"],"brands":["마켓컬리","잭링크스","오리온"],"desc":"편의점 신제품 리뷰를 누구보다 빠르게. 트렌디한 콘텐츠를 쏙쏙 뽑아내며 꿀조합을 솔직하게 리뷰하는 크리에이터"},{"name":"팔춘쿡","cat":"푸드","s":150,"r":230,"t":240,"sr":285,"st":293,"rt":353,"srt":372,"lic":48,"ytf":369000,"igf":23000,"ttf":208000,"tags":["#푸드","#쿡방","#먹방"],"brands":["피자","운동식단","전자레인지레시피"],"desc":"BTS도 Shout out 한 채널. 누구나 따라 하기 쉬운 자신만의 레시피로 시청자의 침샘을 자극하는 크리에이터"},{"name":"포아요","cat":"푸드","s":150,"r":120,"t":null,"sr":203,"st":null,"rt":null,"srt":null,"lic":30,"ytf":60000,"igf":5700,"ttf":286,"tags":["#요리","#캐릭터","#만화"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"포아요만의 캐릭터 '아용이'와 함께하는 요리. 현실 직장인으로서 다양한 요리에 도전하며, 중간중간 등장하는 만화가 눈길을 사로잡는 크리에이터"},{"name":"무식이","cat":"라이프스타일","s":100,"r":150,"t":70,"sr":188,"st":128,"rt":165,"srt":192,"lic":30,"ytf":7100,"igf":30000,"ttf":24000,"tags":["#바디프로필","#헬스","#패션"],"brands":["포맨트","멕시카나","오가닉콘텐츠"],"desc":"건강, 피트니스, 바디프로필 관련 다양한 주제를 다루며 '#친누나가~할때' 콘텐츠로 남매 공감 가득 콘텐츠를 담아내는 크리에이터"},{"name":"썸언니","cat":"푸드","s":100,"r":120,"t":120,"sr":165,"st":165,"rt":180,"srt":204,"lic":24,"ytf":97000,"igf":8200,"ttf":109000,"tags":["#일상","#브이로그","#리뷰"],"brands":["네이버플러스","스토어","더 미식"],"desc":"요리의 소소한 즐거움과 따뜻한 순간들을 나누는 채널. 귀여운 사투리로 일상을 공유하며 '사촌 언니' 같은 매력을 보여주는 크리에이터"},{"name":"잠깐마뇽","cat":"코미디","s":100,"r":100,"t":null,"sr":150,"st":null,"rt":null,"srt":null,"lic":20,"ytf":124000,"igf":8700,"ttf":36000,"tags":["#상황극","#유머","#티니핑"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"\"저기 잠깐마뇽\" — 독특한 캐릭터와 다양한 1인 다역 상황극으로 시선을 집중시키는 유쾌하고 코믹한 크리에이터"},{"name":"묭타몽","cat":"푸드","s":100,"r":null,"t":80,"sr":null,"st":135,"rt":null,"srt":null,"lic":20,"ytf":7000,"igf":526,"ttf":5200,"tags":["#패션","#뷰티","#끼"],"brands":["더샘","아도르","아비브"],"desc":"자칭 패린이·똥손이지만 자신만의 스타일로 도전하는 다양한 뷰티·패션 콘텐츠! 넘치는 끼를 주체할 수 없는 뷰티·패션 크리에이터"},{"name":"체션","cat":"패션","s":80,"r":170,"t":150,"sr":188,"st":173,"rt":240,"srt":240,"lic":34,"ytf":2700,"igf":33000,"ttf":22000,"tags":["#패션","#중독성","#화려함"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"중독적인 영상 BGM과 함께 자신만의 패션템을 소개하는 그녀. 패션부터 뷰티 아이템까지 그녀만의 스타일로 다양한 콘텐츠를 제작하는 크리에이터"},{"name":"빵지","cat":"패션","s":80,"r":85,"t":null,"sr":124,"st":null,"rt":null,"srt":null,"lic":20,"ytf":10000,"igf":14000,"ttf":621,"tags":["#패션","#추천템","#뷰티"],"brands":["오가닉콘텐츠","메디큐브","오가닉콘텐츠"],"desc":"방송 활동으로 다져진 탁월한 전달력과 타고난 끼로 보는 이의 몰입도를 높이는 크리에이터"},{"name":"임땡땡","cat":"패션, 뷰티","s":null,"r":770,"t":600,"sr":null,"st":null,"rt":1028,"srt":null,"lic":140,"ytf":5900,"igf":91000,"ttf":62000,"tags":["#패션","#소통","#유머"],"brands":["오가닉콘텐츠","메디큐브","오가닉콘텐츠"],"desc":"재치 있는 입담과 말투로 영상을 풀어가는 그녀. 활발하고 도전 정신이 넘치는 매력적인 콘텐츠가 특징인 크리에이터"},{"name":"캐미","cat":"뷰티","s":null,"r":660,"t":550,"sr":null,"st":null,"rt":908,"srt":null,"lic":123,"ytf":1100,"igf":58000,"ttf":25000,"tags":["#댄스","#일상","#뷰티"],"brands":["라운드랩","아렌시아","아렌시아"],"desc":"귀여운 외모와 반전의 댄스 실력의 소유자. 패션부터 메이크업, 댄스까지 다양한 매력을 보여주는 크리에이터"},{"name":"정보배","cat":"뷰티, 패션","s":null,"r":400,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":78,"ytf":null,"igf":76000,"ttf":null,"tags":["#뷰티","#패션","#모델"],"brands":["스튜디오","SETUPEXE","웨이크메이크"],"desc":"트렌디하고 스타일리시한 감각을 담아내는 패션 아이콘. 화보급 비주얼과 힙하고 아이코닉한 무드로 뷰티·패션 분야에서 주목받는 크리에이터"},{"name":"왕십리커플","cat":"라이프스타일","s":null,"r":450,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":87,"ytf":2900,"igf":51000,"ttf":2100,"tags":["#커플","#9살차이","#비주얼"],"brands":["새인트새틴","스포티파이","오프라코스메틱"],"desc":"커플 일상, 상황극, 패션까지 라이프스타일 전반을 다루는 비주얼 커플. 데이트, 뷰티, 식음료 등 모든 카테고리를 자연스럽게 소화하는 만능 크리에이터"},{"name":"차진아","cat":"뷰티, 라이프스타일","s":null,"r":380,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":74,"ytf":4800,"igf":322000,"ttf":1300,"tags":["#뷰티","#패션","#라이프스타일"],"brands":["아렌시아","헤브블루","POIZON"],"desc":"8년 차 패션 디렉터의 감각이 녹아든 감성 라이프. 나만 알고 싶은 꿀템을 쏙쏙 골라주는 라이프 크리에이터"},{"name":"히로키","cat":"라이프스타일","s":null,"r":370,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":73,"ytf":73000,"igf":29000,"ttf":null,"tags":["#데이트","#일상"],"brands":["낫온리포투데이","제주관광공사","롯데타운크리스마스마켓"],"desc":"조회수 1,300만의 남친짤 주인공. 훈훈한 외모와 귀여운 성격으로 사랑받는 크리에이터"},{"name":"티니","cat":"라이프스타일","s":null,"r":280,"t":230,"sr":null,"st":null,"rt":383,"srt":null,"lic":56,"ytf":24000,"igf":66000,"ttf":107000,"tags":["#리뷰","#댄스","#챌린지"],"brands":["사람","시된","류이"],"desc":"독보적인 스타일로 티니만의 길을 걷는다. 톡톡 튀는 매력으로 시선을 사로잡는 크리에이터"},{"name":"갱상도남","cat":"라이프스타일","s":220,"r":250,"t":null,"sr":353,"st":null,"rt":null,"srt":null,"lic":50,"ytf":4900,"igf":54000,"ttf":1400,"tags":["#푸드","#친근함","#일상"],"brands":["BBQ","다이클로","판피린큐"],"desc":"딸 시점에서 담는 경상도 출신 아빠의 귀염 모먼트. 보기만 해도 웃음이 지어지는 가족 크리에이터"},{"name":"강태공","cat":"라이프스타일","s":null,"r":235,"t":180,"sr":null,"st":null,"rt":311,"srt":null,"lic":47,"ytf":977,"igf":33000,"ttf":15000,"tags":["#코미디","#라이프스타일","#일상"],"brands":["피캄","샤브올데이","오가닉콘텐츠"],"desc":"다양한 카테고리를 섭렵한 그녀. 여동생 같은 친근한 매력으로 자신만의 색이 매력적인 크리에이터"},{"name":"딤썸","cat":"라이프스타일, 뷰티","s":null,"r":230,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":46,"ytf":5800,"igf":108000,"ttf":34000,"tags":["#건강","#운동","#일상"],"brands":["동원","농심","스킨1004"],"desc":"맛있는 음식과 운동으로 건강한 삶을 만들어가는 갓생러. 보기만 해도 건강해지는 기분이 들게 하는 크리에이터"},{"name":"이은별","cat":"뷰티","s":null,"r":230,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":46,"ytf":1500,"igf":26000,"ttf":3200,"tags":["#뷰티","#라이프스타일","#기초라인"],"brands":["롬앤","메디큐브","쓰리와우"],"desc":"기초 뷰티 리뷰에 강점을 지닌 그녀. 스튜어디스 준비 경험을 살려 꿀팁 대방출이 가능한 크리에이터"},{"name":"민아","cat":"뷰티","s":null,"r":220,"t":170,"sr":null,"st":null,"rt":293,"srt":null,"lic":44,"ytf":4500,"igf":24000,"ttf":55000,"tags":["#뷰티","#커플","#학생"],"brands":["오가닉콘텐츠"],"desc":"키즈 모델 출신으로 엄청난 잠재성을 가진 그녀. 스킨케어, 디바이스, 색조 등 학생 타깃 뷰티 제품 소개가 가능한 크리에이터"},{"name":"미뇽","cat":"푸드","s":null,"r":200,"t":180,"sr":null,"st":null,"rt":285,"srt":null,"lic":40,"ytf":6000,"igf":43000,"ttf":31000,"tags":["#먹방","#뷰티","#챌린지"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"솔직하고 4차원적인 끼로 먹방, 뷰티, 라이프스타일 등 여러 분야를 섭렵하는 크리에이터"},{"name":"헬고딩","cat":"라이프스타일","s":null,"r":200,"t":170,"sr":null,"st":null,"rt":278,"srt":null,"lic":40,"ytf":3300,"igf":30000,"ttf":34000,"tags":["#운동","#커플","#학생"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"운동을 사랑하는 평범한 학생의 일상. 여자친구와 함께 재미있고 리얼한 콘텐츠를 담아내는 학생 크리에이터"},{"name":"김오후","cat":"뷰티","s":null,"r":200,"t":100,"sr":null,"st":null,"rt":225,"srt":null,"lic":40,"ytf":2500,"igf":18000,"ttf":13000,"tags":["#공감","#뷰티","#반전"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"공감형 콘텐츠를 중심으로 많은 사랑을 받으며, 오전에는 순수한 대학생·오후에는 화끈한 여성 컨셉의 크리에이터"},{"name":"박주원","cat":"라이프스타일","s":null,"r":170,"t":240,"sr":null,"st":null,"rt":308,"srt":null,"lic":48,"ytf":4800,"igf":20000,"ttf":1300000,"tags":["#코미디","#상황극","#댄스"],"brands":["오가닉","매일유업","슈퍼베드"],"desc":"유쾌한 연출과 뛰어난 댄스 실력의 소유자. 재미있는 표정 연기로 다양한 상황극을 선보이는 크리에이터"},{"name":"이루징","cat":"푸드","s":140,"r":170,"t":170,"sr":233,"st":233,"rt":255,"srt":288,"lic":34,"ytf":7900,"igf":39000,"ttf":250000,"tags":["#코미디","#먹방","#남매"],"brands":["야핏무브","알리익스프레스","배달의민족"],"desc":"흥과 끼가 넘쳐나는 남매. 유쾌한 일상과 다양한 먹방 콘텐츠로 함께 웃고 즐길 수 있는 크리에이터"},{"name":"신홍부부","cat":"라이프스타일","s":null,"r":160,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":32,"ytf":1400,"igf":28000,"ttf":3900,"tags":["#신혼부부","#공감","#일상"],"brands":["60계 치킨","본다츠","대웅제약"],"desc":"신혼부부의 현실 일상과 유쾌한 티키타카를 공감 코미디로 풀어내는 크리에이터"},{"name":"강어진","cat":"뷰티","s":null,"r":230,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":46,"ytf":null,"igf":59000,"ttf":null,"tags":["#패션뷰티","#서울대생","#룩북"],"brands":["줄라이미","더틸버리","어퓨"],"desc":"스마트함에 패션 센스까지 두 마리 토끼를 잡다! 남다른 안목으로 패션·뷰티 트렌드를 가이드하는 서울대생 크리에이터"},{"name":"실키","cat":"뷰티","s":null,"r":130,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":26,"ytf":2000,"igf":13000,"ttf":15000,"tags":["#뷰티","#색조","#자기관리"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"메이크업 아티스트 출신으로, 외모와 상반되는 털털한 말투가 매력적인 크리에이터"},{"name":"진톨","cat":"푸드","s":null,"r":120,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":24,"ytf":3600,"igf":35000,"ttf":16000,"tags":["#먹방","#푸드","#집밥"],"brands":["오가닉콘텐츠","스텔라떡볶이","오가닉콘텐츠"],"desc":"많이 먹기보다는 맛있게, 행복하게 먹는 모습이 사랑스러운 그녀. 집밥, 배달, 음주까지 행복한 먹방이 주인 크리에이터"},{"name":"나야연수","cat":"푸드","s":180,"r":250,"t":230,"sr":323,"st":308,"rt":360,"srt":396,"lic":50,"ytf":3,"igf":79000,"ttf":143000,"tags":["#먹방","#푸드","#꿀조합"],"brands":["스텔라떡볶이","오가닉콘텐츠","장인더약과"],"desc":"음식의 질감과 컬러감을 섬세하게 살려 시각적 몰입도를 높이며, 모든 음식을 '맛있게' 보이게 하는 먹방 전문 크리에이터"},{"name":"엄진솔","cat":"뷰티","s":null,"r":100,"t":95,"sr":null,"st":null,"rt":146,"srt":null,"lic":20,"ytf":25000,"igf":8100,"ttf":20000,"tags":["#뷰티","#색조","#일상"],"brands":["아임미미","오가닉콘텐츠","오가닉콘텐츠"],"desc":"독특한 커버 메이크업을 선보이며 진솔한 매력으로 성장 가능성을 보여주는 크리에이터"},{"name":"리미","cat":"패션, 뷰티","s":null,"r":100,"t":60,"sr":null,"st":null,"rt":120,"srt":null,"lic":20,"ytf":803,"igf":42000,"ttf":15000,"tags":["#패션","#일상","#챌린지"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"다양한 패션 스타일과 일상을 공유하며 감성적인 콘텐츠로 친근감을 주는 그녀. 패션, 일상, 감정 표현을 중심으로 다채로운 매력을 선보이는 크리에이터"},{"name":"능히","cat":"라이프스타일","s":null,"r":100,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":20,"ytf":null,"igf":2500,"ttf":null,"tags":["#푸드","#일상","#K장녀"],"brands":["볼비","비비고","스튜디오좋"],"desc":"뷰티 마케터의 전문성을 살려 리뷰에 신뢰를 더하는 그녀. 누구나 공감할 만한 자매 라이프 대방출! 뛰어난 전달력으로 몰입도를 높이는 공감형 크리에이터"},{"name":"지효","cat":"라이프스타일, 뷰티","s":null,"r":100,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":20,"ytf":7600,"igf":31000,"ttf":922,"tags":["#라이프스타일","#뷰티","#다이어트"],"brands":["아이오페","톰 (THOME)","키에라(Kiera)"],"desc":"탄탄한 방송 내공으로 노련한 입담을 가진 옆집 언니. 건강하고 밝은 에너지를 녹여내는 크리에이터"},{"name":"안쌤","cat":"라이프스타일","s":100,"r":100,"t":null,"sr":150,"st":75,"rt":null,"srt":120,"lic":20,"ytf":15000,"igf":67000,"ttf":19000,"tags":["#대한외국인","#공감","#일상"],"brands":["마이미니미스튜디오","깨복이","게장명가"],"desc":"겉모습은 외국인, 속은 완전 한국인? 국경을 초월한 유머와 다채로운 일상 콘텐츠로 매일 새로운 즐거움을 선물하는 라이징 크리에이터"},{"name":"묵구","cat":"뷰티","s":null,"r":100,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":20,"ytf":null,"igf":5200,"ttf":375,"tags":["#뷰티","#일상","#썰"],"brands":["메디큐브","비레디","해달씨"],"desc":"\"그래서 그 다음은요..?\" 멈출 수 없는 썰의 굴레 속에서 뚝딱 완성되는 묵구표 메이크업. 지루할 틈 없는 그녀만의 뷰티 토크"},{"name":"정이","cat":"푸드","s":null,"r":95,"t":95,"sr":null,"st":null,"rt":143,"srt":null,"lic":20,"ytf":1400,"igf":9000,"ttf":11000,"tags":["#패션","#뷰티","#룩북"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"소소한 일상과 맛있는 한 끼를 함께 나누는 그녀. 솔직한 리액션이 매력적인 먹방 크리에이터"},{"name":"설히","cat":"뷰티","s":null,"r":85,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":20,"ytf":1400,"igf":13000,"ttf":4800,"tags":["#패션","#뷰티","#룩북"],"brands":["미쏘","키보노글루삐삐래쉬","미리캔버스"],"desc":"감성적인 룩북을 통해 새로운 영감을 선사하며 트렌드를 이끌어가는 패션 크리에이터"},{"name":"빵도리","cat":"푸드","s":null,"r":80,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":20,"ytf":6700,"igf":15000,"ttf":3700,"tags":["#디저트","#베이킹","#요리"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"케이크와 디저트 만들기에 열정을 가진 채널. 다양한 레시피와 요리 영상을 공유하며 인기를 얻고 있는 크리에이터"},{"name":"장은지","cat":"라이프스타일","s":null,"r":80,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":20,"ytf":3400,"igf":12000,"ttf":4900,"tags":["#여행","#일상","#꿀팁"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"여행의 매력을 한껏 느끼는 혼자 놀기의 달인. 혼자서도 완벽한 하루를 즐기며 꿀팁을 아낌없이 나누는 야무진 크리에이터"},{"name":"배율","cat":"뷰티","s":null,"r":70,"t":70,"sr":null,"st":null,"rt":105,"srt":null,"lic":20,"ytf":1600,"igf":4000,"ttf":75000,"tags":["#메이크업","#색조","#10대"],"brands":["Hayejin","오가닉콘텐츠","오가닉콘텐츠"],"desc":"핫한 색조부터 스킨케어까지 섭렵한 10대 뷰티 멘토! 탄탄한 팬덤을 기반으로 유행을 타지 않는 자신만의 매력으로 시청자와 소통하는 크리에이터"},{"name":"다벙이","cat":"라이프스타일","s":null,"r":60,"t":60,"sr":null,"st":null,"rt":90,"srt":null,"lic":20,"ytf":null,"igf":2200,"ttf":8300,"tags":["#뷰티","#푸드","#라이프스타일"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"러블리함과 친근함으로 Z세대의 공감을 이끌어내는 에피소드 장인. 뷰티부터 푸드까지 다채로운 일상을 담아내는 크리에이터"},{"name":"태림","cat":"패션","s":null,"r":60,"t":50,"sr":null,"st":null,"rt":83,"srt":null,"lic":20,"ytf":367,"igf":8600,"ttf":3500,"tags":["#연습생","#패션뷰티","#댄스"],"brands":["오가닉콘텐츠","키스미","스튜디오"],"desc":"탄탄한 팬층을 보유한 연습생 출신으로 댄스와 패션·뷰티 분야에 특화된 크리에이터"},{"name":"끼현","cat":"푸드","s":null,"r":60,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":20,"ytf":969,"igf":5700,"ttf":5000,"tags":["#댄스","#먹방","#푸드"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"댄스 강사의 유쾌한 먹방. 시그니처 비니와 무표정한 리액션이 매력적인 먹방 크리에이터"},{"name":"영하이","cat":"푸드","s":null,"r":null,"t":120,"sr":null,"st":null,"rt":null,"srt":null,"lic":24,"ytf":2700,"igf":4900,"ttf":160000,"tags":["#챌린지","#코미디","#먹방"],"brands":["제주도청","오가닉콘텐츠","오가닉콘텐츠"],"desc":"\"하이나 영하이~\" 일상 속 공감을 불러일으키는 콘텐츠와 다양한 챌린지로 숏폼 트렌드를 이끌어가는 라이징 크리에이터"},{"name":"커비","cat":"푸드","s":null,"r":null,"t":85,"sr":null,"st":null,"rt":null,"srt":null,"lic":20,"ytf":644,"igf":5700,"ttf":42000,"tags":["#먹방","#푸드","#코미디"],"brands":["오가닉콘텐츠","오가닉콘텐츠","오가닉콘텐츠"],"desc":"뮤지션 CuRvY 커비의 매력적인 일상. 보기만 해도 식욕을 돋우는 떠오르는 먹방 크리에이터"},{"name":"시연","cat":"뷰티, 패션","s":null,"r":90,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":20,"ytf":106,"igf":5200,"ttf":415,"tags":["#약대생","#뷰티","#자기관리"],"brands":["VT","메디큐브","성분에디터"],"desc":"약대생이 추천하는 뷰티 꿀템부터 코디까지 엿볼 수 있는 청순한 매력의 크리에이터"},{"name":"이매온","cat":"뷰티","s":null,"r":85,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":20,"ytf":864,"igf":2900,"ttf":1500,"tags":["#뷰티","#대학생","#꿀팁"],"brands":["포맨트","일소","페리페라"],"desc":"공부보다 꾸미는 게 더 좋은 현실 대학생 크리에이터가 알려주는 뷰티·일상 꿀팁"},{"name":"luckydubu","cat":"라이프스타일, 뷰티","s":null,"r":180,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":36,"ytf":1000,"igf":46000,"ttf":60,"tags":["#웰니스","#뷰티","#자기관리"],"brands":["애즈유아","이니스프리","오니스트"],"desc":"건강한 아름다움을 추구하며 자기관리 팁을 전수하는 웰니스 뷰티 크리에이터"},{"name":"나경","cat":"라이프스타일, 뷰티","s":null,"r":75,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":20,"ytf":null,"igf":7500,"ttf":null,"tags":["#간호대생","#뷰티","#일상"],"brands":["톰 (THOME)","벤튼","vivavideo"],"desc":"간호대생으로 대학생·연애 일상과 함께 뷰티 꿀팁을 녹여내는 크리에이터"},{"name":"류채린","cat":"라이프스타일, 뷰티","s":null,"r":100,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":20,"ytf":129,"igf":22000,"ttf":1400,"tags":["#남매","#뷰티","#댄스"],"brands":["메디큐브","에이프릴스킨","더랩바이블랑두"],"desc":"천상계 유전자를 자랑하는 비주얼 남매의 일상부터, 만화 여주인공 같은 미모로 댄스·뷰티까지 섭렵한 크리에이터"},{"name":"은욱이네","cat":"라이프스타일","s":null,"r":100,"t":null,"sr":null,"st":null,"rt":null,"srt":null,"lic":20,"ytf":1300,"igf":36000,"ttf":null,"tags":["#커플","#일상","#데이트"],"brands":["메디큐브","학생시절부터이어온독보적케미"],"desc":"일상 브이로그와 데이트 코스 소개로 1020 세대를 사로잡은 커플 크리에이터"}];
+
+/* ---------- shared helpers ---------- */
+const fmt = n => n.toLocaleString('ko-KR');
+function fmtF(n) {
+  if (n == null) return '<span class="nil">–</span>';
+  if (n >= 10000) { const v = Math.round(n / 1000) / 10; return (v % 1 ? v.toFixed(1) : v) + '만'; }
+  if (n >= 1000) { const v = Math.round(n / 100) / 10; return (v % 1 ? v.toFixed(1) : v) + '천'; }
+  return fmt(n);
+}
+function median(arr) {
+  const s = arr.slice().sort((a, b) => a - b);
+  const m = Math.floor(s.length / 2);
+  return s.length % 2 ? s[m] : Math.round((s[m - 1] + s[m]) / 2);
+}
+
+/* ---------- tabs ---------- */
+const metaLine = document.getElementById('metaLine');
+const TABS = {
+  pi:   { btn: document.getElementById('tab-pi'),   panel: document.getElementById('panel-pi'),
+          meta: 'PI 코퍼레이션 크리에이터 210명 · 데이터 산정 기간 6/1~7/12 · 기본 정렬: 다이아몬드(수익) 높은 순' },
+  witu: { btn: document.getElementById('tab-witu'), panel: document.getElementById('panel-witu'),
+          meta: '윗유 전속 크리에이터 78명 · 브랜디드 콘텐츠 단가 (만원, VAT 별도) · 2026.06.30까지 유효 · 기본 정렬: 릴스 단가 높은 순' },
+  cre:  { btn: document.getElementById('tab-cre'),  panel: document.getElementById('panel-cre'),
+          meta: '크리플래닛 컨택 제안 인플루언서 7명 · 기존 협업가 기준 제안 단가' },
+};
+function setTab(which) {
+  for (const [k, t] of Object.entries(TABS)) {
+    const on = k === which;
+    t.btn.classList.toggle('on', on);
+    t.btn.setAttribute('aria-selected', on);
+    t.panel.classList.toggle('on', on);
+  }
+  metaLine.textContent = TABS[which].meta;
+}
+for (const k of Object.keys(TABS)) TABS[k].btn.addEventListener('click', () => setTab(k));
+metaLine.textContent = TABS.pi.meta;
+
+/* ================= PI tab ================= */
+(function () {
+  const REGION_LABEL = { UNKNOWN: '미상', 'GLOBAL OTHERS': '글로벌 기타', 'APAC OTHERS': 'APAC 기타' };
+  const COLS = [
+    { key: 'rank',  label: '#',              cls: 'rank', sortable: false },
+    { key: 'dia',   label: '다이아몬드(수익)', cls: 'hi' },
+    { key: 'region',label: '기여 지역 TOP3',   cls: 'txt', sortable: false },
+    { key: 'imp',   label: '노출 수' },
+    { key: 'view',  label: '시청자 수' },
+    { key: 'view1m',label: '1분+ 시청자' },
+    { key: 'cmt',   label: '댓글 수' },
+    { key: 'cmtu',  label: '댓글 작성자' },
+    { key: 'gift',  label: '선물 수' },
+    { key: 'giftu', label: '선물 후원자' },
+    { key: 'fan',   label: '총 팬 수' },
+  ];
+  let sortKey = 'dia', sortDir = -1;
+  const headRow = document.getElementById('pi-headRow');
+  const tbody = document.getElementById('pi-tbody');
+  const search = document.getElementById('pi-search');
+  const regionSel = document.getElementById('pi-regionSel');
+  const rankSel = document.getElementById('pi-rankSel');
+  const countEl = document.getElementById('pi-count');
+
+  function buildHead() {
+    headRow.innerHTML = '';
+    for (const c of COLS) {
+      const th = document.createElement('th');
+      if (c.cls === 'txt') th.className = 'txt';
+      th.textContent = c.label;
+      if (c.sortable !== false) {
+        if (c.key === sortKey) {
+          const d = document.createElement('span');
+          d.className = 'dir';
+          d.textContent = sortDir === -1 ? '▼' : '▲';
+          th.appendChild(d);
+        }
+        th.addEventListener('click', () => {
+          if (sortKey === c.key) sortDir = -sortDir;
+          else { sortKey = c.key; sortDir = -1; }
+          render();
+        });
+      } else th.classList.add('nosort');
+      headRow.appendChild(th);
+    }
+  }
+  const regionHtml = list => '<span class="rg">' + list.slice(0, 3).map(r => '<span>' + (REGION_LABEL[r] || r) + '</span>').join('') + '</span>';
+  function filtered() {
+    const q = search.value.trim().toUpperCase();
+    const sel = regionSel.value;
+    const topOnly = rankSel.value === 'top';
+    return PI_DATA.filter(d => {
+      const regions = topOnly ? d.region.slice(0, 1) : d.region;
+      if (sel && !regions.includes(sel)) return false;
+      if (q && !regions.some(r => r.toUpperCase().includes(q) || (REGION_LABEL[r] || '').includes(q))) return false;
+      return true;
+    });
+  }
+  function render() {
+    buildHead();
+    const rows = filtered().slice().sort((a, b) => (a[sortKey] - b[sortKey]) * sortDir);
+    tbody.innerHTML = rows.map((d, i) => {
+      const pct = d.view ? Math.round(d.view1m / d.view * 100) : 0;
+      return '<tr><td class="rank">' + (i + 1) + '</td>' +
+        '<td class="hi">' + fmt(d.dia) + '</td>' +
+        '<td class="txt">' + regionHtml(d.region) + '</td>' +
+        '<td>' + fmt(d.imp) + '</td><td>' + fmt(d.view) + '</td>' +
+        '<td>' + fmt(d.view1m) + '<span class="sub">' + pct + '%</span></td>' +
+        '<td>' + fmt(d.cmt) + '</td><td>' + fmt(d.cmtu) + '</td>' +
+        '<td>' + fmt(d.gift) + '</td><td>' + fmt(d.giftu) + '</td>' +
+        '<td>' + fmt(d.fan) + '</td></tr>';
+    }).join('');
+    countEl.textContent = rows.length + '명 표시 중 (전체 ' + PI_DATA.length + '명)';
+  }
+  const dias = PI_DATA.map(d => d.dia);
+  const views = PI_DATA.map(d => d.view);
+  const topCount = {};
+  for (const d of PI_DATA) { const r = d.region[0] || 'UNKNOWN'; topCount[r] = (topCount[r] || 0) + 1; }
+  const topRegions = Object.entries(topCount).sort((a, b) => b[1] - a[1]).slice(0, 3)
+    .map(([r, n]) => (REGION_LABEL[r] || r) + ' ' + n + '명').join(' · ');
+  document.getElementById('pi-stats').innerHTML = [
+    { num: fmt(PI_DATA.length) + '명', lbl: '크리에이터 수' },
+    { num: fmt(median(dias)), lbl: '다이아몬드 중앙값 (최대 ' + fmt(Math.max.apply(null, dias)) + ')' },
+    { num: fmt(median(views)), lbl: '시청자 수 중앙값 (최대 ' + fmt(Math.max.apply(null, views)) + ')' },
+    { num: topRegions, lbl: '1위 기여 지역 상위 3개' },
+  ].map(t => '<div class="stat"><div class="num">' + t.num + '</div><div class="lbl">' + t.lbl + '</div></div>').join('');
+  const set = new Set();
+  PI_DATA.forEach(d => d.region.forEach(r => set.add(r)));
+  [...set].sort().forEach(r => {
+    const o = document.createElement('option');
+    o.value = r; o.textContent = REGION_LABEL[r] || r;
+    regionSel.appendChild(o);
+  });
+  search.addEventListener('input', render);
+  regionSel.addEventListener('change', render);
+  rankSel.addEventListener('change', render);
+  render();
+})();
+
+/* ================= witU tab ================= */
+(function () {
+  const COLS = [
+    { key: 'rank', label: '#', cls: 'rank', sortable: false },
+    { key: 'name', label: '크리에이터', cls: 'txt', str: true },
+    { key: 'cat',  label: '분야', cls: 'txt', str: true },
+    { key: 'ytf',  label: '유튜브' },
+    { key: 'igf',  label: '인스타' },
+    { key: 'ttf',  label: '틱톡 팔로워' },
+    { key: 's',    label: '쇼츠' },
+    { key: 'r',    label: '릴스' },
+    { key: 't',    label: '틱톡' },
+    { key: 'sr',   label: '쇼츠+릴스' },
+    { key: 'st',   label: '쇼츠+틱톡' },
+    { key: 'rt',   label: '릴스+틱톡' },
+    { key: 'srt',  label: '3개 플랫폼' },
+    { key: 'lic',  label: '라이선스' },
+    { key: 'tags', label: '해시태그', cls: 'txt', sortable: false },
+  ];
+  let sortKey = 'r', sortDir = -1;
+  const headRow = document.getElementById('wt-headRow');
+  const tbody = document.getElementById('wt-tbody');
+  const search = document.getElementById('wt-search');
+  const catSel = document.getElementById('wt-catSel');
+  const platSel = document.getElementById('wt-platSel');
+  const countEl = document.getElementById('wt-count');
+
+  function buildHead() {
+    headRow.innerHTML = '';
+    for (const c of COLS) {
+      const th = document.createElement('th');
+      if (c.cls === 'txt') th.className = 'txt';
+      th.textContent = c.label;
+      if (c.sortable !== false) {
+        if (c.key === sortKey) {
+          const d = document.createElement('span');
+          d.className = 'dir';
+          d.textContent = sortDir === -1 ? '▼' : '▲';
+          th.appendChild(d);
+        }
+        th.addEventListener('click', () => {
+          if (sortKey === c.key) sortDir = -sortDir;
+          else { sortKey = c.key; sortDir = -1; }
+          render();
+        });
+      } else th.classList.add('nosort');
+      headRow.appendChild(th);
+    }
+  }
+  const cell = (v, hi) => v == null ? '<td class="nil">–</td>' : '<td' + (hi ? ' class="hi"' : '') + '>' + fmt(v) + '</td>';
+  function filtered() {
+    const q = search.value.trim().toLowerCase();
+    const cat = catSel.value;
+    const plat = platSel.value;
+    return WT_DATA.filter(d => {
+      if (cat && !d.cat.includes(cat)) return false;
+      if (plat && d[plat] == null) return false;
+      if (q) {
+        const hay = (d.name + ' ' + d.cat + ' ' + d.tags.join(' ') + ' ' + d.brands.join(' ')).toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+      return true;
+    });
+  }
+  function render() {
+    buildHead();
+    const rows = filtered().slice().sort((a, b) => {
+      const av = a[sortKey], bv = b[sortKey];
+      if (typeof av === 'string' || typeof bv === 'string') return String(av).localeCompare(String(bv)) * -sortDir;
+      if (av == null && bv == null) return 0;
+      if (av == null) return 1;
+      if (bv == null) return -1;
+      return (av - bv) * sortDir;
+    });
+    tbody.innerHTML = rows.map((d, i) =>
+      '<tr><td class="rank">' + (i + 1) + '</td>' +
+      '<td class="txt name-cell" title="' + d.desc.replace(/"/g, '&quot;') + '">' + d.name + '</td>' +
+      '<td class="txt"><span class="cat-chip">' + d.cat + '</span></td>' +
+      '<td>' + fmtF(d.ytf) + '</td><td>' + fmtF(d.igf) + '</td><td>' + fmtF(d.ttf) + '</td>' +
+      cell(d.s) + cell(d.r, sortKey === 'r') + cell(d.t) +
+      cell(d.sr) + cell(d.st) + cell(d.rt) + cell(d.srt) + cell(d.lic) +
+      '<td class="txt tag-mini">' + d.tags.slice(0, 3).join(' ') + '</td></tr>'
+    ).join('');
+    countEl.textContent = rows.length + '명 표시 중 (전체 ' + WT_DATA.length + '명)';
+  }
+  const rVals = WT_DATA.filter(d => d.r != null).map(d => d.r);
+  const catCount = {};
+  WT_DATA.forEach(d => d.cat.split(',').map(s => s.trim()).forEach(c => { catCount[c] = (catCount[c] || 0) + 1; }));
+  const topCats = Object.entries(catCount).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([c, n]) => c + ' ' + n).join(' · ');
+  const totalF = WT_DATA.reduce((s, d) => s + (d.ytf || 0) + (d.igf || 0) + (d.ttf || 0), 0);
+  document.getElementById('wt-stats').innerHTML = [
+    { num: WT_DATA.length + '명', lbl: '전속 크리에이터' },
+    { num: fmt(Math.min.apply(null, rVals)) + '~' + fmt(Math.max.apply(null, rVals)) + '만원', lbl: '릴스 1편 단가 범위 (중앙값 ' + fmt(median(rVals)) + '만원)' },
+    { num: fmtF(totalF), lbl: '3개 플랫폼 합산 팔로워' },
+    { num: topCats, lbl: '분야 분포 상위' },
+  ].map(t => '<div class="stat"><div class="num">' + t.num + '</div><div class="lbl">' + t.lbl + '</div></div>').join('');
+  Object.keys(catCount).sort().forEach(c => {
+    const o = document.createElement('option');
+    o.value = c; o.textContent = c;
+    catSel.appendChild(o);
+  });
+  search.addEventListener('input', render);
+  catSel.addEventListener('change', render);
+  platSel.addEventListener('change', render);
+  render();
+})();
+</script>
+
+</body></html>
