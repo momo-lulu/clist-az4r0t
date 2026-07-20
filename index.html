@@ -1,5 +1,5 @@
 ﻿<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>크리에이터 리스트</title><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
-<title>크리에이터 리스트 — PI · 윗유 · 크리플래닛</title>
+<title>크리에이터 리스트 — PI · 윗유 · 크리플래닛 · 인스타그램</title>
 <style>
 :root {
   --primary: #0A6B5D;
@@ -178,6 +178,16 @@ td.nil { color: var(--text-faint); }
 .footnote { margin-top: 12px; font-size: 12px; color: var(--text-faint); line-height: 1.7; }
 .footnote a { color: var(--primary); }
 
+/* Instagram tab */
+.ig-link { color: var(--text); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--accent); }
+.ig-link:hover { color: var(--primary); border-bottom-width: 2px; }
+.ig-link::after { content: " ↗"; font-size: 11px; color: var(--accent); }
+.status-chip {
+  font-size: 11.5px; font-weight: 700;
+  background: var(--wash); color: var(--primary);
+  border-radius: 999px; padding: 3px 10px;
+}
+
 /* witU extra rate cards */
 h2.sec { font-size: 17px; font-weight: 800; margin: 30px 0 12px; letter-spacing: -0.01em; }
 h2.sec .accent { color: var(--primary); }
@@ -214,6 +224,7 @@ h2.sec .accent { color: var(--primary); }
     <button class="tab on" id="tab-pi" role="tab" aria-selected="true">PI 코퍼레이션</button>
     <button class="tab" id="tab-witu" role="tab" aria-selected="false">윗유 witU</button>
     <button class="tab" id="tab-cre" role="tab" aria-selected="false">크리플래닛</button>
+    <button class="tab" id="tab-ig" role="tab" aria-selected="false">인스타그램</button>
   </div>
 
   <!-- ================= PI PANEL ================= -->
@@ -358,6 +369,56 @@ h2.sec .accent { color: var(--primary); }
     </div>
     <p class="footnote">* 출처: 크리플래닛 컨택 제안 · 세부 조건(콘텐츠 형식, 2차 활용 등)은 컨택 시 협의 필요</p>
   </div>
+
+  <!-- ================= INSTAGRAM PANEL ================= -->
+  <div class="panel" id="panel-ig">
+    <div class="notes">
+      <div class="note-head">참고 사항</div>
+      <ul class="note-list">
+        <li><b>컨택 방식</b><span>인스타그램 DM 비즈니스 컨택 (직접 발굴)</span></li>
+        <li><b>등재 기준</b><span>컨택 후 <strong>관심을 보인 계정만</strong> 리스트업</span></li>
+        <li><b>단가</b><span>전원 미협의 — 현재 추가 설명 요청받은 단계</span></li>
+        <li><b>– 표시</b><span>미확인 항목, 확인되는 대로 업데이트 예정</span></li>
+      </ul>
+    </div>
+    <div class="table-box" style="margin-top:16px">
+      <table style="min-width:820px">
+        <thead><tr>
+          <th class="nosort">#</th>
+          <th class="txt nosort">크리에이터</th>
+          <th class="txt nosort">계정</th>
+          <th class="nosort">팔로워</th>
+          <th class="txt nosort">분야</th>
+          <th class="txt nosort">반응 · 상태</th>
+          <th class="nosort">단가</th>
+          <th class="txt nosort">비고</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td class="txt name-cell">허이솔</td>
+            <td class="txt"><a class="ig-link" href="https://www.instagram.com/yivsol/" target="_blank" rel="noopener">@yivsol</a></td>
+            <td class="nil">–</td>
+            <td class="txt nil">–</td>
+            <td class="txt"><span class="status-chip">관심 — 추가 설명 요청받음</span></td>
+            <td class="nil">–</td>
+            <td class="txt nil">–</td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td class="txt name-cell">휘수</td>
+            <td class="txt"><a class="ig-link" href="https://www.instagram.com/hwi_.dduru/" target="_blank" rel="noopener">@hwi_.dduru</a></td>
+            <td class="nil">–</td>
+            <td class="txt nil">–</td>
+            <td class="txt"><span class="status-chip">관심 — 추가 설명 요청받음</span></td>
+            <td class="nil">–</td>
+            <td class="txt nil">–</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="footnote">* 인스타그램 DM 비즈니스 컨택 결과 기준 · 팔로워 수·분야·단가는 협의 진행에 따라 업데이트 예정</p>
+  </div>
 </div>
 
 <script>
@@ -387,6 +448,8 @@ const TABS = {
           meta: '윗유 전속 크리에이터 78명 · 브랜디드 콘텐츠 단가 (만원, VAT 별도) · 2026.06.30까지 유효 · 기본 정렬: 릴스 단가 높은 순' },
   cre:  { btn: document.getElementById('tab-cre'),  panel: document.getElementById('panel-cre'),
           meta: '크리플래닛 컨택 제안 인플루언서 7명 · 기존 협업가 기준 제안 단가' },
+  ig:   { btn: document.getElementById('tab-ig'),   panel: document.getElementById('panel-ig'),
+          meta: '인스타그램 직접 컨택 2명 · DM 비즈니스 컨택 후 관심 회신한 계정 · 단가 미협의' },
 };
 function setTab(which) {
   for (const [k, t] of Object.entries(TABS)) {
