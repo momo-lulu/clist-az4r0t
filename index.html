@@ -1,5 +1,5 @@
 ﻿<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>크리에이터 리스트</title><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
-<title>크리에이터 리스트 — PI · 윗유 · 크리플래닛 · 인스타그램 · 치지직 · 컨택업체</title>
+<title>크리에이터 리스트 — S엔터 · 인스타그램 · 크리플래닛 · 윗유 · PI · 치지직 · 컨택업체</title>
 <style>
 :root {
   --primary: #0A6B5D;
@@ -224,16 +224,47 @@ h2.sec .accent { color: var(--primary); }
   <div class="meta-line" id="metaLine"></div>
 
   <div class="tabs" role="tablist">
-    <button class="tab on" id="tab-pi" role="tab" aria-selected="true">PI 코퍼레이션</button>
-    <button class="tab" id="tab-witu" role="tab" aria-selected="false">윗유 witU</button>
-    <button class="tab" id="tab-cre" role="tab" aria-selected="false">크리플래닛</button>
+    <button class="tab on" id="tab-se" role="tab" aria-selected="true">S엔터</button>
     <button class="tab" id="tab-ig" role="tab" aria-selected="false">인스타그램</button>
+    <button class="tab" id="tab-cre" role="tab" aria-selected="false">크리플래닛</button>
+    <button class="tab" id="tab-witu" role="tab" aria-selected="false">윗유 witU</button>
+    <button class="tab" id="tab-pi" role="tab" aria-selected="false">PI 코퍼레이션</button>
     <button class="tab" id="tab-cz" role="tab" aria-selected="false">치지직</button>
     <button class="tab" id="tab-co" role="tab" aria-selected="false">컨택 업체</button>
   </div>
 
+  <!-- ================= S ENT PANEL ================= -->
+  <div class="panel on" id="panel-se">
+    <div class="notes">
+      <div class="note-head">참고 사항</div>
+      <ul class="note-list">
+        <li><b>리스트 성격</b><span>S엔터 크리에이터 리서치 리스트</span></li>
+        <li><b>공통 분야</b><span>포커·홀덤 중심</span></li>
+        <li><b>팔로워 기준</b><span>인스타그램</span></li>
+        <li><b>계정</b><span>클릭 시 인스타그램 프로필로 이동</span></li>
+      </ul>
+    </div>
+    <div class="table-box" style="margin-top:16px">
+      <table style="min-width:720px">
+        <thead><tr>
+          <th class="nosort">#</th>
+          <th class="txt nosort">크리에이터</th>
+          <th class="txt nosort">계정</th>
+          <th class="nosort">팔로워</th>
+          <th class="txt nosort">분야</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="rank">1</td><td class="txt name-cell">유리사</td><td class="txt"><a class="ig-link" href="https://www.instagram.com/risa.yu/" target="_blank" rel="noopener">@risa.yu</a></td><td class="hi">40.6만</td><td class="txt"><span class="cat-chip">포커</span> <span class="cat-chip">코스플레이</span> <span class="cat-chip">노래</span></td></tr>
+          <tr><td class="rank">2</td><td class="txt name-cell">소희</td><td class="txt"><a class="ig-link" href="https://www.instagram.com/hellosoheee/" target="_blank" rel="noopener">@hellosoheee</a></td><td class="hi">2,034</td><td class="txt"><span class="cat-chip">포커</span> <span class="cat-chip">댄스</span></td></tr>
+          <tr><td class="rank">3</td><td class="txt name-cell">소예</td><td class="txt"><a class="ig-link" href="https://www.instagram.com/she_soyea/" target="_blank" rel="noopener">@she_soyea</a></td><td class="hi">3,031</td><td class="txt"><span class="cat-chip">홀덤</span> <span class="cat-chip">여행</span> <span class="cat-chip">드라마·웹툰</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="footnote">* S엔터 크리에이터 리서치 리스트 · 팔로워·분야는 인스타그램 기준</p>
+  </div>
+
   <!-- ================= PI PANEL ================= -->
-  <div class="panel on" id="panel-pi">
+  <div class="panel" id="panel-pi">
     <div class="notes">
       <div class="note-head">참고 사항 <span class="conf-chip">대외비</span></div>
       <ul class="note-list">
@@ -540,6 +571,8 @@ function median(arr) {
 /* ---------- tabs ---------- */
 const metaLine = document.getElementById('metaLine');
 const TABS = {
+  se:   { btn: document.getElementById('tab-se'),   panel: document.getElementById('panel-se'),
+          meta: 'S엔터 크리에이터 3명 · 포커·홀덤 중심 · 인스타그램 기준' },
   pi:   { btn: document.getElementById('tab-pi'),   panel: document.getElementById('panel-pi'),
           meta: 'PI 코퍼레이션 크리에이터 210명 · 데이터 산정 기간 6/1~7/12 · 기본 정렬: 다이아몬드(수익) 높은 순' },
   witu: { btn: document.getElementById('tab-witu'), panel: document.getElementById('panel-witu'),
@@ -563,7 +596,7 @@ function setTab(which) {
   metaLine.textContent = TABS[which].meta;
 }
 for (const k of Object.keys(TABS)) TABS[k].btn.addEventListener('click', () => setTab(k));
-metaLine.textContent = TABS.pi.meta;
+metaLine.textContent = TABS.se.meta;
 
 /* ================= PI tab ================= */
 (function () {
