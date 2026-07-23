@@ -499,9 +499,9 @@ h2.sec .accent { color: var(--primary); }
         <li><b>라이브 시청자</b><span>확인 시각 기준 동시 시청자 수</span></li>
         <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 창 열림 · <span class="dup-chip">공동 N</span> = 같은 이메일을 N명이 공유</span></li>
         <li><b>스트리머명</b><span>클릭 시 치지직 검색으로 이동</span></li>
-        <li><b>리스트 규모</b><span>총 49명 · <strong>인챈트 엔터</strong> 11명 · <strong>개별 컨택 완료</strong> 12명 · <strong>조사 완료·메일 미발송</strong> 26명</span></li>
+        <li><b>리스트 규모</b><span>총 39명 · <strong>인챈트 엔터</strong> 1명(대표) · <strong>개별 컨택 완료</strong> 12명 · <strong>조사 완료·메일 미발송</strong> 26명</span></li>
         <li><b>컨택 경로</b><span id="cz-dupinfo"></span> · 중복 경로 정리 완료(1인만 유지)</li>
-        <li><b>인챈트 엔터</b><span>에이전시 미팅 완료 · 7/27(월) 이내 리스트 전달 예정 — 소속 크리에이터 11명 상태 동일 적용</span></li>
+        <li><b>인챈트 엔터</b><span>에이전시 미팅 완료 · 7/27(월) 이내 소속 크리에이터 리스트 전달 예정 — 소속 다수는 대표 1명(둥그레)만 유지, 나머지는 소속사 리스트로 수령 예정</span></li>
         <li><b>개별 컨택 완료</b><span>회사 컨택 계정 2명(담유이·햄쿠비) · 개인 메일 10명</span></li>
         <li><b>메일 미발송</b><span>조사만 완료된 후보 26명 — 컨택 경로는 확보, 발송 예정</span></li>
       </ul>
@@ -512,7 +512,7 @@ h2.sec .accent { color: var(--primary); }
         <tbody id="cz-tbody"></tbody>
       </table>
     </div>
-    <p class="footnote">* 치지직 라이브 컨택 리스트 (총 49명) · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준 · 컨택 경로는 채널/소속사 공개 이메일<br>* '컨택 상태' 열: 인챈트 엔터 11명 / 개별 컨택 완료 12명 / 조사만 완료(메일 미발송) 26명 — 열 머리글 클릭 시 상태별 정렬 가능<br>* 동일 컨택 경로 중복분은 1인만 남기고 정리 완료 (현재 전원 단독 경로)</p>
+    <p class="footnote">* 치지직 라이브 컨택 리스트 (총 39명) · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준 · 컨택 경로는 채널/소속사 공개 이메일<br>* '컨택 상태' 열: 인챈트 엔터 1명(대표) / 개별 컨택 완료 12명 / 조사만 완료(메일 미발송) 26명 — 열 머리글 클릭 시 상태별 정렬 가능<br>* 동일 컨택 경로(같은 이메일)·동일 소속사(인챈트 엔터) 중복분은 대표 1인만 남기고 정리 완료</p>
   </div>
 
   <!-- ================= SOOP PANEL ================= -->
@@ -618,7 +618,7 @@ const TABS = {
   ig:   { btn: document.getElementById('tab-ig'),   panel: document.getElementById('panel-ig'),
           meta: '인스타그램 DM 컨택 24명 · 관심 회신 2명 + 회신 대기 22명 · 단가 미협의' },
   cz:   { btn: document.getElementById('tab-cz'),   panel: document.getElementById('panel-cz'),
-          meta: '치지직 스트리머 49명 · 인챈트 엔터 11명 / 개별 컨택 12명 / 조사만 완료 26명 · 중복 경로 정리 완료' },
+          meta: '치지직 스트리머 39명 · 인챈트 엔터 1명(대표) / 개별 컨택 12명 / 조사만 완료 26명 · 중복 경로 정리 완료' },
   sp:   { btn: document.getElementById('tab-sp'),   panel: document.getElementById('panel-sp'),
           meta: 'SOOP(아프리카TV) 스트리머 32명 · 전원 조사 완료·메일 미발송 · 중복 경로 정리 완료' },
   co:   { btn: document.getElementById('tab-co'),   panel: document.getElementById('panel-co'),
@@ -850,11 +850,9 @@ metaLine.textContent = TABS.se.meta;
     { name: '담유이', cat: ['종합게임'], fol: 44000, folT: '4.4만', streamT: '8시간 이상', streamH: 8, viewers: 584, check: '17:50', email: 'contact@projecti.kr', status: '회사 컨택 계정', sCls: 'status-chip' },
     { name: '삐부', cat: ['대화', '종합게임'], fol: 92000, folT: '9.2만', streamT: '1시간 이상', streamH: 1, viewers: 276, check: '18:00', email: 's1032204@naver.com', status: '개인 메일 발송', sCls: 'status-muted' },
     { name: '찡스임', cat: ['대화'], fol: 18000, folT: '1.8만', streamT: '30분 이상', streamH: 0.5, viewers: 313, check: '18:30', email: 'yoonseo1336@gmail.com', status: '개인 메일 발송', sCls: 'status-muted' },
-    { name: '쿠온 레이', cat: ['대화', '종합게임'], fol: 11000, folT: '1.1만', streamT: '2시간 이상', streamH: 2, viewers: 401, check: '18:30', email: 'planeta@enchantenter.co.kr', status: '인챈트 엔터 미팅 완료 · 7/27 리스트 전달 예정', sCls: 'status-hot' },
     { name: '철면수심', cat: ['대화', '종합게임'], fol: 74000, folT: '7.4만', streamT: '1시간 이상', streamH: 1, viewers: 301, check: '18:40', email: '109ace@naver.com', status: '개인 메일 발송', sCls: 'status-muted' },
     { name: '낡은창고', cat: ['그림', '종합게임'], fol: 12000, folT: '1.2만', streamT: '8시간 이상', streamH: 8, viewers: 144, check: '18:40', email: 'teska1567@gmail.com', status: '개인 메일 발송', sCls: 'status-muted' },
     { name: '햄쿠비', cat: ['종합'], fol: 22000, folT: '2.2만', streamT: '6시간 이상', streamH: 6, viewers: 493, check: '18:40', email: 'contact@listella.tv', status: '회사 컨택 계정', sCls: 'status-chip' },
-    { name: '니니아', cat: ['종합게임'], fol: 41000, folT: '4.1만', streamT: '8시간 이상', streamH: 8, viewers: 362, check: '18:40', email: 'niniaovo@enchantenter.co.kr', status: '인챈트 엔터 미팅 완료 · 7/27 리스트 전달 예정', sCls: 'status-hot' },
     { name: '포키쨩', cat: ['종합'], fol: 28000, folT: '2.8만', streamT: '8시간 이상', streamH: 8, viewers: 213, check: '18:50', email: 'pocky.chan.11.11.s2@gmail.com', status: '개인 메일 발송', sCls: 'status-muted' },
     { name: '김니디', cat: ['종합게임'], fol: 8800, folT: '8.8천', streamT: '1시간 이상', streamH: 1, viewers: 107, check: '18:50', email: 'ksbcom12@naver.com', status: '개인 메일 발송', sCls: 'status-muted' },
     { name: '랜비', cat: ['종합게임'], fol: 1100, folT: '1.1천', streamT: '6시간 이상', streamH: 6, viewers: 57, check: '18:50', email: 'as3356@naver.com', status: '개인 메일 발송', sCls: 'status-muted' },
@@ -865,26 +863,18 @@ metaLine.textContent = TABS.se.meta;
     { name: '김뚜띠', cat: ['종합게임'], fol: 146000, folT: '14.6만', streamT: '5시간 이상', streamH: 5, viewers: 4304, check: '15:30', email: 'biz@pixelnetwork.co.kr', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
     { name: '둥그레', cat: ['종합게임'], fol: 87000, folT: '8.7만', streamT: '5시간 이상', streamH: 5, viewers: 2364, check: '15:30', email: 'dunggeure@enchantenter.co.kr', status: '인챈트 엔터 미팅 완료 · 7/27 리스트 전달 예정', sCls: 'status-hot' },
     { name: '꼴랑이', cat: ['메이플', '축구'], fol: 47000, folT: '4.7만', streamT: '3시간 이상', streamH: 3, viewers: 2235, check: '15:30', email: 'charon@gysent.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
-    { name: '다주', cat: ['종합'], fol: 225000, folT: '22.5만', streamT: '3시간 이상', streamH: 3, viewers: 2158, check: '15:30', email: 'daju@enchantenter.co.kr', status: '인챈트 엔터 미팅 완료 · 7/27 리스트 전달 예정', sCls: 'status-hot' },
     { name: '허니츄러스', cat: ['종합'], fol: 133000, folT: '13.3만', streamT: '4시간 이상', streamH: 4, viewers: 1923, check: '15:30', email: 'honeyz@projecti.kr', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
-    { name: '초승달', cat: ['로스트아크'], fol: 70000, folT: '7만', streamT: '6시간 이상', streamH: 6, viewers: 1792, check: '15:30', email: 'ana@enchantenter.co.kr', status: '인챈트 엔터 미팅 완료 · 7/27 리스트 전달 예정', sCls: 'status-hot' },
     { name: '청묘', cat: ['메이플'], fol: 23000, folT: '2.3만', streamT: '6시간 이상', streamH: 6, viewers: 1743, check: '15:30', email: 'twitchkr.bloo@gmail.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
-    { name: '플레임', cat: ['롤'], fol: 121000, folT: '12.1만', streamT: '5시간 이상', streamH: 5, viewers: 1622, check: '15:30', email: 'flamekr@enchantenter.co.kr', status: '인챈트 엔터 미팅 완료 · 7/27 리스트 전달 예정', sCls: 'status-hot' },
     { name: '앰비션', cat: ['롤'], fol: 139000, folT: '13.9만', streamT: '2시간 이상', streamH: 2, viewers: 1198, check: '15:30', email: 'ambition@mbtn.kr', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
-    { name: '엘시v', cat: ['노래'], fol: 40000, folT: '4만', streamT: '5시간 이상', streamH: 5, viewers: 1151, check: '15:30', email: 'elsea@enchantenter.co.kr', status: '인챈트 엔터 미팅 완료 · 7/27 리스트 전달 예정', sCls: 'status-hot' },
     { name: '포셔', cat: ['로스트아크'], fol: 125000, folT: '12.5만', streamT: '2시간 이상', streamH: 2, viewers: 1003, check: '15:30', email: 'ad@jucon.co.kr', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
-    { name: '러너', cat: ['메이플'], fol: 116000, folT: '11.6만', streamT: '3시간 이상', streamH: 3, viewers: 894, check: '15:30', email: 'runner@enchantenter.co.kr', status: '인챈트 엔터 미팅 완료 · 7/27 리스트 전달 예정', sCls: 'status-hot' },
     { name: '진격캐넌', cat: ['메이플'], fol: 28000, folT: '2.8만', streamT: '3시간 이상', streamH: 3, viewers: 853, check: '15:30', email: 'xorhkd321@naver.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
     { name: '옥냥이', cat: ['종합게임'], fol: 159000, folT: '15.9만', streamT: '6시간 이상', streamH: 6, viewers: 845, check: '15:40', email: 'rooftopcat@sandboxnetwork.net', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
     { name: '고뇨', cat: ['서브컬쳐'], fol: 30000, folT: '3만', streamT: '3시간 이상', streamH: 3, viewers: 733, check: '15:40', email: 'pyosick1324@gmail.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
     { name: '칸데르니아', cat: ['종합게임'], fol: 25000, folT: '2.5만', streamT: '7시간 이상', streamH: 7, viewers: 713, check: '15:40', email: 'business@gysent.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
     { name: '최하빈', cat: ['대화'], fol: 29000, folT: '2.9만', streamT: '4시간 이상', streamH: 4, viewers: 622, check: '15:40', email: 'daaab0523@naver.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
-    { name: '쌍배', cat: ['종합게임'], fol: 106000, folT: '10.6만', streamT: '3시간 이상', streamH: 3, viewers: 600, check: '15:40', email: 'ssangbe@enchantenter.co.kr', status: '인챈트 엔터 미팅 완료 · 7/27 리스트 전달 예정', sCls: 'status-hot' },
-    { name: '소풍왔니', cat: ['로스트아크'], fol: 118000, folT: '11.8만', streamT: '1시간 이상', streamH: 1, viewers: 554, check: '15:50', email: 'sopoong@enchantenter.co.kr', status: '인챈트 엔터 미팅 완료 · 7/27 리스트 전달 예정', sCls: 'status-hot' },
     { name: '햇살살', cat: ['종합'], fol: 40000, folT: '4만', streamT: '3시간 이상', streamH: 3, viewers: 573, check: '15:50', email: 'hatsalsal@gmail.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
     { name: '연리', cat: ['종합'], fol: 31000, folT: '3.1만', streamT: '2시간 이상', streamH: 2, viewers: 420, check: '15:50', email: 'p90201@naver.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
     { name: '도읍지', cat: ['로스트아크'], fol: 16000, folT: '1.6만', streamT: '4시간 이내', streamH: 3.9, viewers: 409, check: '15:50', email: 'coo@futuresenter.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
-    { name: '캡틴잭', cat: ['종합'], fol: 69000, folT: '6.9만', streamT: '1시간 이내', streamH: 0.9, viewers: 407, check: '15:50', email: 'cptjack@enchantenter.co.kr', status: '인챈트 엔터 미팅 완료 · 7/27 리스트 전달 예정', sCls: 'status-hot' },
     { name: '세글자다', cat: ['메이플'], fol: 21000, folT: '2.1만', streamT: '7시간 이상', streamH: 7, viewers: 355, check: '16:00', email: 'tprmfwkek@naver.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
     { name: '배돈', cat: ['종합게임'], fol: 59000, folT: '5.9만', streamT: '2시간 이상', streamH: 2, viewers: 554, check: '16:00', email: 'songiya7@naver.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
     { name: '한동그라미1', cat: ['종합'], fol: 25000, folT: '2.5만', streamT: '1시간 이상', streamH: 1, viewers: 477, check: '16:00', email: 'qlcwk123@gmail.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
