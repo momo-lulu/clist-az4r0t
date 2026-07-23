@@ -525,7 +525,7 @@ h2.sec .accent { color: var(--primary); }
         <li><b>즐겨찾기 / 구독자</b><span>SOOP 채널 즐겨찾기 수 · 유료 구독자 수</span></li>
         <li><b>컨택 상태</b><span>전원 <strong>조사 완료 · 메일 미발송</strong> — 컨택 경로 확보, 발송 예정</span></li>
         <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 · 2차 경로(소속사) 있으면 아래 표기 · <span class="dup-chip">공동 N</span> = 같은 경로 N명 공유</span></li>
-        <li><b>리스트 규모</b><span>총 32명</span></li>
+        <li><b>리스트 규모</b><span>총 33명</span></li>
         <li><b>컨택 경로</b><span id="sp-dupinfo"></span> · 중복 경로 정리 완료(1인만 유지)</li>
       </ul>
     </div>
@@ -535,7 +535,7 @@ h2.sec .accent { color: var(--primary); }
         <tbody id="sp-tbody"></tbody>
       </table>
     </div>
-    <p class="footnote">* SOOP(아프리카TV) 라이브 컨택 리스트 (총 32명) · 전원 조사 완료·메일 미발송 상태 · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준<br>* 컨택 경로는 채널/소속사 공개 이메일 · '쪽지'는 SOOP 내부 메시지로만 컨택 가능 · 동일 컨택 경로 중복분은 1인만 남기고 정리 완료</p>
+    <p class="footnote">* SOOP(아프리카TV) 라이브 컨택 리스트 (총 33명) · 전원 조사 완료·메일 미발송 상태 · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준<br>* 컨택 경로는 채널/소속사 공개 이메일 · '쪽지'는 SOOP 내부 메시지로만 컨택 가능 · 동일 컨택 경로 중복분은 1인만 남기고 정리 완료</p>
   </div>
 
   <!-- ================= COMPANY PANEL ================= -->
@@ -620,7 +620,7 @@ const TABS = {
   cz:   { btn: document.getElementById('tab-cz'),   panel: document.getElementById('panel-cz'),
           meta: '치지직 스트리머 47명 · 인챈트 엔터 1명(대표) / 개별 컨택 12명 / 조사만 완료 34명 · 중복 경로 정리 완료' },
   sp:   { btn: document.getElementById('tab-sp'),   panel: document.getElementById('panel-sp'),
-          meta: 'SOOP(아프리카TV) 스트리머 32명 · 전원 조사 완료·메일 미발송 · 중복 경로 정리 완료' },
+          meta: 'SOOP(아프리카TV) 스트리머 33명 · 전원 조사 완료·메일 미발송 · 중복 경로 정리 완료' },
   co:   { btn: document.getElementById('tab-co'),   panel: document.getElementById('panel-co'),
           meta: '크리에이터 확보용 컨택 업체(MCN·에이전시) 15곳 · 답변: 윗유·크리플래닛·인첸트 엔터 3곳' },
 };
@@ -994,6 +994,7 @@ metaLine.textContent = TABS.se.meta;
     { name: '흑운장TV', cat: ['스타크래프트'], fav: '5.6만', favN: 56000, sub: 32, streamT: '1시간 이내', streamH: 0.9, viewers: 459, check: '17:10', email: 'firebathero@naver.com' },
     { name: '차밍챠', cat: ['종합게임'], fav: '1.4만', favN: 14000, sub: 68, streamT: '5시간 이상', streamH: 5, viewers: 101, check: '17:10', email: 'kwonyul0705@gmail.com' },
     { name: '망구랑', cat: ['종합'], fav: '7만', favN: 70000, sub: 153, streamT: '1시간 이내', streamH: 0.9, viewers: 133, check: '17:10', email: 'mangoorang@sandboxnetwork.net' },
+    { name: '누눙지', cat: ['종합'], fav: '3.2만', favN: 32000, sub: 111, streamT: '1시간 이내', streamH: 0.9, viewers: 187, check: '17:40', email: 'nunungzzzzi@gmail.com' },
   ];
   const COLS = [
     { key: 'rank',    label: '#',           cls: 'rank', sortable: false },
