@@ -190,6 +190,7 @@ td.nil { color: var(--text-faint); }
 .mail-link { color: var(--text-muted); text-decoration: none; border-bottom: 1px dashed var(--border); font-size: 12.5px; }
 .mail-link:hover { color: var(--primary); border-bottom-color: var(--accent); }
 .status-muted { font-size: 11.5px; font-weight: 700; background: var(--badge-bg); color: var(--text-faint); border-radius: 999px; padding: 3px 10px; }
+.status-hot { font-size: 11.5px; font-weight: 700; background: var(--primary); color: #fff; border-radius: 999px; padding: 3px 10px; }
 
 /* witU extra rate cards */
 h2.sec { font-size: 17px; font-weight: 800; margin: 30px 0 12px; letter-spacing: -0.01em; }
@@ -438,9 +439,9 @@ h2.sec .accent { color: var(--primary); }
             <td class="txt"><a class="ig-link" href="https://www.instagram.com/yivsol/" target="_blank" rel="noopener">@yivsol</a></td>
             <td class="hi">3.3만</td>
             <td class="txt"><span class="cat-chip">일상</span></td>
-            <td class="txt"><span class="status-chip">통화 미팅 확정</span></td>
+            <td class="txt"><span class="status-hot">통화 미팅 완료</span></td>
             <td class="nil">–</td>
-            <td class="txt">7/22(수) 15:00 통화 미팅</td>
+            <td class="txt">7/24(금)까지 진행 여부 회신 예정</td>
           </tr>
           <tr>
             <td class="rank">2</td>
@@ -491,10 +492,11 @@ h2.sec .accent { color: var(--primary); }
         <li><b>라이브 시청자</b><span>확인 시각 기준 동시 시청자 수</span></li>
         <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 창 열림</span></li>
         <li><b>스트리머명</b><span>클릭 시 치지직 검색으로 이동</span></li>
+        <li><b>컨택 상태</b><span><strong>회사 컨택 계정</strong> 2명(담유이·햄쿠비) · <strong>인챈트 엔터 회신</strong> 2명(쿠온 레이·니니아, 논의 예정) · <strong>개인 메일 발송</strong> 10명</span></li>
       </ul>
     </div>
     <div class="table-box" style="margin-top:16px">
-      <table style="min-width:1040px">
+      <table style="min-width:1240px">
         <thead><tr id="cz-headRow"></tr></thead>
         <tbody id="cz-tbody"></tbody>
       </table>
@@ -582,7 +584,7 @@ const TABS = {
   ig:   { btn: document.getElementById('tab-ig'),   panel: document.getElementById('panel-ig'),
           meta: '인스타그램 DM 컨택 24명 · 관심 회신 2명 + 회신 대기 22명 · 단가 미협의' },
   cz:   { btn: document.getElementById('tab-cz'),   panel: document.getElementById('panel-cz'),
-          meta: '치지직 종합게임 스트리머 14명 · 라이브 컨택 리스트 · 스트리밍 시간·라이브 시청자·컨택 이메일 포함' },
+          meta: '치지직 종합게임 스트리머 14명 · 라이브 컨택 리스트 · 컨택 상태(회사 계정·인챈트 엔터 회신·개인 메일) 포함' },
   co:   { btn: document.getElementById('tab-co'),   panel: document.getElementById('panel-co'),
           meta: '크리에이터 확보용 컨택 업체(MCN·에이전시) 15곳 · 답변: 윗유·크리플래닛 2곳' },
 };
@@ -807,20 +809,20 @@ metaLine.textContent = TABS.se.meta;
 /* ================= 치지직 tab ================= */
 (function () {
   const CZ_DATA = [
-    { name: '김디토', cat: ['종합게임'], fol: 522, folT: '522', streamT: '5시간 이상', streamH: 5, viewers: 33, check: '17:40', email: 'kim_ditto@naver.com' },
-    { name: '지효닝', cat: ['종합게임'], fol: 369, folT: '369', streamT: '7시간 이상', streamH: 7, viewers: 34, check: '17:40', email: 't5kpep@naver.com' },
-    { name: '담유이', cat: ['종합게임'], fol: 44000, folT: '4.4만', streamT: '8시간 이상', streamH: 8, viewers: 584, check: '17:50', email: 'contact@projecti.kr' },
-    { name: '삐부', cat: ['대화', '종합게임'], fol: 92000, folT: '9.2만', streamT: '1시간 이상', streamH: 1, viewers: 276, check: '18:00', email: 's1032204@naver.com' },
-    { name: '찡스임', cat: ['대화'], fol: 18000, folT: '1.8만', streamT: '30분 이상', streamH: 0.5, viewers: 313, check: '18:30', email: 'yoonseo1336@gmail.com' },
-    { name: '쿠온 레이', cat: ['대화', '종합게임'], fol: 11000, folT: '1.1만', streamT: '2시간 이상', streamH: 2, viewers: 401, check: '18:30', email: 'planeta@enchantenter.co.kr' },
-    { name: '철면수심', cat: ['대화', '종합게임'], fol: 74000, folT: '7.4만', streamT: '1시간 이상', streamH: 1, viewers: 301, check: '18:40', email: '109ace@naver.com' },
-    { name: '낡은창고', cat: ['그림', '종합게임'], fol: 12000, folT: '1.2만', streamT: '8시간 이상', streamH: 8, viewers: 144, check: '18:40', email: 'teska1567@gmail.com' },
-    { name: '햄쿠비', cat: ['종합'], fol: 22000, folT: '2.2만', streamT: '6시간 이상', streamH: 6, viewers: 493, check: '18:40', email: 'contact@listella.tv' },
-    { name: '니니아', cat: ['종합게임'], fol: 41000, folT: '4.1만', streamT: '8시간 이상', streamH: 8, viewers: 362, check: '18:40', email: 'niniaovo@enchantenter.co.kr' },
-    { name: '포키쨩', cat: ['종합'], fol: 28000, folT: '2.8만', streamT: '8시간 이상', streamH: 8, viewers: 213, check: '18:50', email: 'pocky.chan.11.11.s2@gmail.com' },
-    { name: '김니디', cat: ['종합게임'], fol: 8800, folT: '8.8천', streamT: '1시간 이상', streamH: 1, viewers: 107, check: '18:50', email: 'ksbcom12@naver.com' },
-    { name: '랜비', cat: ['종합게임'], fol: 1100, folT: '1.1천', streamT: '6시간 이상', streamH: 6, viewers: 57, check: '18:50', email: 'as3356@naver.com' },
-    { name: '아구', cat: ['종합게임'], fol: 13000, folT: '1.3만', streamT: '1시간 이상', streamH: 1, viewers: 49, check: '18:50', email: 'ghg882@naver.com' },
+    { name: '김디토', cat: ['종합게임'], fol: 522, folT: '522', streamT: '5시간 이상', streamH: 5, viewers: 33, check: '17:40', email: 'kim_ditto@naver.com', status: '개인 메일 발송', sCls: 'status-muted' },
+    { name: '지효닝', cat: ['종합게임'], fol: 369, folT: '369', streamT: '7시간 이상', streamH: 7, viewers: 34, check: '17:40', email: 't5kpep@naver.com', status: '개인 메일 발송', sCls: 'status-muted' },
+    { name: '담유이', cat: ['종합게임'], fol: 44000, folT: '4.4만', streamT: '8시간 이상', streamH: 8, viewers: 584, check: '17:50', email: 'contact@projecti.kr', status: '회사 컨택 계정', sCls: 'status-chip' },
+    { name: '삐부', cat: ['대화', '종합게임'], fol: 92000, folT: '9.2만', streamT: '1시간 이상', streamH: 1, viewers: 276, check: '18:00', email: 's1032204@naver.com', status: '개인 메일 발송', sCls: 'status-muted' },
+    { name: '찡스임', cat: ['대화'], fol: 18000, folT: '1.8만', streamT: '30분 이상', streamH: 0.5, viewers: 313, check: '18:30', email: 'yoonseo1336@gmail.com', status: '개인 메일 발송', sCls: 'status-muted' },
+    { name: '쿠온 레이', cat: ['대화', '종합게임'], fol: 11000, folT: '1.1만', streamT: '2시간 이상', streamH: 2, viewers: 401, check: '18:30', email: 'planeta@enchantenter.co.kr', status: '인챈트 엔터 회신 · 논의 예정', sCls: 'status-hot' },
+    { name: '철면수심', cat: ['대화', '종합게임'], fol: 74000, folT: '7.4만', streamT: '1시간 이상', streamH: 1, viewers: 301, check: '18:40', email: '109ace@naver.com', status: '개인 메일 발송', sCls: 'status-muted' },
+    { name: '낡은창고', cat: ['그림', '종합게임'], fol: 12000, folT: '1.2만', streamT: '8시간 이상', streamH: 8, viewers: 144, check: '18:40', email: 'teska1567@gmail.com', status: '개인 메일 발송', sCls: 'status-muted' },
+    { name: '햄쿠비', cat: ['종합'], fol: 22000, folT: '2.2만', streamT: '6시간 이상', streamH: 6, viewers: 493, check: '18:40', email: 'contact@listella.tv', status: '회사 컨택 계정', sCls: 'status-chip' },
+    { name: '니니아', cat: ['종합게임'], fol: 41000, folT: '4.1만', streamT: '8시간 이상', streamH: 8, viewers: 362, check: '18:40', email: 'niniaovo@enchantenter.co.kr', status: '인챈트 엔터 회신 · 논의 예정', sCls: 'status-hot' },
+    { name: '포키쨩', cat: ['종합'], fol: 28000, folT: '2.8만', streamT: '8시간 이상', streamH: 8, viewers: 213, check: '18:50', email: 'pocky.chan.11.11.s2@gmail.com', status: '개인 메일 발송', sCls: 'status-muted' },
+    { name: '김니디', cat: ['종합게임'], fol: 8800, folT: '8.8천', streamT: '1시간 이상', streamH: 1, viewers: 107, check: '18:50', email: 'ksbcom12@naver.com', status: '개인 메일 발송', sCls: 'status-muted' },
+    { name: '랜비', cat: ['종합게임'], fol: 1100, folT: '1.1천', streamT: '6시간 이상', streamH: 6, viewers: 57, check: '18:50', email: 'as3356@naver.com', status: '개인 메일 발송', sCls: 'status-muted' },
+    { name: '아구', cat: ['종합게임'], fol: 13000, folT: '1.3만', streamT: '1시간 이상', streamH: 1, viewers: 49, check: '18:50', email: 'ghg882@naver.com', status: '개인 메일 발송', sCls: 'status-muted' },
   ];
   const COLS = [
     { key: 'rank',    label: '#',           cls: 'rank', sortable: false },
@@ -831,6 +833,7 @@ metaLine.textContent = TABS.se.meta;
     { key: 'viewers', label: '라이브 시청자' },
     { key: 'check',   label: '확인 시각', str: true },
     { key: 'email',   label: '컨택 경로', cls: 'txt', sortable: false },
+    { key: 'status',  label: '컨택 상태', cls: 'txt', sortable: false },
   ];
   let sortKey = 'viewers', sortDir = -1;
   const headRow = document.getElementById('cz-headRow');
@@ -874,7 +877,8 @@ metaLine.textContent = TABS.se.meta;
       '<td>' + d.streamT + '</td>' +
       '<td>' + fmt(d.viewers) + '</td>' +
       '<td>' + d.check + '</td>' +
-      '<td class="txt"><a class="mail-link" href="mailto:' + d.email + '">' + d.email + '</a></td></tr>'
+      '<td class="txt"><a class="mail-link" href="mailto:' + d.email + '">' + d.email + '</a></td>' +
+      '<td class="txt"><span class="' + d.sCls + '">' + d.status + '</span></td></tr>'
     ).join('');
   }
   render();
