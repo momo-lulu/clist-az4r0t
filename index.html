@@ -1,5 +1,5 @@
 ﻿<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>크리에이터 리스트</title><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
-<title>크리에이터 리스트 — S엔터 · 인스타그램 · 크리플래닛 · 윗유 · PI · 치지직 · 컨택업체</title>
+<title>크리에이터 리스트 — S엔터 · 인스타그램 · 크리플래닛 · 윗유 · PI · 치지직 · SOOP · 컨택업체</title>
 <style>
 :root {
   --primary: #0A6B5D;
@@ -192,6 +192,11 @@ td.nil { color: var(--text-faint); }
 .status-muted { font-size: 11.5px; font-weight: 700; background: var(--badge-bg); color: var(--text-faint); border-radius: 999px; padding: 3px 10px; }
 .status-hot { font-size: 11.5px; font-weight: 700; background: var(--primary); color: #fff; border-radius: 999px; padding: 3px 10px; }
 .status-plan { font-size: 11.5px; font-weight: 700; background: transparent; color: var(--text-faint); border: 1px dashed var(--border); border-radius: 999px; padding: 2px 9px; }
+.dup-chip { font-size: 11px; font-weight: 700; background: rgba(224,138,20,0.14); color: #9A5B00; border: 1px solid rgba(224,138,20,0.4); border-radius: 6px; padding: 1px 7px; white-space: nowrap; }
+@media (prefers-color-scheme: dark) { .dup-chip { color: #F0B45C; border-color: rgba(240,180,92,0.45); background: rgba(240,180,92,0.12); } }
+:root[data-theme="dark"] .dup-chip { color: #F0B45C; border-color: rgba(240,180,92,0.45); background: rgba(240,180,92,0.12); }
+:root[data-theme="light"] .dup-chip { color: #9A5B00; border-color: rgba(224,138,20,0.4); background: rgba(224,138,20,0.14); }
+.sub2 { margin-top: 3px; }
 
 /* witU extra rate cards */
 h2.sec { font-size: 17px; font-weight: 800; margin: 30px 0 12px; letter-spacing: -0.01em; }
@@ -232,6 +237,7 @@ h2.sec .accent { color: var(--primary); }
     <button class="tab" id="tab-witu" role="tab" aria-selected="false">윗유 witU</button>
     <button class="tab" id="tab-pi" role="tab" aria-selected="false">PI 코퍼레이션</button>
     <button class="tab" id="tab-cz" role="tab" aria-selected="false">치지직</button>
+    <button class="tab" id="tab-sp" role="tab" aria-selected="false">SOOP</button>
     <button class="tab" id="tab-co" role="tab" aria-selected="false">컨택 업체</button>
   </div>
 
@@ -491,12 +497,13 @@ h2.sec .accent { color: var(--primary); }
         <li><b>데이터 기준</b><span>라이브 방송 중 실시간 확인 ('확인 시각' 열)</span></li>
         <li><b>팔로워</b><span>치지직 채널 팔로워 수</span></li>
         <li><b>라이브 시청자</b><span>확인 시각 기준 동시 시청자 수</span></li>
-        <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 창 열림</span></li>
+        <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 창 열림 · <span class="dup-chip">공동 N</span> = 같은 이메일을 N명이 공유</span></li>
         <li><b>스트리머명</b><span>클릭 시 치지직 검색으로 이동</span></li>
-        <li><b>리스트 규모</b><span>총 50명 · <strong>인챈트 엔터</strong> 11명 · <strong>개별 컨택 완료</strong> 12명 · <strong>조사 완료·메일 미발송</strong> 27명</span></li>
+        <li><b>리스트 규모</b><span>총 56명 · <strong>인챈트 엔터</strong> 11명 · <strong>개별 컨택 완료</strong> 12명 · <strong>조사 완료·메일 미발송</strong> 33명</span></li>
+        <li><b>컨택 경로 중복</b><span id="cz-dupinfo"></span></li>
         <li><b>인챈트 엔터</b><span>에이전시 미팅 완료 · 7/27(월) 이내 리스트 전달 예정 — 소속 크리에이터 11명 상태 동일 적용</span></li>
         <li><b>개별 컨택 완료</b><span>회사 컨택 계정 2명(담유이·햄쿠비) · 개인 메일 10명</span></li>
-        <li><b>메일 미발송</b><span>조사만 완료된 후보 27명 — 컨택 경로는 확보, 발송 예정</span></li>
+        <li><b>메일 미발송</b><span>조사만 완료된 후보 33명 — 컨택 경로는 확보, 발송 예정</span></li>
       </ul>
     </div>
     <div class="table-box" style="margin-top:16px">
@@ -505,7 +512,30 @@ h2.sec .accent { color: var(--primary); }
         <tbody id="cz-tbody"></tbody>
       </table>
     </div>
-    <p class="footnote">* 치지직 라이브 컨택 리스트 (총 50명) · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준 · 컨택 경로는 채널/소속사 공개 이메일<br>* '컨택 상태' 열: 인챈트 엔터 11명 / 개별 컨택 완료 12명 / 조사만 완료(메일 미발송) 27명 — 열 머리글 클릭 시 상태별 정렬 가능</p>
+    <p class="footnote">* 치지직 라이브 컨택 리스트 (총 56명) · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준 · 컨택 경로는 채널/소속사 공개 이메일<br>* '컨택 상태' 열: 인챈트 엔터 11명 / 개별 컨택 완료 12명 / 조사만 완료(메일 미발송) 33명 — 열 머리글 클릭 시 상태별 정렬 가능<br>* '컨택 경로' 열 머리글 클릭 시 이메일순 정렬 → <span class="dup-chip">공동</span> 표시된 동일 경로끼리 모아 볼 수 있음</p>
+  </div>
+
+  <!-- ================= SOOP PANEL ================= -->
+  <div class="panel" id="panel-sp">
+    <div class="notes">
+      <div class="note-head">참고 사항</div>
+      <ul class="note-list">
+        <li><b>플랫폼</b><span>SOOP(아프리카TV) 라이브 컨택 리스트</span></li>
+        <li><b>데이터 기준</b><span>라이브 방송 중 실시간 확인 ('확인 시각' 열)</span></li>
+        <li><b>즐겨찾기 / 구독자</b><span>SOOP 채널 즐겨찾기 수 · 유료 구독자 수</span></li>
+        <li><b>컨택 상태</b><span>전원 <strong>조사 완료 · 메일 미발송</strong> — 컨택 경로 확보, 발송 예정</span></li>
+        <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 · 2차 경로(소속사) 있으면 아래 표기 · <span class="dup-chip">공동 N</span> = 같은 경로 N명 공유</span></li>
+        <li><b>리스트 규모</b><span>총 35명</span></li>
+        <li><b>컨택 경로 중복</b><span id="sp-dupinfo"></span></li>
+      </ul>
+    </div>
+    <div class="table-box" style="margin-top:16px">
+      <table style="min-width:1200px">
+        <thead><tr id="sp-headRow"></tr></thead>
+        <tbody id="sp-tbody"></tbody>
+      </table>
+    </div>
+    <p class="footnote">* SOOP(아프리카TV) 라이브 컨택 리스트 (총 35명) · 전원 조사 완료·메일 미발송 상태 · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준<br>* 컨택 경로는 채널/소속사 공개 이메일 · '쪽지'는 SOOP 내부 메시지로만 컨택 가능 · '컨택 경로' 열 머리글 클릭 시 <span class="dup-chip">공동</span> 동일 경로끼리 정렬</p>
   </div>
 
   <!-- ================= COMPANY PANEL ================= -->
@@ -588,7 +618,9 @@ const TABS = {
   ig:   { btn: document.getElementById('tab-ig'),   panel: document.getElementById('panel-ig'),
           meta: '인스타그램 DM 컨택 24명 · 관심 회신 2명 + 회신 대기 22명 · 단가 미협의' },
   cz:   { btn: document.getElementById('tab-cz'),   panel: document.getElementById('panel-cz'),
-          meta: '치지직 스트리머 50명 · 인챈트 엔터 11명 / 개별 컨택 12명 / 조사만 완료 27명 · 컨택 상태 열 포함' },
+          meta: '치지직 스트리머 56명 · 인챈트 엔터 11명 / 개별 컨택 12명 / 조사만 완료 33명 · 컨택 경로 중복 표시 포함' },
+  sp:   { btn: document.getElementById('tab-sp'),   panel: document.getElementById('panel-sp'),
+          meta: 'SOOP(아프리카TV) 스트리머 35명 · 전원 조사 완료·메일 미발송 · 즐겨찾기·구독자·컨택 경로 중복 표시 포함' },
   co:   { btn: document.getElementById('tab-co'),   panel: document.getElementById('panel-co'),
           meta: '크리에이터 확보용 컨택 업체(MCN·에이전시) 15곳 · 답변: 윗유·크리플래닛·인첸트 엔터 3곳' },
 };
@@ -863,6 +895,12 @@ metaLine.textContent = TABS.se.meta;
     { name: '게임하는인기', cat: ['로스트아크'], fol: 20000, folT: '2만', streamT: '4시간 이상', streamH: 4, viewers: 337, check: '16:00', email: 'coo@futuresenter.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
     { name: '배돈', cat: ['종합게임'], fol: 59000, folT: '5.9만', streamT: '2시간 이상', streamH: 2, viewers: 554, check: '16:00', email: 'songiya7@naver.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
     { name: '한동그라미1', cat: ['종합'], fol: 25000, folT: '2.5만', streamT: '1시간 이상', streamH: 1, viewers: 477, check: '16:00', email: 'qlcwk123@gmail.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
+    { name: '시라유키 히나', cat: ['종합게임'], fol: 234000, folT: '23.4만', streamT: '1시간 이상', streamH: 1, viewers: 3388, check: '17:10', email: 'contact@stellive.me', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
+    { name: '빅헤드', cat: ['종합게임'], fol: 113000, folT: '11.3만', streamT: '1시간 이상', streamH: 1, viewers: 1182, check: '17:20', email: 'bighead@sandboxnetwork.net', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
+    { name: '라코코', cat: ['대화'], fol: 53000, folT: '5.3만', streamT: '1시간 이상', streamH: 1, viewers: 610, check: '17:20', email: 'rakoko.kr@gmail.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
+    { name: '자동', cat: ['종합게임'], fol: 29000, folT: '2.9만', streamT: '1시간 이내', streamH: 0.9, viewers: 416, check: '17:20', email: 'amainatsu@gmail.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
+    { name: '치민22', cat: ['종합게임'], fol: 9800, folT: '9.8천', streamT: '2시간 이상', streamH: 2, viewers: 290, check: '17:20', email: 'chimin2@naver.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
+    { name: '김앵고', cat: ['종합게임'], fol: 16000, folT: '1.6만', streamT: '3시간 이상', streamH: 3, viewers: 265, check: '17:20', email: 'gimaenggo@naver.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
   ];
   const COLS = [
     { key: 'rank',    label: '#',           cls: 'rank', sortable: false },
@@ -872,9 +910,15 @@ metaLine.textContent = TABS.se.meta;
     { key: 'streamH', label: '스트리밍 시간' },
     { key: 'viewers', label: '라이브 시청자' },
     { key: 'check',   label: '확인 시각', str: true },
-    { key: 'email',   label: '컨택 경로', cls: 'txt', sortable: false },
+    { key: 'email',   label: '컨택 경로', cls: 'txt', str: true },
     { key: 'status',  label: '컨택 상태', cls: 'txt', str: true },
   ];
+  const emailCount = {};
+  CZ_DATA.forEach(x => { emailCount[x.email] = (emailCount[x.email] || 0) + 1; });
+  const czShared = CZ_DATA.filter(x => emailCount[x.email] > 1).length;
+  const czGroups = Object.values(emailCount).filter(n => n > 1).length;
+  const czInfo = document.getElementById('cz-dupinfo');
+  if (czInfo) czInfo.innerHTML = '총 ' + CZ_DATA.length + '명 · <strong>중복 경로</strong> ' + czShared + '명(' + czGroups + '개 경로 공유) · <strong>단독 경로</strong> ' + (CZ_DATA.length - czShared) + '명';
   let sortKey = 'viewers', sortDir = -1;
   const headRow = document.getElementById('cz-headRow');
   const tbody = document.getElementById('cz-tbody');
@@ -917,8 +961,121 @@ metaLine.textContent = TABS.se.meta;
       '<td>' + d.streamT + '</td>' +
       '<td>' + fmt(d.viewers) + '</td>' +
       '<td>' + d.check + '</td>' +
-      '<td class="txt"><a class="mail-link" href="mailto:' + d.email + '">' + d.email + '</a></td>' +
+      '<td class="txt"><a class="mail-link" href="mailto:' + d.email + '">' + d.email + '</a>' + (emailCount[d.email] > 1 ? ' <span class="dup-chip">공동 ' + emailCount[d.email] + '</span>' : '') + '</td>' +
       '<td class="txt"><span class="' + d.sCls + '">' + d.status + '</span></td></tr>'
+    ).join('');
+  }
+  render();
+})();
+
+/* ================= SOOP tab ================= */
+(function () {
+  const SOOP_DATA = [
+    { name: '이상호', cat: ['롤'], fav: '87만', favN: 870000, sub: 132, streamT: '1시간 이상', streamH: 1, viewers: 7606, check: '16:20', email: 'creators@iambrand.co.kr' },
+    { name: '이지상', cat: ['여행'], fav: '10.1만', favN: 101000, sub: 143, streamT: '3시간 이상', streamH: 3, viewers: 6338, check: '16:20', email: 'jagnun99@gmail.com', email2: 'biz@onsidecompany.co.kr' },
+    { name: '두치와뿌꾸', cat: ['피파'], fav: '44.3만', favN: 443000, sub: 130, streamT: '3시간 이상', streamH: 3, viewers: 4297, check: '16:20', email: 'ate8282@naver.com' },
+    { name: '팡이요', cat: ['메이플'], fav: '52.3만', favN: 523000, sub: 46, streamT: '11시간 이상', streamH: 11, viewers: 3836, check: '16:20', email: '쪽지' },
+    { name: '오아', cat: ['배그'], fav: '8.1만', favN: 81000, sub: 461, streamT: '1시간 이내', streamH: 0.9, viewers: 3959, check: '16:30', email: 'oah@sandboxnetwork.net' },
+    { name: '로기다', cat: ['종합'], fav: '2.1만', favN: 21000, sub: 22, streamT: '3시간 이상', streamH: 3, viewers: 2801, check: '16:30', email: 'hrlim95@hanmail.net', email2: 'biz@onsidecompany.co.kr' },
+    { name: '지피티', cat: ['종합'], fav: '7.5만', favN: 75000, sub: 227, streamT: '2시간 이상', streamH: 2, viewers: 2427, check: '16:30', email: 'tjrdbs999@naver.com' },
+    { name: '제갈금자', cat: ['종합'], fav: '6.7만', favN: 67000, sub: 348, streamT: '2시간 이상', streamH: 2, viewers: 1803, check: '16:30', email: 'jejegal911@gmail.com' },
+    { name: '단츄', cat: ['종합'], fav: '5.2만', favN: 52000, sub: 306, streamT: '4시간 이상', streamH: 4, viewers: 1613, check: '16:30', email: 'danchu@sandboxnetwork.net' },
+    { name: '천양', cat: ['종합게임'], fav: '6.9만', favN: 69000, sub: 647, streamT: '2시간 이상', streamH: 2, viewers: 1655, check: '16:30', email: 'Changhwa@parable-asia.com' },
+    { name: '차쯔키', cat: ['종합'], fav: '1.6만', favN: 16000, sub: 93, streamT: '2시간 이상', streamH: 2, viewers: 1004, check: '16:30', email: 'contact@verseti.me' },
+    { name: '양도끼', cat: ['종합'], fav: '4.1만', favN: 41000, sub: 218, streamT: '5시간 이상', streamH: 5, viewers: 861, check: '16:40', email: 'yangdoki2@gmail.com' },
+    { name: '칸_김동하', cat: ['종합'], fav: '7.7만', favN: 77000, sub: 34, streamT: '1시간 이상', streamH: 1, viewers: 585, check: '16:40', email: 'sadoqqqq@naver.com' },
+    { name: '소룡님', cat: ['종합'], fav: '5.3만', favN: 53000, sub: 436, streamT: '2시간 이상', streamH: 2, viewers: 562, check: '16:40', email: 'soryong1@naver.com' },
+    { name: '햇비', cat: ['종합'], fav: '2.4만', favN: 24000, sub: 195, streamT: '1시간 이내', streamH: 0.9, viewers: 576, check: '16:40', email: 'htvv2i@naver.com' },
+    { name: '해리', cat: ['종합'], fav: '3.6만', favN: 36000, sub: 92, streamT: '1시간 이상', streamH: 1, viewers: 531, check: '16:40', email: 'gofl2237@naver.com' },
+    { name: '오뀨!', cat: ['롤'], fav: '6.1만', favN: 61000, sub: 22, streamT: '1시간 이내', streamH: 0.9, viewers: 419, check: '16:40', email: 'starfish@starfishentertainment.co.kr' },
+    { name: '꾸티뉴', cat: ['종합'], fav: '5.4만', favN: 54000, sub: 82, streamT: '1시간 이내', streamH: 0.9, viewers: 391, check: '16:40', email: 'creators@iambrand.co.kr' },
+    { name: '비숑b', cat: ['종합'], fav: '8.8천', favN: 8800, sub: 20, streamT: '4시간 이상', streamH: 4, viewers: 256, check: '16:40', email: 'qltydb@gmail.com' },
+    { name: 'BJ피오', cat: ['배그'], fav: '5.1만', favN: 51000, sub: 61, streamT: '27시간 이상', streamH: 27, viewers: 260, check: '16:50', email: '1004pio@gmail.com' },
+    { name: '강만식', cat: ['종합'], fav: '18.3만', favN: 183000, sub: 380, streamT: '1시간 이내', streamH: 0.9, viewers: 1355, check: '16:50', email: 'imakstlr@naver.com' },
+    { name: '노력왕먼지', cat: ['메이플'], fav: '2만', favN: 20000, sub: 2, streamT: '265시간 이상', streamH: 265, viewers: 217, check: '16:50', email: 'wwwx123456@naver.com' },
+    { name: '유샥크', cat: ['종합'], fav: '1.1만', favN: 11000, sub: 97, streamT: '9시간 이상', streamH: 9, viewers: 213, check: '16:50', email: 'usharko0o0@gmail.com' },
+    { name: '마로니!', cat: ['종합'], fav: '2.2만', favN: 22000, sub: 151, streamT: '2시간 이상', streamH: 2, viewers: 190, check: '16:50', email: 'marronie318@gmail.com' },
+    { name: '전하_', cat: ['아이온2'], fav: '2.1만', favN: 21000, sub: 6, streamT: '3시간 이상', streamH: 3, viewers: 189, check: '16:50', email: 'dksxk1989@gmail.com' },
+    { name: '밍턴_', cat: ['종합'], fav: '2.5만', favN: 25000, sub: 169, streamT: '1시간 이상', streamH: 1, viewers: 172, check: '16:50', email: 'mingturn97@naver.com' },
+    { name: '이미윤', cat: ['종합'], fav: '8.2천', favN: 8200, sub: 37, streamT: '2시간 이상', streamH: 2, viewers: 149, check: '16:50', email: 'yunmi4033@gmail.com' },
+    { name: '빅토리~!', cat: ['종합게임'], fav: '5.1만', favN: 51000, sub: 110, streamT: '1시간 이상', streamH: 1, viewers: 157, check: '17:00', email: 'toryvac2@gmail.com' },
+    { name: '퀸주', cat: ['종합'], fav: '3.4천', favN: 3400, sub: 79, streamT: '1시간 이상', streamH: 1, viewers: 134, check: '17:00', email: 'Queenzu@naver.com' },
+    { name: '피유:p', cat: ['종합'], fav: '1.4만', favN: 14000, sub: 11, streamT: '3시간 이상', streamH: 3, viewers: 106, check: '17:00', email: 'piyou0728@naver.com' },
+    { name: '쿠빈', cat: ['종합'], fav: '7만', favN: 70000, sub: 554, streamT: '2시간 이상', streamH: 2, viewers: 4006, check: '20:20', email: 'kubin@sandboxnetwork.net' },
+    { name: '임선비', cat: ['종합'], fav: '26.3만', favN: 263000, sub: 64, streamT: '1시간 이내', streamH: 0.9, viewers: 300, check: '17:00', email: 'creators@iambrand.co.kr' },
+    { name: '흑운장TV', cat: ['스타크래프트'], fav: '5.6만', favN: 56000, sub: 32, streamT: '1시간 이내', streamH: 0.9, viewers: 459, check: '17:10', email: 'firebathero@naver.com' },
+    { name: '차밍챠', cat: ['종합게임'], fav: '1.4만', favN: 14000, sub: 68, streamT: '5시간 이상', streamH: 5, viewers: 101, check: '17:10', email: 'kwonyul0705@gmail.com' },
+    { name: '망구랑', cat: ['종합'], fav: '7만', favN: 70000, sub: 153, streamT: '1시간 이내', streamH: 0.9, viewers: 133, check: '17:10', email: 'mangoorang@sandboxnetwork.net' },
+  ];
+  const COLS = [
+    { key: 'rank',    label: '#',           cls: 'rank', sortable: false },
+    { key: 'name',    label: '스트리머',     cls: 'txt', str: true },
+    { key: 'cat',     label: '분야',         cls: 'txt', sortable: false },
+    { key: 'favN',    label: '즐겨찾기' },
+    { key: 'sub',     label: '구독자' },
+    { key: 'streamH', label: '스트리밍 시간' },
+    { key: 'viewers', label: '라이브 시청자' },
+    { key: 'check',   label: '확인 시각', str: true },
+    { key: 'email',   label: '컨택 경로', cls: 'txt', str: true },
+  ];
+  const addrCount = {};
+  SOOP_DATA.forEach(x => [x.email, x.email2].forEach(e => { if (e && e !== '쪽지') addrCount[e] = (addrCount[e] || 0) + 1; }));
+  const isShared = d => (d.email && d.email !== '쪽지' && addrCount[d.email] > 1) || (d.email2 && addrCount[d.email2] > 1);
+  const spShared = SOOP_DATA.filter(isShared).length;
+  const spGroups = Object.values(addrCount).filter(n => n > 1).length;
+  const spInfo = document.getElementById('sp-dupinfo');
+  if (spInfo) spInfo.innerHTML = '총 ' + SOOP_DATA.length + '명 · <strong>중복 경로</strong> ' + spShared + '명(' + spGroups + '개 경로 공유) · <strong>단독 경로</strong> ' + (SOOP_DATA.length - spShared) + '명';
+  let sortKey = 'viewers', sortDir = -1;
+  const headRow = document.getElementById('sp-headRow');
+  const tbody = document.getElementById('sp-tbody');
+
+  function buildHead() {
+    headRow.innerHTML = '';
+    for (const c of COLS) {
+      const th = document.createElement('th');
+      if (c.cls === 'txt') th.className = 'txt';
+      th.textContent = c.label;
+      if (c.sortable !== false) {
+        if (c.key === sortKey) {
+          const d = document.createElement('span');
+          d.className = 'dir';
+          d.textContent = sortDir === -1 ? '▼' : '▲';
+          th.appendChild(d);
+        }
+        th.addEventListener('click', () => {
+          if (sortKey === c.key) sortDir = -sortDir;
+          else { sortKey = c.key; sortDir = -1; }
+          render();
+        });
+      } else th.classList.add('nosort');
+      headRow.appendChild(th);
+    }
+  }
+  const catHtml = list => list.map(c => '<span class="cat-chip">' + c + '</span>').join(' ');
+  function dupChip(e) { return addrCount[e] > 1 ? ' <span class="dup-chip">공동 ' + addrCount[e] + '</span>' : ''; }
+  function contactCell(d) {
+    if (d.email === '쪽지') return '<span class="tag-mini">쪽지 (SOOP 메시지)</span>';
+    let h = '<a class="mail-link" href="mailto:' + d.email + '">' + d.email + '</a>' + dupChip(d.email);
+    if (d.email2) h += '<div class="sub2"><span class="tag-mini">2차 </span><a class="mail-link" href="mailto:' + d.email2 + '">' + d.email2 + '</a>' + dupChip(d.email2) + '</div>';
+    return h;
+  }
+  function render() {
+    buildHead();
+    const rows = SOOP_DATA.slice().sort((a, b) => {
+      const av = a[sortKey], bv = b[sortKey];
+      if (typeof av === 'string' || typeof bv === 'string') return String(av).localeCompare(String(bv)) * -sortDir;
+      return (av - bv) * sortDir;
+    });
+    tbody.innerHTML = rows.map((d, i) =>
+      '<tr><td class="rank">' + (i + 1) + '</td>' +
+      '<td class="txt name-cell"><a class="ig-link" href="https://www.sooplive.co.kr/search?szKeyword=' + encodeURIComponent(d.name) + '" target="_blank" rel="noopener">' + d.name + '</a></td>' +
+      '<td class="txt">' + catHtml(d.cat) + '</td>' +
+      '<td class="hi">' + d.fav + '</td>' +
+      '<td>' + fmt(d.sub) + '</td>' +
+      '<td>' + d.streamT + '</td>' +
+      '<td>' + fmt(d.viewers) + '</td>' +
+      '<td>' + d.check + '</td>' +
+      '<td class="txt">' + contactCell(d) + '</td></tr>'
     ).join('');
   }
   render();
