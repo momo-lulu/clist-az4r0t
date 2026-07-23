@@ -499,11 +499,11 @@ h2.sec .accent { color: var(--primary); }
         <li><b>라이브 시청자</b><span>확인 시각 기준 동시 시청자 수</span></li>
         <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 창 열림 · <span class="dup-chip">공동 N</span> = 같은 이메일을 N명이 공유</span></li>
         <li><b>스트리머명</b><span>클릭 시 치지직 검색으로 이동</span></li>
-        <li><b>리스트 규모</b><span>총 39명 · <strong>인챈트 엔터</strong> 1명(대표) · <strong>개별 컨택 완료</strong> 12명 · <strong>조사 완료·메일 미발송</strong> 26명</span></li>
+        <li><b>리스트 규모</b><span>총 47명 · <strong>인챈트 엔터</strong> 1명(대표) · <strong>개별 컨택 완료</strong> 12명 · <strong>조사 완료·메일 미발송</strong> 34명</span></li>
         <li><b>컨택 경로</b><span id="cz-dupinfo"></span> · 중복 경로 정리 완료(1인만 유지)</li>
         <li><b>인챈트 엔터</b><span>에이전시 미팅 완료 · 7/27(월) 이내 소속 크리에이터 리스트 전달 예정 — 소속 다수는 대표 1명(둥그레)만 유지, 나머지는 소속사 리스트로 수령 예정</span></li>
         <li><b>개별 컨택 완료</b><span>회사 컨택 계정 2명(담유이·햄쿠비) · 개인 메일 10명</span></li>
-        <li><b>메일 미발송</b><span>조사만 완료된 후보 26명 — 컨택 경로는 확보, 발송 예정</span></li>
+        <li><b>메일 미발송</b><span>조사만 완료된 후보 34명 — 컨택 경로는 확보, 발송 예정</span></li>
       </ul>
     </div>
     <div class="table-box" style="margin-top:16px">
@@ -512,7 +512,7 @@ h2.sec .accent { color: var(--primary); }
         <tbody id="cz-tbody"></tbody>
       </table>
     </div>
-    <p class="footnote">* 치지직 라이브 컨택 리스트 (총 39명) · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준 · 컨택 경로는 채널/소속사 공개 이메일<br>* '컨택 상태' 열: 인챈트 엔터 1명(대표) / 개별 컨택 완료 12명 / 조사만 완료(메일 미발송) 26명 — 열 머리글 클릭 시 상태별 정렬 가능<br>* 동일 컨택 경로(같은 이메일)·동일 소속사(인챈트 엔터) 중복분은 대표 1인만 남기고 정리 완료</p>
+    <p class="footnote">* 치지직 라이브 컨택 리스트 (총 47명) · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준 · 컨택 경로는 채널/소속사 공개 이메일<br>* '컨택 상태' 열: 인챈트 엔터 1명(대표) / 개별 컨택 완료 12명 / 조사만 완료(메일 미발송) 34명 — 열 머리글 클릭 시 상태별 정렬 가능<br>* 동일 컨택 경로(같은 이메일)·동일 소속사(인챈트 엔터) 중복분은 대표 1인만 남기고 정리 완료</p>
   </div>
 
   <!-- ================= SOOP PANEL ================= -->
@@ -618,7 +618,7 @@ const TABS = {
   ig:   { btn: document.getElementById('tab-ig'),   panel: document.getElementById('panel-ig'),
           meta: '인스타그램 DM 컨택 24명 · 관심 회신 2명 + 회신 대기 22명 · 단가 미협의' },
   cz:   { btn: document.getElementById('tab-cz'),   panel: document.getElementById('panel-cz'),
-          meta: '치지직 스트리머 39명 · 인챈트 엔터 1명(대표) / 개별 컨택 12명 / 조사만 완료 26명 · 중복 경로 정리 완료' },
+          meta: '치지직 스트리머 47명 · 인챈트 엔터 1명(대표) / 개별 컨택 12명 / 조사만 완료 34명 · 중복 경로 정리 완료' },
   sp:   { btn: document.getElementById('tab-sp'),   panel: document.getElementById('panel-sp'),
           meta: 'SOOP(아프리카TV) 스트리머 32명 · 전원 조사 완료·메일 미발송 · 중복 경로 정리 완료' },
   co:   { btn: document.getElementById('tab-co'),   panel: document.getElementById('panel-co'),
@@ -884,6 +884,14 @@ metaLine.textContent = TABS.se.meta;
     { name: '자동', cat: ['종합게임'], fol: 29000, folT: '2.9만', streamT: '1시간 이내', streamH: 0.9, viewers: 416, check: '17:20', email: 'amainatsu@gmail.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
     { name: '치민22', cat: ['종합게임'], fol: 9800, folT: '9.8천', streamT: '2시간 이상', streamH: 2, viewers: 290, check: '17:20', email: 'chimin2@naver.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
     { name: '김앵고', cat: ['종합게임'], fol: 16000, folT: '1.6만', streamT: '3시간 이상', streamH: 3, viewers: 265, check: '17:20', email: 'gimaenggo@naver.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
+    { name: '이글콥', cat: ['축구'], fol: 60000, folT: '6만', streamT: '1시간 이내', streamH: 0.9, viewers: 545, check: '17:40', email: 'eaglekop@sandboxnetwork.net', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
+    { name: '씨랙', cat: ['FPS'], fol: 66000, folT: '6.6만', streamT: '1시간 이상', streamH: 1, viewers: 328, check: '17:40', email: 'crack@sandboxnetwork.net', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
+    { name: '살구', cat: ['데바데', '마작'], fol: 82000, folT: '8.2만', streamT: '1시간 이상', streamH: 1, viewers: 279, check: '17:40', email: 'bathit0020@gmail.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
+    { name: '쟁구임', cat: ['종합'], fol: 5700, folT: '5.7천', streamT: '1시간 이상', streamH: 1, viewers: 279, check: '17:40', email: 'thdwodnr97@naver.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
+    { name: '김길현', cat: ['종합'], fol: 15000, folT: '1.5만', streamT: '4시간 이상', streamH: 4, viewers: 184, check: '17:50', email: 'diastar979797@naver.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
+    { name: '은뿌', cat: ['종합'], fol: 14000, folT: '1.4만', streamT: '2시간 이상', streamH: 2, viewers: 187, check: '17:50', email: 'eunppuing@naver.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
+    { name: '기션', cat: ['니케'], fol: 11000, folT: '1.1만', streamT: '1시간 이상', streamH: 1, viewers: 431, check: '17:50', email: 'kisean0128@gmail.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
+    { name: '꽁아', cat: ['종합'], fol: 16000, folT: '1.6만', streamT: '2시간 이상', streamH: 2, viewers: 118, check: '18:00', email: 'zndgowh@gmail.com', status: '조사 완료 · 메일 미발송', sCls: 'status-plan' },
   ];
   const COLS = [
     { key: 'rank',    label: '#',           cls: 'rank', sortable: false },
