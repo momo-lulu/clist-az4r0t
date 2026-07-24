@@ -511,7 +511,7 @@ h2.sec .accent { color: var(--primary); }
       <ul class="note-list">
         <li><b>상태</b><span><strong>회신 완료</strong> 1명(네구미) · <strong>메일 발송 완료</strong> 46명 · 총 47명</span></li>
         <li><b>데이터 기준</b><span>라이브 방송 중 실시간 확인 (시청자·확인 시각)</span></li>
-        <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 · <span class="dup-chip">공동 N</span> 같은 이메일 공유 (중복 정리 완료)</span></li>
+        <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 · 47명 전원 단독 경로</span></li>
         <li><b>인챈트 엔터</b><span>대표 둥그레만 유지 · 7/27(월) 소속사 리스트 별도 수령 예정</span></li>
       </ul>
     </div>
@@ -933,10 +933,6 @@ metaLine.textContent = TABS.se.meta;
   ];
   const emailCount = {};
   CZ_DATA.forEach(x => { emailCount[x.email] = (emailCount[x.email] || 0) + 1; });
-  const czShared = CZ_DATA.filter(x => emailCount[x.email] > 1).length;
-  const czGroups = Object.values(emailCount).filter(n => n > 1).length;
-  const czInfo = document.getElementById('cz-dupinfo');
-  if (czInfo) czInfo.innerHTML = '총 ' + CZ_DATA.length + '명 · <strong>중복 경로</strong> ' + czShared + '명(' + czGroups + '개 경로 공유) · <strong>단독 경로</strong> ' + (CZ_DATA.length - czShared) + '명';
   let sortKey = 'viewers', sortDir = -1;
   const headRow = document.getElementById('cz-headRow');
   const tbody = document.getElementById('cz-tbody');
