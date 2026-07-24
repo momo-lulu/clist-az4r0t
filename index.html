@@ -192,8 +192,9 @@ td.nil { color: var(--text-faint); }
 .status-muted { font-size: 11.5px; font-weight: 700; background: var(--badge-bg); color: var(--text-faint); border-radius: 999px; padding: 3px 10px; }
 .status-hot { font-size: 11.5px; font-weight: 700; background: var(--primary); color: #fff; border-radius: 999px; padding: 3px 10px; }
 .status-plan { font-size: 11.5px; font-weight: 700; background: transparent; color: var(--text-faint); border: 1px dashed var(--border); border-radius: 999px; padding: 2px 9px; }
-.status-sent { font-size: 11.5px; font-weight: 700; background: var(--wash); color: var(--primary); border-radius: 999px; padding: 3px 10px; }
-.status-reply { font-size: 11.5px; font-weight: 700; background: #0A7D5A; color: #fff; border-radius: 999px; padding: 3px 10px; }
+.status-sent { font-size: 11.5px; font-weight: 700; background: var(--border); color: var(--text-muted); border-radius: 999px; padding: 3px 10px; }
+.status-reply { font-size: 11.5px; font-weight: 700; background: var(--wash); color: var(--primary); border-radius: 999px; padding: 3px 10px; }
+.status-progress { font-size: 11.5px; font-weight: 700; background: #0A7D5A; color: #fff; border-radius: 999px; padding: 3px 10px; }
 .notes.deal { margin-top: 14px; border-top: 3px solid var(--accent); }
 .deal-tag { font-size: 11px; font-weight: 700; color: var(--primary); background: var(--wash); border-radius: 999px; padding: 2px 10px; }
 .dup-chip { font-size: 11px; font-weight: 700; background: rgba(224,138,20,0.14); color: #9A5B00; border: 1px solid rgba(224,138,20,0.4); border-radius: 6px; padding: 1px 7px; white-space: nowrap; }
@@ -509,7 +510,7 @@ h2.sec .accent { color: var(--primary); }
     <div class="notes">
       <div class="note-head">참고 사항</div>
       <ul class="note-list">
-        <li><b>상태</b><span><strong>회신 완료</strong> 2명(네구미 · <b>치민22</b>) · <strong>메일 발송 완료</strong> 59명 · <strong>메일 미발송</strong> 1명 · 총 62명</span></li>
+        <li><b>상태</b><span><strong>회신 완료</strong> 2명(네구미 · <b>치민22</b>) · <strong>메일 발송 완료</strong> 59명 · 총 61명</span></li>
         <li><b>데이터 기준</b><span>라이브 방송 중 실시간 확인 (시청자·확인 시각)</span></li>
         <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 · 62명 전원 단독 경로</span></li>
         <li><b>인챈트 엔터</b><span>대표 둥그레만 유지 · 7/27(월) 소속사 리스트 별도 수령 예정</span></li>
@@ -536,7 +537,7 @@ h2.sec .accent { color: var(--primary); }
         <tbody id="cz-tbody"></tbody>
       </table>
     </div>
-    <p class="footnote">* 치지직 라이브 컨택 리스트 (총 62명) · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준 · 컨택 경로는 채널/소속사 공개 이메일<br>* '컨택 상태' 열: <b>제안 메일 발송 완료 61명</b> (그 중 회신 완료 2명: 네구미 · 치민22 — 치민22 통화 미팅 희망) · 미발송 1명(바둑TV) — 열 머리글 클릭 시 상태별 정렬 가능<br>* 동일 컨택 경로(같은 이메일)·동일 소속사(인챈트 엔터) 중복분은 대표 1인만 남기고 정리 완료</p>
+    <p class="footnote">* 치지직 라이브 컨택 리스트 (총 61명) · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준 · 컨택 경로는 채널/소속사 공개 이메일<br>* '컨택 상태' 열: <b>제안 메일 발송 완료 61명 전원</b> (그 중 회신 완료 2명: 네구미 · 치민22 — 치민22 통화 미팅 희망) — 열 머리글 클릭 시 상태별 정렬 가능<br>* 동일 컨택 경로(같은 이메일)·동일 소속사(인챈트 엔터) 중복분은 대표 1인만 남기고 정리 완료</p>
   </div>
 
   <!-- ================= SOOP PANEL ================= -->
@@ -931,7 +932,6 @@ metaLine.textContent = TABS.se.meta;
     { name: '심해덤', ch: '49247f8c7b0075fa3b243c8907bca43a', cat: ['마인크래프트'], fol: 20000, folT: '2만', streamT: '14시간 이상', streamH: 14, viewers: 696, check: '10:33', email: 'duwn_end@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
     { name: '카이만 또는 재승샷', ch: '40adc722447978816ce04cf2f0a70590', cat: ['롤'], fol: 17000, folT: '1.7만', streamT: '2시간 이상', streamH: 2, viewers: 544, check: '10:33', email: 'nlmiso95@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
     { name: '종말맨', ch: 'c7323bedccf4abf257c1ce1f465c4707', cat: ['헤일로'], fol: 29000, folT: '2.9만', streamT: '2시간 이상', streamH: 2, viewers: 536, check: '10:33', email: 'whdakfaos@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
-    { name: '바둑TV', ch: '4c5d4fc2486df4c3af886c514e73a0ec', cat: ['바둑'], fol: 5100, folT: '5.1천', streamT: '1시간 이내', streamH: 0.9, viewers: 309, check: '10:33', email: 'tvbaduk@baduk.or.kr', status: '메일 미발송', sCls: 'status-plan' },
     { name: '콩 주', ch: '58c857c619dbc62110f025c382265abe', cat: ['메이플'], fol: 6700, folT: '6.7천', streamT: '1시간 이내', streamH: 0.9, viewers: 281, check: '10:33', email: 'kong_ovo@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
     { name: '토종 아오리', ch: '81bd5b50f0c0728128442daf7db626fc', cat: ['팰월드'], fol: 20000, folT: '2만', streamT: '11시간 이상', streamH: 11, viewers: 264, check: '10:33', email: 'aoripiano@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
     { name: '반님l', ch: '3a2d2f4e9132d822423f6aa879e598c5', cat: ['팰월드'], fol: 40000, folT: '4만', streamT: '11시간 이상', streamH: 11, viewers: 252, check: '10:33', email: 'van@luna-moa.com', status: '메일 발송 완료', sCls: 'status-sent' },
@@ -1039,7 +1039,7 @@ metaLine.textContent = TABS.se.meta;
     { name: '마로니!', uid: 'marronie', cat: ['종합'], fav: '2.2만', favN: 22000, sub: 151, streamT: '2시간 이상', streamH: 2, viewers: 190, check: '16:50', email: 'marronie318@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
     { name: '전하_', uid: 'dngus1989', cat: ['아이온2'], fav: '2.1만', favN: 21000, sub: 6, streamT: '3시간 이상', streamH: 3, viewers: 189, check: '16:50', email: 'dksxk1989@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
     { name: '밍턴_', uid: 'mingturn97', cat: ['종합'], fav: '2.5만', favN: 25000, sub: 169, streamT: '1시간 이상', streamH: 1, viewers: 172, check: '16:50', email: 'mingturn97@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
-    { name: '이미윤', uid: 'comiyun', cat: ['종합'], fav: '8.2천', favN: 8200, sub: 37, streamT: '2시간 이상', streamH: 2, viewers: 149, check: '16:50', email: 'yunmi4033@gmail.com', status: '회신 완료 · 일본인·PC 사용 미숙·시청자 적음', sCls: 'status-reply' },
+    { name: '이미윤', uid: 'comiyun', cat: ['종합'], fav: '8.2천', favN: 8200, sub: 37, streamT: '2시간 이상', streamH: 2, viewers: 149, check: '16:50', email: 'yunmi4033@gmail.com', status: '회신 완료 · 일본인·PC 사용 미숙', sCls: 'status-reply' },
     { name: '빅토리~!', uid: 'toryvac', cat: ['종합게임'], fav: '5.1만', favN: 51000, sub: 110, streamT: '1시간 이상', streamH: 1, viewers: 157, check: '17:00', email: 'toryvac2@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
     { name: '퀸주', uid: 'queenzu', cat: ['종합'], fav: '3.4천', favN: 3400, sub: 79, streamT: '1시간 이상', streamH: 1, viewers: 134, check: '17:00', email: 'Queenzu@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
     { name: '피유:p', uid: 'beyou0728', cat: ['종합'], fav: '1.4만', favN: 14000, sub: 11, streamT: '3시간 이상', streamH: 3, viewers: 106, check: '17:00', email: 'piyou0728@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
