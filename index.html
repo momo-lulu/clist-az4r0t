@@ -540,7 +540,7 @@ h2.sec .accent { color: var(--primary); }
     <div class="notes">
       <div class="note-head">참고 사항</div>
       <ul class="note-list">
-        <li><b>상태</b><span><strong>회신 완료</strong> 1명(이미윤) · <strong>메일 발송 완료</strong> 31명 · <strong>미발송</strong> 1명(팡이요·쪽지)</span></li>
+        <li><b>상태</b><span><strong>회신 완료</strong> 1명(이미윤) · <strong>발송 완료</strong> 32명(메일 31 · 쪽지 1) — 전원 컨택 완료</span></li>
         <li><b>데이터 기준</b><span>라이브 방송 중 실시간 확인 · 즐겨찾기·구독자는 SOOP 채널 기준</span></li>
         <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 · '쪽지'는 SOOP 내부 메시지 · 2차는 소속사 경로</span></li>
       </ul>
@@ -562,7 +562,7 @@ h2.sec .accent { color: var(--primary); }
         <tbody id="sp-tbody"></tbody>
       </table>
     </div>
-    <p class="footnote">* SOOP(아프리카TV) 라이브 컨택 리스트 (총 33명) · <b>제안 메일 발송 완료 32명</b>(회신 1명: 이미윤) · 팡이요 1명은 쪽지 컨택 필요 · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준<br>* 컨택 경로는 채널/소속사 공개 이메일 · '쪽지'는 SOOP 내부 메시지로만 컨택 가능 · 동일 컨택 경로 중복분은 1인만 남기고 정리 완료</p>
+    <p class="footnote">* SOOP(아프리카TV) 라이브 컨택 리스트 (총 33명) · <b>발송 완료 32명</b>(메일 31 · 팡이요 쪽지 1) · 회신 1명(이미윤) · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준<br>* 컨택 경로는 채널/소속사 공개 이메일 · '쪽지'는 SOOP 내부 메시지로만 컨택 가능 · 동일 컨택 경로 중복분은 1인만 남기고 정리 완료</p>
   </div>
 
   <!-- ================= COMPANY PANEL ================= -->
@@ -647,7 +647,7 @@ const TABS = {
   cz:   { btn: document.getElementById('tab-cz'),   panel: document.getElementById('panel-cz'),
           meta: '치지직 스트리머 47명 · 제안 메일 발송 완료(전원) · 회신 완료 1명(네구미) · 참조 luluai_official@teamlulu.ai' },
   sp:   { btn: document.getElementById('tab-sp'),   panel: document.getElementById('panel-sp'),
-          meta: 'SOOP(아프리카TV) 스트리머 33명 · 발송 완료 32명(회신 1명: 이미윤) / 쪽지 미발송 1명(팡이요)' },
+          meta: 'SOOP(아프리카TV) 스트리머 33명 · 전원 컨택 완료(발송 32 · 회신 1: 이미윤)' },
   co:   { btn: document.getElementById('tab-co'),   panel: document.getElementById('panel-co'),
           meta: '크리에이터 확보용 컨택 업체(MCN·에이전시) 15곳 · 답변: 윗유·크리플래닛·인첸트 엔터 3곳' },
 };
@@ -992,7 +992,7 @@ metaLine.textContent = TABS.se.meta;
     { name: '이상호', cat: ['롤'], fav: '87만', favN: 870000, sub: 132, streamT: '1시간 이상', streamH: 1, viewers: 7606, check: '16:20', email: 'creators@iambrand.co.kr', status: '메일 발송 완료', sCls: 'status-sent' },
     { name: '이지상', cat: ['여행'], fav: '10.1만', favN: 101000, sub: 143, streamT: '3시간 이상', streamH: 3, viewers: 6338, check: '16:20', email: 'jagnun99@gmail.com', email2: 'biz@onsidecompany.co.kr', status: '메일 발송 완료', sCls: 'status-sent' },
     { name: '두치와뿌꾸', cat: ['피파'], fav: '44.3만', favN: 443000, sub: 130, streamT: '3시간 이상', streamH: 3, viewers: 4297, check: '16:20', email: 'ate8282@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
-    { name: '팡이요', cat: ['메이플'], fav: '52.3만', favN: 523000, sub: 46, streamT: '11시간 이상', streamH: 11, viewers: 3836, check: '16:20', email: '쪽지', status: '미발송 · 쪽지 컨택', sCls: 'status-plan' },
+    { name: '팡이요', cat: ['메이플'], fav: '52.3만', favN: 523000, sub: 46, streamT: '11시간 이상', streamH: 11, viewers: 3836, check: '16:20', email: '쪽지', status: '쪽지 발송 완료', sCls: 'status-sent' },
     { name: '오아', cat: ['배그'], fav: '8.1만', favN: 81000, sub: 461, streamT: '1시간 이내', streamH: 0.9, viewers: 3959, check: '16:30', email: 'oah@sandboxnetwork.net', status: '메일 발송 완료', sCls: 'status-sent' },
     { name: '지피티', cat: ['종합'], fav: '7.5만', favN: 75000, sub: 227, streamT: '2시간 이상', streamH: 2, viewers: 2427, check: '16:30', email: 'tjrdbs999@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
     { name: '제갈금자', cat: ['종합'], fav: '6.7만', favN: 67000, sub: 348, streamT: '2시간 이상', streamH: 2, viewers: 1803, check: '16:30', email: 'jejegal911@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
