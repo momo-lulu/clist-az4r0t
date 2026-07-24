@@ -192,8 +192,10 @@ td.nil { color: var(--text-faint); }
 .status-muted { font-size: 11.5px; font-weight: 700; background: var(--badge-bg); color: var(--text-faint); border-radius: 999px; padding: 3px 10px; }
 .status-hot { font-size: 11.5px; font-weight: 700; background: var(--primary); color: #fff; border-radius: 999px; padding: 3px 10px; }
 .status-plan { font-size: 11.5px; font-weight: 700; background: transparent; color: var(--text-faint); border: 1px dashed var(--border); border-radius: 999px; padding: 2px 9px; }
-.status-sent { font-size: 11.5px; font-weight: 700; background: #0A7D5A; color: #fff; border-radius: 999px; padding: 3px 10px; }
-.status-reply { font-size: 11.5px; font-weight: 700; background: #2F6BE0; color: #fff; border-radius: 999px; padding: 3px 10px; }
+.status-sent { font-size: 11.5px; font-weight: 700; background: var(--wash); color: var(--primary); border-radius: 999px; padding: 3px 10px; }
+.status-reply { font-size: 11.5px; font-weight: 700; background: #0A7D5A; color: #fff; border-radius: 999px; padding: 3px 10px; }
+.notes.deal { margin-top: 14px; border-top: 3px solid var(--accent); }
+.deal-tag { font-size: 11px; font-weight: 700; color: var(--primary); background: var(--wash); border-radius: 999px; padding: 2px 10px; }
 .dup-chip { font-size: 11px; font-weight: 700; background: rgba(224,138,20,0.14); color: #9A5B00; border: 1px solid rgba(224,138,20,0.4); border-radius: 6px; padding: 1px 7px; white-space: nowrap; }
 @media (prefers-color-scheme: dark) { .dup-chip { color: #F0B45C; border-color: rgba(240,180,92,0.45); background: rgba(240,180,92,0.12); } }
 :root[data-theme="dark"] .dup-chip { color: #F0B45C; border-color: rgba(240,180,92,0.45); background: rgba(240,180,92,0.12); }
@@ -250,9 +252,21 @@ h2.sec .accent { color: var(--primary); }
       <ul class="note-list">
         <li><b>리스트 성격</b><span>S엔터 크리에이터 리서치 리스트</span></li>
         <li><b>공통 분야</b><span>포커·홀덤 중심</span></li>
-        <li><b>팔로워 기준</b><span>인스타그램</span></li>
-        <li><b>계정</b><span>클릭 시 인스타그램 프로필로 이동</span></li>
+        <li><b>팔로워 기준</b><span>인스타그램 · 계정 클릭 시 프로필 이동</span></li>
       </ul>
+    </div>
+    <div class="notes deal">
+      <div class="note-head">제안 조건 <span class="deal-tag">Tubelulu · 에스엔터 계약</span></div>
+      <ul class="note-list">
+        <li><b>계약 기간</b><span>1개월 (운영 결과 바탕 연장 협의 · 연장 시 재계약)</span></li>
+        <li><b>총비용</b><span>900만 원 (VAT 별도)</span></li>
+        <li><b>금액 배분</b><span>크리에이터별 세부 배분은 에스엔터 판단</span></li>
+        <li><b>활동 1</b><span>Tubelulu 게시글 주 4회 이상</span></li>
+        <li><b>활동 2</b><span>인스타 스토리·톡방 등 홍보 주 4회 이상</span></li>
+        <li><b>활동 3</b><span>인스타 프로필 바이오에 Tubelulu 링크 1개월 고정</span></li>
+        <li><b>활동 4</b><span>운영 톡방 공지에 Tubelulu 안내·링크 고정</span></li>
+      </ul>
+      <p style="margin:10px 0 0;font-size:12px;color:var(--text-faint);line-height:1.6">* 위 활동 기준을 바탕으로 크리에이터별 세부 운영 규칙 제안 요청 · 실제 방식·횟수는 채널 특성에 따라 조율 가능</p>
     </div>
     <div class="table-box" style="margin-top:16px">
       <table style="min-width:720px">
@@ -495,16 +509,21 @@ h2.sec .accent { color: var(--primary); }
     <div class="notes">
       <div class="note-head">참고 사항</div>
       <ul class="note-list">
-        <li><b>플랫폼</b><span>치지직 (전원)</span></li>
-        <li><b>데이터 기준</b><span>라이브 방송 중 실시간 확인 ('확인 시각' 열)</span></li>
-        <li><b>팔로워</b><span>치지직 채널 팔로워 수</span></li>
-        <li><b>라이브 시청자</b><span>확인 시각 기준 동시 시청자 수</span></li>
-        <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 창 열림 · <span class="dup-chip">공동 N</span> = 같은 이메일을 N명이 공유</span></li>
-        <li><b>스트리머명</b><span>클릭 시 치지직 검색으로 이동</span></li>
-        <li><b>리스트 규모</b><span>총 47명 · <strong>회신 완료</strong> 1명(네구미) · <strong>메일 발송 완료</strong> 46명</span></li>
-        <li><b>컨택 경로</b><span id="cz-dupinfo"></span> · 중복 경로 정리 완료(1인만 유지)</li>
-        <li><b>발송 완료</b><span>제안 메일 발송 완료(전원) · 참조 luluai_official@teamlulu.ai</span></li>
-        <li><b>인챈트 엔터</b><span>대표 둥그레 발송 완료 · 7/27(월) 이내 소속 크리에이터 리스트 별도 수령 예정</span></li>
+        <li><b>상태</b><span><strong>회신 완료</strong> 1명(네구미) · <strong>메일 발송 완료</strong> 46명 · 총 47명</span></li>
+        <li><b>데이터 기준</b><span>라이브 방송 중 실시간 확인 (시청자·확인 시각)</span></li>
+        <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 · <span class="dup-chip">공동 N</span> 같은 이메일 공유 (중복 정리 완료)</span></li>
+        <li><b>인챈트 엔터</b><span>대표 둥그레만 유지 · 7/27(월) 소속사 리스트 별도 수령 예정</span></li>
+      </ul>
+    </div>
+    <div class="notes deal">
+      <div class="note-head">제안 조건 <span class="deal-tag">링크플레이 베타 파트너</span></div>
+      <ul class="note-list">
+        <li><b>활동비</b><span>3개월 300만 원 (별도 협의 가능)</span></li>
+        <li><b>기간</b><span>2026년 8월 중순 ~ 11월 중순</span></li>
+        <li><b>요청 1</b><span>방송 중 패널·채널 정보에 링크플레이 참여 링크 고정</span></li>
+        <li><b>요청 2</b><span>방송 중 주 3회 이상·회당 30분 이상 링크플레이로 시청자와 게임 진행 (방송 상황 따라 협의)</span></li>
+        <li><b>요청 3</b><span>사용 후기·개선 의견 전달 (베타 파트너)</span></li>
+        <li><b>요청 4</b><span>서비스 문의에 1일 이내 회신</span></li>
       </ul>
     </div>
     <div class="table-box" style="margin-top:16px">
@@ -521,13 +540,20 @@ h2.sec .accent { color: var(--primary); }
     <div class="notes">
       <div class="note-head">참고 사항</div>
       <ul class="note-list">
-        <li><b>플랫폼</b><span>SOOP(아프리카TV) 라이브 컨택 리스트</span></li>
-        <li><b>데이터 기준</b><span>라이브 방송 중 실시간 확인 ('확인 시각' 열)</span></li>
-        <li><b>즐겨찾기 / 구독자</b><span>SOOP 채널 즐겨찾기 수 · 유료 구독자 수</span></li>
-        <li><b>컨택 상태</b><span><strong>회신 완료</strong> 1명(이미윤) · <strong>메일 발송 완료</strong> 31명 · <strong>미발송(쪽지)</strong> 1명(팡이요) — 팡이요는 SOOP 쪽지로 별도 컨택 필요</span></li>
-        <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 · 2차 경로(소속사) 있으면 아래 표기 · <span class="dup-chip">공동 N</span> = 같은 경로 N명 공유</span></li>
-        <li><b>리스트 규모</b><span>총 33명 · 발송 완료 32명(회신 1명: 이미윤) · 참조 luluai_official@teamlulu.ai</span></li>
-        <li><b>컨택 경로</b><span id="sp-dupinfo"></span> · 중복 경로 정리 완료(1인만 유지)</li>
+        <li><b>상태</b><span><strong>회신 완료</strong> 1명(이미윤) · <strong>메일 발송 완료</strong> 31명 · <strong>미발송</strong> 1명(팡이요·쪽지)</span></li>
+        <li><b>데이터 기준</b><span>라이브 방송 중 실시간 확인 · 즐겨찾기·구독자는 SOOP 채널 기준</span></li>
+        <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 · '쪽지'는 SOOP 내부 메시지 · 2차는 소속사 경로</span></li>
+      </ul>
+    </div>
+    <div class="notes deal">
+      <div class="note-head">제안 조건 <span class="deal-tag">링크플레이 베타 파트너</span></div>
+      <ul class="note-list">
+        <li><b>활동비</b><span>3개월 300만 원 (별도 협의 가능)</span></li>
+        <li><b>기간</b><span>2026년 8월 중순 ~ 11월 중순</span></li>
+        <li><b>요청 1</b><span>방송 중 패널·채널 정보에 링크플레이 참여 링크 고정</span></li>
+        <li><b>요청 2</b><span>방송 중 주 3회 이상·회당 30분 이상 링크플레이로 시청자와 게임 진행 (방송 상황 따라 협의)</span></li>
+        <li><b>요청 3</b><span>사용 후기·개선 의견 전달 (베타 파트너)</span></li>
+        <li><b>요청 4</b><span>서비스 문의에 1일 이내 회신</span></li>
       </ul>
     </div>
     <div class="table-box" style="margin-top:16px">
