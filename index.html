@@ -526,7 +526,11 @@ h2.sec .accent { color: var(--primary); }
         <li><b>요청 4</b><span>서비스 문의에 1일 이내 회신</span></li>
       </ul>
     </div>
-    <div class="table-box" style="margin-top:16px">
+    <div class="controls" style="margin-top:16px">
+      <input id="cz-search" type="search" placeholder="이름·분야·이메일·상태 검색 (예: 메이플, 미발송)">
+      <span class="count" id="cz-count"></span>
+    </div>
+    <div class="table-box" style="margin-top:12px">
       <table style="min-width:1240px">
         <thead><tr id="cz-headRow"></tr></thead>
         <tbody id="cz-tbody"></tbody>
@@ -556,7 +560,11 @@ h2.sec .accent { color: var(--primary); }
         <li><b>요청 4</b><span>서비스 문의에 1일 이내 회신</span></li>
       </ul>
     </div>
-    <div class="table-box" style="margin-top:16px">
+    <div class="controls" style="margin-top:16px">
+      <input id="sp-search" type="search" placeholder="이름·분야·이메일·상태 검색 (예: 버추얼, 발송 완료)">
+      <span class="count" id="sp-count"></span>
+    </div>
+    <div class="table-box" style="margin-top:12px">
       <table style="min-width:1360px">
         <thead><tr id="sp-headRow"></tr></thead>
         <tbody id="sp-tbody"></tbody>
@@ -975,13 +983,19 @@ metaLine.textContent = TABS.se.meta;
     }
   }
   const catHtml = list => list.map(c => '<span class="cat-chip">' + c + '</span>').join(' ');
+  const czSearch = document.getElementById('cz-search');
+  const czCount = document.getElementById('cz-count');
   function render() {
     buildHead();
-    const rows = CZ_DATA.slice().sort((a, b) => {
+    const q = (czSearch.value || '').trim().toLowerCase();
+    const rows = CZ_DATA.filter(d => !q ||
+      (d.name + ' ' + d.cat.join(' ') + ' ' + d.email + ' ' + d.status).toLowerCase().includes(q)
+    ).sort((a, b) => {
       const av = a[sortKey], bv = b[sortKey];
       if (typeof av === 'string' || typeof bv === 'string') return String(av).localeCompare(String(bv)) * -sortDir;
       return (av - bv) * sortDir;
     });
+    if (czCount) czCount.textContent = q ? rows.length + ' / ' + CZ_DATA.length + '명' : CZ_DATA.length + '명';
     tbody.innerHTML = rows.map((d, i) =>
       '<tr><td class="rank">' + (i + 1) + '</td>' +
       '<td class="txt name-cell"><a class="ig-link" href="' + (d.ch ? 'https://chzzk.naver.com/' + d.ch : 'https://chzzk.naver.com/search?query=' + encodeURIComponent(d.name)) + '" target="_blank" rel="noopener">' + d.name + '</a></td>' +
@@ -992,8 +1006,9 @@ metaLine.textContent = TABS.se.meta;
       '<td>' + d.check + '</td>' +
       '<td class="txt"><a class="mail-link" href="mailto:' + d.email + '">' + d.email + '</a>' + (emailCount[d.email] > 1 ? ' <span class="dup-chip">공동 ' + emailCount[d.email] + '</span>' : '') + '</td>' +
       '<td class="txt"><span class="' + d.sCls + '">' + d.status + '</span></td></tr>'
-    ).join('');
+    ).join('') || '<tr><td colspan="9" class="txt" style="padding:18px;color:var(--sub,#5B6470)">검색 결과가 없습니다.</td></tr>';
   }
+  if (czSearch) czSearch.addEventListener('input', render);
   render();
 })();
 
@@ -1094,13 +1109,19 @@ metaLine.textContent = TABS.se.meta;
     if (d.email2) h += '<div class="sub2"><span class="tag-mini">2차 </span><a class="mail-link" href="mailto:' + d.email2 + '">' + d.email2 + '</a>' + dupChip(d.email2) + '</div>';
     return h;
   }
+  const spSearch = document.getElementById('sp-search');
+  const spCount = document.getElementById('sp-count');
   function render() {
     buildHead();
-    const rows = SOOP_DATA.slice().sort((a, b) => {
+    const q = (spSearch.value || '').trim().toLowerCase();
+    const rows = SOOP_DATA.filter(d => !q ||
+      (d.name + ' ' + d.cat.join(' ') + ' ' + d.email + ' ' + d.status).toLowerCase().includes(q)
+    ).sort((a, b) => {
       const av = a[sortKey], bv = b[sortKey];
       if (typeof av === 'string' || typeof bv === 'string') return String(av).localeCompare(String(bv)) * -sortDir;
       return (av - bv) * sortDir;
     });
+    if (spCount) spCount.textContent = q ? rows.length + ' / ' + SOOP_DATA.length + '명' : SOOP_DATA.length + '명';
     tbody.innerHTML = rows.map((d, i) =>
       '<tr><td class="rank">' + (i + 1) + '</td>' +
       '<td class="txt name-cell"><a class="ig-link" href="' + (d.uid ? 'https://ch.sooplive.co.kr/' + d.uid : 'https://www.sooplive.co.kr/search?szLocation=total_search&amp;szSearchType=total&amp;szKeyword=' + encodeURIComponent(d.name)) + '" target="_blank" rel="noopener">' + d.name + '</a></td>' +
@@ -1112,8 +1133,9 @@ metaLine.textContent = TABS.se.meta;
       '<td>' + d.check + '</td>' +
       '<td class="txt">' + contactCell(d) + '</td>' +
       '<td class="txt"><span class="' + d.sCls + '">' + d.status + '</span></td></tr>'
-    ).join('');
+    ).join('') || '<tr><td colspan="10" class="txt" style="padding:18px;color:var(--sub,#5B6470)">검색 결과가 없습니다.</td></tr>';
   }
+  if (spSearch) spSearch.addEventListener('input', render);
   render();
 })();
 </script>
