@@ -193,6 +193,7 @@ td.nil { color: var(--text-faint); }
 .status-hot { font-size: 11.5px; font-weight: 700; background: var(--primary); color: #fff; border-radius: 999px; padding: 3px 10px; }
 .status-plan { font-size: 11.5px; font-weight: 700; background: transparent; color: var(--text-faint); border: 1px dashed var(--border); border-radius: 999px; padding: 2px 9px; }
 .status-sent { font-size: 11.5px; font-weight: 700; background: #0A7D5A; color: #fff; border-radius: 999px; padding: 3px 10px; }
+.status-reply { font-size: 11.5px; font-weight: 700; background: #2F6BE0; color: #fff; border-radius: 999px; padding: 3px 10px; }
 .dup-chip { font-size: 11px; font-weight: 700; background: rgba(224,138,20,0.14); color: #9A5B00; border: 1px solid rgba(224,138,20,0.4); border-radius: 6px; padding: 1px 7px; white-space: nowrap; }
 @media (prefers-color-scheme: dark) { .dup-chip { color: #F0B45C; border-color: rgba(240,180,92,0.45); background: rgba(240,180,92,0.12); } }
 :root[data-theme="dark"] .dup-chip { color: #F0B45C; border-color: rgba(240,180,92,0.45); background: rgba(240,180,92,0.12); }
@@ -500,9 +501,9 @@ h2.sec .accent { color: var(--primary); }
         <li><b>라이브 시청자</b><span>확인 시각 기준 동시 시청자 수</span></li>
         <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 창 열림 · <span class="dup-chip">공동 N</span> = 같은 이메일을 N명이 공유</span></li>
         <li><b>스트리머명</b><span>클릭 시 치지직 검색으로 이동</span></li>
-        <li><b>리스트 규모</b><span>총 47명 · <strong>메일 발송 완료(7/24)</strong> 47명 전원</span></li>
+        <li><b>리스트 규모</b><span>총 47명 · <strong>회신 완료</strong> 1명(네구미) · <strong>메일 발송 완료</strong> 46명</span></li>
         <li><b>컨택 경로</b><span id="cz-dupinfo"></span> · 중복 경로 정리 완료(1인만 유지)</li>
-        <li><b>발송 완료</b><span>2026-07-24 제안 메일 발송 완료(전원) · 참조 luluai_official@teamlulu.ai</span></li>
+        <li><b>발송 완료</b><span>제안 메일 발송 완료(전원) · 참조 luluai_official@teamlulu.ai</span></li>
         <li><b>인챈트 엔터</b><span>대표 둥그레 발송 완료 · 7/27(월) 이내 소속 크리에이터 리스트 별도 수령 예정</span></li>
       </ul>
     </div>
@@ -512,7 +513,7 @@ h2.sec .accent { color: var(--primary); }
         <tbody id="cz-tbody"></tbody>
       </table>
     </div>
-    <p class="footnote">* 치지직 라이브 컨택 리스트 (총 47명) · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준 · 컨택 경로는 채널/소속사 공개 이메일<br>* '컨택 상태' 열: <b>2026-07-24 제안 메일 발송 완료 47명 전원</b> — 열 머리글 클릭 시 상태별 정렬 가능<br>* 동일 컨택 경로(같은 이메일)·동일 소속사(인챈트 엔터) 중복분은 대표 1인만 남기고 정리 완료</p>
+    <p class="footnote">* 치지직 라이브 컨택 리스트 (총 47명) · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준 · 컨택 경로는 채널/소속사 공개 이메일<br>* '컨택 상태' 열: <b>제안 메일 발송 완료 47명</b> (그 중 회신 완료 1명: 네구미) — 열 머리글 클릭 시 상태별 정렬 가능<br>* 동일 컨택 경로(같은 이메일)·동일 소속사(인챈트 엔터) 중복분은 대표 1인만 남기고 정리 완료</p>
   </div>
 
   <!-- ================= SOOP PANEL ================= -->
@@ -523,9 +524,9 @@ h2.sec .accent { color: var(--primary); }
         <li><b>플랫폼</b><span>SOOP(아프리카TV) 라이브 컨택 리스트</span></li>
         <li><b>데이터 기준</b><span>라이브 방송 중 실시간 확인 ('확인 시각' 열)</span></li>
         <li><b>즐겨찾기 / 구독자</b><span>SOOP 채널 즐겨찾기 수 · 유료 구독자 수</span></li>
-        <li><b>컨택 상태</b><span><strong>메일 발송 완료(7/24)</strong> 32명 · <strong>미발송(쪽지)</strong> 1명(팡이요) — 이메일 없어 SOOP 쪽지로 별도 컨택 필요</span></li>
+        <li><b>컨택 상태</b><span><strong>회신 완료</strong> 1명(이미윤) · <strong>메일 발송 완료</strong> 31명 · <strong>미발송(쪽지)</strong> 1명(팡이요) — 팡이요는 SOOP 쪽지로 별도 컨택 필요</span></li>
         <li><b>컨택 경로</b><span>이메일 클릭 시 메일 작성 · 2차 경로(소속사) 있으면 아래 표기 · <span class="dup-chip">공동 N</span> = 같은 경로 N명 공유</span></li>
-        <li><b>리스트 규모</b><span>총 33명 · 제안 메일 발송 완료 32명 · 참조 luluai_official@teamlulu.ai</span></li>
+        <li><b>리스트 규모</b><span>총 33명 · 발송 완료 32명(회신 1명: 이미윤) · 참조 luluai_official@teamlulu.ai</span></li>
         <li><b>컨택 경로</b><span id="sp-dupinfo"></span> · 중복 경로 정리 완료(1인만 유지)</li>
       </ul>
     </div>
@@ -535,7 +536,7 @@ h2.sec .accent { color: var(--primary); }
         <tbody id="sp-tbody"></tbody>
       </table>
     </div>
-    <p class="footnote">* SOOP(아프리카TV) 라이브 컨택 리스트 (총 33명) · <b>2026-07-24 제안 메일 발송 완료 32명</b> · 팡이요 1명은 쪽지 컨택 필요 · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준<br>* 컨택 경로는 채널/소속사 공개 이메일 · '쪽지'는 SOOP 내부 메시지로만 컨택 가능 · 동일 컨택 경로 중복분은 1인만 남기고 정리 완료</p>
+    <p class="footnote">* SOOP(아프리카TV) 라이브 컨택 리스트 (총 33명) · <b>제안 메일 발송 완료 32명</b>(회신 1명: 이미윤) · 팡이요 1명은 쪽지 컨택 필요 · 라이브 시청자·확인 시각은 방송 중 실시간 확인 기준<br>* 컨택 경로는 채널/소속사 공개 이메일 · '쪽지'는 SOOP 내부 메시지로만 컨택 가능 · 동일 컨택 경로 중복분은 1인만 남기고 정리 완료</p>
   </div>
 
   <!-- ================= COMPANY PANEL ================= -->
@@ -618,9 +619,9 @@ const TABS = {
   ig:   { btn: document.getElementById('tab-ig'),   panel: document.getElementById('panel-ig'),
           meta: '인스타그램 DM 컨택 24명 · 관심 회신 2명 + 회신 대기 22명 · 단가 미협의' },
   cz:   { btn: document.getElementById('tab-cz'),   panel: document.getElementById('panel-cz'),
-          meta: '치지직 스트리머 47명 · 2026-07-24 제안 메일 발송 완료(전원) · 참조 luluai_official@teamlulu.ai' },
+          meta: '치지직 스트리머 47명 · 제안 메일 발송 완료(전원) · 회신 완료 1명(네구미) · 참조 luluai_official@teamlulu.ai' },
   sp:   { btn: document.getElementById('tab-sp'),   panel: document.getElementById('panel-sp'),
-          meta: 'SOOP(아프리카TV) 스트리머 33명 · 제안 메일 발송 완료 32명 / 쪽지 미발송 1명(팡이요) · 2026-07-24' },
+          meta: 'SOOP(아프리카TV) 스트리머 33명 · 발송 완료 32명(회신 1명: 이미윤) / 쪽지 미발송 1명(팡이요)' },
   co:   { btn: document.getElementById('tab-co'),   panel: document.getElementById('panel-co'),
           meta: '크리에이터 확보용 컨택 업체(MCN·에이전시) 15곳 · 답변: 윗유·크리플래닛·인첸트 엔터 3곳' },
 };
@@ -845,53 +846,53 @@ metaLine.textContent = TABS.se.meta;
 /* ================= 치지직 tab ================= */
 (function () {
   const CZ_DATA = [
-    { name: '김디토', cat: ['종합게임'], fol: 522, folT: '522', streamT: '5시간 이상', streamH: 5, viewers: 33, check: '17:40', email: 'kim_ditto@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '지효닝', cat: ['종합게임'], fol: 369, folT: '369', streamT: '7시간 이상', streamH: 7, viewers: 34, check: '17:40', email: 't5kpep@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '담유이', cat: ['종합게임'], fol: 44000, folT: '4.4만', streamT: '8시간 이상', streamH: 8, viewers: 584, check: '17:50', email: 'contact@projecti.kr', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '삐부', cat: ['대화', '종합게임'], fol: 92000, folT: '9.2만', streamT: '1시간 이상', streamH: 1, viewers: 276, check: '18:00', email: 's1032204@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '찡스임', cat: ['대화'], fol: 18000, folT: '1.8만', streamT: '30분 이상', streamH: 0.5, viewers: 313, check: '18:30', email: 'yoonseo1336@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '철면수심', cat: ['대화', '종합게임'], fol: 74000, folT: '7.4만', streamT: '1시간 이상', streamH: 1, viewers: 301, check: '18:40', email: '109ace@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '낡은창고', cat: ['그림', '종합게임'], fol: 12000, folT: '1.2만', streamT: '8시간 이상', streamH: 8, viewers: 144, check: '18:40', email: 'teska1567@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '햄쿠비', cat: ['종합'], fol: 22000, folT: '2.2만', streamT: '6시간 이상', streamH: 6, viewers: 493, check: '18:40', email: 'contact@listella.tv', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '포키쨩', cat: ['종합'], fol: 28000, folT: '2.8만', streamT: '8시간 이상', streamH: 8, viewers: 213, check: '18:50', email: 'pocky.chan.11.11.s2@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '김니디', cat: ['종합게임'], fol: 8800, folT: '8.8천', streamT: '1시간 이상', streamH: 1, viewers: 107, check: '18:50', email: 'ksbcom12@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '랜비', cat: ['종합게임'], fol: 1100, folT: '1.1천', streamT: '6시간 이상', streamH: 6, viewers: 57, check: '18:50', email: 'as3356@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '아구', cat: ['종합게임'], fol: 13000, folT: '1.3만', streamT: '1시간 이상', streamH: 1, viewers: 49, check: '18:50', email: 'ghg882@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '네구미', cat: ['종합게임'], fol: 219, folT: '219', streamT: '1시간 이상', streamH: 1, viewers: 10, check: '15:30', email: 'neguni1004@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '아리사', cat: ['종합게임', '노래'], fol: 93000, folT: '9.3만', streamT: '29시간 이상', streamH: 29, viewers: 5105, check: '15:30', email: 'universe@gysent.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '침착맨', cat: ['종합'], fol: 321000, folT: '32.1만', streamT: '1시간 이상', streamH: 1, viewers: 3151, check: '15:30', email: 'info@chimchakman.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '김뚜띠', cat: ['종합게임'], fol: 146000, folT: '14.6만', streamT: '5시간 이상', streamH: 5, viewers: 4304, check: '15:30', email: 'biz@pixelnetwork.co.kr', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '둥그레', cat: ['종합게임'], fol: 87000, folT: '8.7만', streamT: '5시간 이상', streamH: 5, viewers: 2364, check: '15:30', email: 'dunggeure@enchantenter.co.kr', status: '메일 발송 완료(7/24) · 인챈트 7/27 리스트', sCls: 'status-sent' },
-    { name: '꼴랑이', cat: ['메이플', '축구'], fol: 47000, folT: '4.7만', streamT: '3시간 이상', streamH: 3, viewers: 2235, check: '15:30', email: 'charon@gysent.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '허니츄러스', cat: ['종합'], fol: 133000, folT: '13.3만', streamT: '4시간 이상', streamH: 4, viewers: 1923, check: '15:30', email: 'honeyz@projecti.kr', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '청묘', cat: ['메이플'], fol: 23000, folT: '2.3만', streamT: '6시간 이상', streamH: 6, viewers: 1743, check: '15:30', email: 'twitchkr.bloo@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '앰비션', cat: ['롤'], fol: 139000, folT: '13.9만', streamT: '2시간 이상', streamH: 2, viewers: 1198, check: '15:30', email: 'ambition@mbtn.kr', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '포셔', cat: ['로스트아크'], fol: 125000, folT: '12.5만', streamT: '2시간 이상', streamH: 2, viewers: 1003, check: '15:30', email: 'ad@jucon.co.kr', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '진격캐넌', cat: ['메이플'], fol: 28000, folT: '2.8만', streamT: '3시간 이상', streamH: 3, viewers: 853, check: '15:30', email: 'xorhkd321@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '옥냥이', cat: ['종합게임'], fol: 159000, folT: '15.9만', streamT: '6시간 이상', streamH: 6, viewers: 845, check: '15:40', email: 'rooftopcat@sandboxnetwork.net', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '고뇨', cat: ['서브컬쳐'], fol: 30000, folT: '3만', streamT: '3시간 이상', streamH: 3, viewers: 733, check: '15:40', email: 'pyosick1324@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '칸데르니아', cat: ['종합게임'], fol: 25000, folT: '2.5만', streamT: '7시간 이상', streamH: 7, viewers: 713, check: '15:40', email: 'business@gysent.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '최하빈', cat: ['대화'], fol: 29000, folT: '2.9만', streamT: '4시간 이상', streamH: 4, viewers: 622, check: '15:40', email: 'daaab0523@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '햇살살', cat: ['종합'], fol: 40000, folT: '4만', streamT: '3시간 이상', streamH: 3, viewers: 573, check: '15:50', email: 'hatsalsal@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '연리', cat: ['종합'], fol: 31000, folT: '3.1만', streamT: '2시간 이상', streamH: 2, viewers: 420, check: '15:50', email: 'p90201@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '도읍지', cat: ['로스트아크'], fol: 16000, folT: '1.6만', streamT: '4시간 이내', streamH: 3.9, viewers: 409, check: '15:50', email: 'coo@futuresenter.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '세글자다', cat: ['메이플'], fol: 21000, folT: '2.1만', streamT: '7시간 이상', streamH: 7, viewers: 355, check: '16:00', email: 'tprmfwkek@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '배돈', cat: ['종합게임'], fol: 59000, folT: '5.9만', streamT: '2시간 이상', streamH: 2, viewers: 554, check: '16:00', email: 'songiya7@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '한동그라미1', cat: ['종합'], fol: 25000, folT: '2.5만', streamT: '1시간 이상', streamH: 1, viewers: 477, check: '16:00', email: 'qlcwk123@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '시라유키 히나', cat: ['종합게임'], fol: 234000, folT: '23.4만', streamT: '1시간 이상', streamH: 1, viewers: 3388, check: '17:10', email: 'contact@stellive.me', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '빅헤드', cat: ['종합게임'], fol: 113000, folT: '11.3만', streamT: '1시간 이상', streamH: 1, viewers: 1182, check: '17:20', email: 'bighead@sandboxnetwork.net', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '라코코', cat: ['대화'], fol: 53000, folT: '5.3만', streamT: '1시간 이상', streamH: 1, viewers: 610, check: '17:20', email: 'rakoko.kr@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '자동', cat: ['종합게임'], fol: 29000, folT: '2.9만', streamT: '1시간 이내', streamH: 0.9, viewers: 416, check: '17:20', email: 'amainatsu@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '치민22', cat: ['종합게임'], fol: 9800, folT: '9.8천', streamT: '2시간 이상', streamH: 2, viewers: 290, check: '17:20', email: 'chimin2@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '김앵고', cat: ['종합게임'], fol: 16000, folT: '1.6만', streamT: '3시간 이상', streamH: 3, viewers: 265, check: '17:20', email: 'gimaenggo@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '이글콥', cat: ['축구'], fol: 60000, folT: '6만', streamT: '1시간 이내', streamH: 0.9, viewers: 545, check: '17:40', email: 'eaglekop@sandboxnetwork.net', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '씨랙', cat: ['FPS'], fol: 66000, folT: '6.6만', streamT: '1시간 이상', streamH: 1, viewers: 328, check: '17:40', email: 'crack@sandboxnetwork.net', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '살구', cat: ['데바데', '마작'], fol: 82000, folT: '8.2만', streamT: '1시간 이상', streamH: 1, viewers: 279, check: '17:40', email: 'bathit0020@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '쟁구임', cat: ['종합'], fol: 5700, folT: '5.7천', streamT: '1시간 이상', streamH: 1, viewers: 279, check: '17:40', email: 'thdwodnr97@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '김길현', cat: ['종합'], fol: 15000, folT: '1.5만', streamT: '4시간 이상', streamH: 4, viewers: 184, check: '17:50', email: 'diastar979797@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '은뿌', cat: ['종합'], fol: 14000, folT: '1.4만', streamT: '2시간 이상', streamH: 2, viewers: 187, check: '17:50', email: 'eunppuing@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '기션', cat: ['니케'], fol: 11000, folT: '1.1만', streamT: '1시간 이상', streamH: 1, viewers: 431, check: '17:50', email: 'kisean0128@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '꽁아', cat: ['종합'], fol: 16000, folT: '1.6만', streamT: '2시간 이상', streamH: 2, viewers: 118, check: '18:00', email: 'zndgowh@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
+    { name: '김디토', cat: ['종합게임'], fol: 522, folT: '522', streamT: '5시간 이상', streamH: 5, viewers: 33, check: '17:40', email: 'kim_ditto@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '지효닝', cat: ['종합게임'], fol: 369, folT: '369', streamT: '7시간 이상', streamH: 7, viewers: 34, check: '17:40', email: 't5kpep@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '담유이', cat: ['종합게임'], fol: 44000, folT: '4.4만', streamT: '8시간 이상', streamH: 8, viewers: 584, check: '17:50', email: 'contact@projecti.kr', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '삐부', cat: ['대화', '종합게임'], fol: 92000, folT: '9.2만', streamT: '1시간 이상', streamH: 1, viewers: 276, check: '18:00', email: 's1032204@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '찡스임', cat: ['대화'], fol: 18000, folT: '1.8만', streamT: '30분 이상', streamH: 0.5, viewers: 313, check: '18:30', email: 'yoonseo1336@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '철면수심', cat: ['대화', '종합게임'], fol: 74000, folT: '7.4만', streamT: '1시간 이상', streamH: 1, viewers: 301, check: '18:40', email: '109ace@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '낡은창고', cat: ['그림', '종합게임'], fol: 12000, folT: '1.2만', streamT: '8시간 이상', streamH: 8, viewers: 144, check: '18:40', email: 'teska1567@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '햄쿠비', cat: ['종합'], fol: 22000, folT: '2.2만', streamT: '6시간 이상', streamH: 6, viewers: 493, check: '18:40', email: 'contact@listella.tv', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '포키쨩', cat: ['종합'], fol: 28000, folT: '2.8만', streamT: '8시간 이상', streamH: 8, viewers: 213, check: '18:50', email: 'pocky.chan.11.11.s2@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '김니디', cat: ['종합게임'], fol: 8800, folT: '8.8천', streamT: '1시간 이상', streamH: 1, viewers: 107, check: '18:50', email: 'ksbcom12@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '랜비', cat: ['종합게임'], fol: 1100, folT: '1.1천', streamT: '6시간 이상', streamH: 6, viewers: 57, check: '18:50', email: 'as3356@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '아구', cat: ['종합게임'], fol: 13000, folT: '1.3만', streamT: '1시간 이상', streamH: 1, viewers: 49, check: '18:50', email: 'ghg882@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '네구미', cat: ['종합게임'], fol: 219, folT: '219', streamT: '1시간 이상', streamH: 1, viewers: 10, check: '15:30', email: 'neguni1004@naver.com', status: '회신 완료', sCls: 'status-reply' },
+    { name: '아리사', cat: ['종합게임', '노래'], fol: 93000, folT: '9.3만', streamT: '29시간 이상', streamH: 29, viewers: 5105, check: '15:30', email: 'universe@gysent.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '침착맨', cat: ['종합'], fol: 321000, folT: '32.1만', streamT: '1시간 이상', streamH: 1, viewers: 3151, check: '15:30', email: 'info@chimchakman.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '김뚜띠', cat: ['종합게임'], fol: 146000, folT: '14.6만', streamT: '5시간 이상', streamH: 5, viewers: 4304, check: '15:30', email: 'biz@pixelnetwork.co.kr', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '둥그레', cat: ['종합게임'], fol: 87000, folT: '8.7만', streamT: '5시간 이상', streamH: 5, viewers: 2364, check: '15:30', email: 'dunggeure@enchantenter.co.kr', status: '메일 발송 완료 · 인챈트 7/27 리스트', sCls: 'status-sent' },
+    { name: '꼴랑이', cat: ['메이플', '축구'], fol: 47000, folT: '4.7만', streamT: '3시간 이상', streamH: 3, viewers: 2235, check: '15:30', email: 'charon@gysent.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '허니츄러스', cat: ['종합'], fol: 133000, folT: '13.3만', streamT: '4시간 이상', streamH: 4, viewers: 1923, check: '15:30', email: 'honeyz@projecti.kr', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '청묘', cat: ['메이플'], fol: 23000, folT: '2.3만', streamT: '6시간 이상', streamH: 6, viewers: 1743, check: '15:30', email: 'twitchkr.bloo@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '앰비션', cat: ['롤'], fol: 139000, folT: '13.9만', streamT: '2시간 이상', streamH: 2, viewers: 1198, check: '15:30', email: 'ambition@mbtn.kr', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '포셔', cat: ['로스트아크'], fol: 125000, folT: '12.5만', streamT: '2시간 이상', streamH: 2, viewers: 1003, check: '15:30', email: 'ad@jucon.co.kr', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '진격캐넌', cat: ['메이플'], fol: 28000, folT: '2.8만', streamT: '3시간 이상', streamH: 3, viewers: 853, check: '15:30', email: 'xorhkd321@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '옥냥이', cat: ['종합게임'], fol: 159000, folT: '15.9만', streamT: '6시간 이상', streamH: 6, viewers: 845, check: '15:40', email: 'rooftopcat@sandboxnetwork.net', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '고뇨', cat: ['서브컬쳐'], fol: 30000, folT: '3만', streamT: '3시간 이상', streamH: 3, viewers: 733, check: '15:40', email: 'pyosick1324@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '칸데르니아', cat: ['종합게임'], fol: 25000, folT: '2.5만', streamT: '7시간 이상', streamH: 7, viewers: 713, check: '15:40', email: 'business@gysent.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '최하빈', cat: ['대화'], fol: 29000, folT: '2.9만', streamT: '4시간 이상', streamH: 4, viewers: 622, check: '15:40', email: 'daaab0523@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '햇살살', cat: ['종합'], fol: 40000, folT: '4만', streamT: '3시간 이상', streamH: 3, viewers: 573, check: '15:50', email: 'hatsalsal@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '연리', cat: ['종합'], fol: 31000, folT: '3.1만', streamT: '2시간 이상', streamH: 2, viewers: 420, check: '15:50', email: 'p90201@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '도읍지', cat: ['로스트아크'], fol: 16000, folT: '1.6만', streamT: '4시간 이내', streamH: 3.9, viewers: 409, check: '15:50', email: 'coo@futuresenter.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '세글자다', cat: ['메이플'], fol: 21000, folT: '2.1만', streamT: '7시간 이상', streamH: 7, viewers: 355, check: '16:00', email: 'tprmfwkek@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '배돈', cat: ['종합게임'], fol: 59000, folT: '5.9만', streamT: '2시간 이상', streamH: 2, viewers: 554, check: '16:00', email: 'songiya7@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '한동그라미1', cat: ['종합'], fol: 25000, folT: '2.5만', streamT: '1시간 이상', streamH: 1, viewers: 477, check: '16:00', email: 'qlcwk123@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '시라유키 히나', cat: ['종합게임'], fol: 234000, folT: '23.4만', streamT: '1시간 이상', streamH: 1, viewers: 3388, check: '17:10', email: 'contact@stellive.me', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '빅헤드', cat: ['종합게임'], fol: 113000, folT: '11.3만', streamT: '1시간 이상', streamH: 1, viewers: 1182, check: '17:20', email: 'bighead@sandboxnetwork.net', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '라코코', cat: ['대화'], fol: 53000, folT: '5.3만', streamT: '1시간 이상', streamH: 1, viewers: 610, check: '17:20', email: 'rakoko.kr@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '자동', cat: ['종합게임'], fol: 29000, folT: '2.9만', streamT: '1시간 이내', streamH: 0.9, viewers: 416, check: '17:20', email: 'amainatsu@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '치민22', cat: ['종합게임'], fol: 9800, folT: '9.8천', streamT: '2시간 이상', streamH: 2, viewers: 290, check: '17:20', email: 'chimin2@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '김앵고', cat: ['종합게임'], fol: 16000, folT: '1.6만', streamT: '3시간 이상', streamH: 3, viewers: 265, check: '17:20', email: 'gimaenggo@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '이글콥', cat: ['축구'], fol: 60000, folT: '6만', streamT: '1시간 이내', streamH: 0.9, viewers: 545, check: '17:40', email: 'eaglekop@sandboxnetwork.net', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '씨랙', cat: ['FPS'], fol: 66000, folT: '6.6만', streamT: '1시간 이상', streamH: 1, viewers: 328, check: '17:40', email: 'crack@sandboxnetwork.net', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '살구', cat: ['데바데', '마작'], fol: 82000, folT: '8.2만', streamT: '1시간 이상', streamH: 1, viewers: 279, check: '17:40', email: 'bathit0020@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '쟁구임', cat: ['종합'], fol: 5700, folT: '5.7천', streamT: '1시간 이상', streamH: 1, viewers: 279, check: '17:40', email: 'thdwodnr97@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '김길현', cat: ['종합'], fol: 15000, folT: '1.5만', streamT: '4시간 이상', streamH: 4, viewers: 184, check: '17:50', email: 'diastar979797@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '은뿌', cat: ['종합'], fol: 14000, folT: '1.4만', streamT: '2시간 이상', streamH: 2, viewers: 187, check: '17:50', email: 'eunppuing@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '기션', cat: ['니케'], fol: 11000, folT: '1.1만', streamT: '1시간 이상', streamH: 1, viewers: 431, check: '17:50', email: 'kisean0128@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '꽁아', cat: ['종합'], fol: 16000, folT: '1.6만', streamT: '2시간 이상', streamH: 2, viewers: 118, check: '18:00', email: 'zndgowh@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
   ];
   const COLS = [
     { key: 'rank',    label: '#',           cls: 'rank', sortable: false },
@@ -962,39 +963,39 @@ metaLine.textContent = TABS.se.meta;
 /* ================= SOOP tab ================= */
 (function () {
   const SOOP_DATA = [
-    { name: '이상호', cat: ['롤'], fav: '87만', favN: 870000, sub: 132, streamT: '1시간 이상', streamH: 1, viewers: 7606, check: '16:20', email: 'creators@iambrand.co.kr', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '이지상', cat: ['여행'], fav: '10.1만', favN: 101000, sub: 143, streamT: '3시간 이상', streamH: 3, viewers: 6338, check: '16:20', email: 'jagnun99@gmail.com', email2: 'biz@onsidecompany.co.kr', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '두치와뿌꾸', cat: ['피파'], fav: '44.3만', favN: 443000, sub: 130, streamT: '3시간 이상', streamH: 3, viewers: 4297, check: '16:20', email: 'ate8282@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
+    { name: '이상호', cat: ['롤'], fav: '87만', favN: 870000, sub: 132, streamT: '1시간 이상', streamH: 1, viewers: 7606, check: '16:20', email: 'creators@iambrand.co.kr', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '이지상', cat: ['여행'], fav: '10.1만', favN: 101000, sub: 143, streamT: '3시간 이상', streamH: 3, viewers: 6338, check: '16:20', email: 'jagnun99@gmail.com', email2: 'biz@onsidecompany.co.kr', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '두치와뿌꾸', cat: ['피파'], fav: '44.3만', favN: 443000, sub: 130, streamT: '3시간 이상', streamH: 3, viewers: 4297, check: '16:20', email: 'ate8282@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
     { name: '팡이요', cat: ['메이플'], fav: '52.3만', favN: 523000, sub: 46, streamT: '11시간 이상', streamH: 11, viewers: 3836, check: '16:20', email: '쪽지', status: '미발송 · 쪽지 컨택', sCls: 'status-plan' },
-    { name: '오아', cat: ['배그'], fav: '8.1만', favN: 81000, sub: 461, streamT: '1시간 이내', streamH: 0.9, viewers: 3959, check: '16:30', email: 'oah@sandboxnetwork.net', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '지피티', cat: ['종합'], fav: '7.5만', favN: 75000, sub: 227, streamT: '2시간 이상', streamH: 2, viewers: 2427, check: '16:30', email: 'tjrdbs999@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '제갈금자', cat: ['종합'], fav: '6.7만', favN: 67000, sub: 348, streamT: '2시간 이상', streamH: 2, viewers: 1803, check: '16:30', email: 'jejegal911@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '단츄', cat: ['종합'], fav: '5.2만', favN: 52000, sub: 306, streamT: '4시간 이상', streamH: 4, viewers: 1613, check: '16:30', email: 'danchu@sandboxnetwork.net', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '천양', cat: ['종합게임'], fav: '6.9만', favN: 69000, sub: 647, streamT: '2시간 이상', streamH: 2, viewers: 1655, check: '16:30', email: 'Changhwa@parable-asia.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '차쯔키', cat: ['종합'], fav: '1.6만', favN: 16000, sub: 93, streamT: '2시간 이상', streamH: 2, viewers: 1004, check: '16:30', email: 'contact@verseti.me', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '양도끼', cat: ['종합'], fav: '4.1만', favN: 41000, sub: 218, streamT: '5시간 이상', streamH: 5, viewers: 861, check: '16:40', email: 'yangdoki2@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '칸_김동하', cat: ['종합'], fav: '7.7만', favN: 77000, sub: 34, streamT: '1시간 이상', streamH: 1, viewers: 585, check: '16:40', email: 'sadoqqqq@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '소룡님', cat: ['종합'], fav: '5.3만', favN: 53000, sub: 436, streamT: '2시간 이상', streamH: 2, viewers: 562, check: '16:40', email: 'soryong1@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '햇비', cat: ['종합'], fav: '2.4만', favN: 24000, sub: 195, streamT: '1시간 이내', streamH: 0.9, viewers: 576, check: '16:40', email: 'htvv2i@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '해리', cat: ['종합'], fav: '3.6만', favN: 36000, sub: 92, streamT: '1시간 이상', streamH: 1, viewers: 531, check: '16:40', email: 'gofl2237@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '오뀨!', cat: ['롤'], fav: '6.1만', favN: 61000, sub: 22, streamT: '1시간 이내', streamH: 0.9, viewers: 419, check: '16:40', email: 'starfish@starfishentertainment.co.kr', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '비숑b', cat: ['종합'], fav: '8.8천', favN: 8800, sub: 20, streamT: '4시간 이상', streamH: 4, viewers: 256, check: '16:40', email: 'qltydb@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: 'BJ피오', cat: ['배그'], fav: '5.1만', favN: 51000, sub: 61, streamT: '27시간 이상', streamH: 27, viewers: 260, check: '16:50', email: '1004pio@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '강만식', cat: ['종합'], fav: '18.3만', favN: 183000, sub: 380, streamT: '1시간 이내', streamH: 0.9, viewers: 1355, check: '16:50', email: 'imakstlr@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '노력왕먼지', cat: ['메이플'], fav: '2만', favN: 20000, sub: 2, streamT: '265시간 이상', streamH: 265, viewers: 217, check: '16:50', email: 'wwwx123456@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '유샥크', cat: ['종합'], fav: '1.1만', favN: 11000, sub: 97, streamT: '9시간 이상', streamH: 9, viewers: 213, check: '16:50', email: 'usharko0o0@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '마로니!', cat: ['종합'], fav: '2.2만', favN: 22000, sub: 151, streamT: '2시간 이상', streamH: 2, viewers: 190, check: '16:50', email: 'marronie318@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '전하_', cat: ['아이온2'], fav: '2.1만', favN: 21000, sub: 6, streamT: '3시간 이상', streamH: 3, viewers: 189, check: '16:50', email: 'dksxk1989@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '밍턴_', cat: ['종합'], fav: '2.5만', favN: 25000, sub: 169, streamT: '1시간 이상', streamH: 1, viewers: 172, check: '16:50', email: 'mingturn97@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '이미윤', cat: ['종합'], fav: '8.2천', favN: 8200, sub: 37, streamT: '2시간 이상', streamH: 2, viewers: 149, check: '16:50', email: 'yunmi4033@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '빅토리~!', cat: ['종합게임'], fav: '5.1만', favN: 51000, sub: 110, streamT: '1시간 이상', streamH: 1, viewers: 157, check: '17:00', email: 'toryvac2@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '퀸주', cat: ['종합'], fav: '3.4천', favN: 3400, sub: 79, streamT: '1시간 이상', streamH: 1, viewers: 134, check: '17:00', email: 'Queenzu@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '피유:p', cat: ['종합'], fav: '1.4만', favN: 14000, sub: 11, streamT: '3시간 이상', streamH: 3, viewers: 106, check: '17:00', email: 'piyou0728@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '쿠빈', cat: ['종합'], fav: '7만', favN: 70000, sub: 554, streamT: '2시간 이상', streamH: 2, viewers: 4006, check: '20:20', email: 'kubin@sandboxnetwork.net', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '흑운장TV', cat: ['스타크래프트'], fav: '5.6만', favN: 56000, sub: 32, streamT: '1시간 이내', streamH: 0.9, viewers: 459, check: '17:10', email: 'firebathero@naver.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '차밍챠', cat: ['종합게임'], fav: '1.4만', favN: 14000, sub: 68, streamT: '5시간 이상', streamH: 5, viewers: 101, check: '17:10', email: 'kwonyul0705@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '망구랑', cat: ['종합'], fav: '7만', favN: 70000, sub: 153, streamT: '1시간 이내', streamH: 0.9, viewers: 133, check: '17:10', email: 'mangoorang@sandboxnetwork.net', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
-    { name: '누눙지', cat: ['종합'], fav: '3.2만', favN: 32000, sub: 111, streamT: '1시간 이내', streamH: 0.9, viewers: 187, check: '17:40', email: 'nunungzzzzi@gmail.com', status: '메일 발송 완료 (7/24)', sCls: 'status-sent' },
+    { name: '오아', cat: ['배그'], fav: '8.1만', favN: 81000, sub: 461, streamT: '1시간 이내', streamH: 0.9, viewers: 3959, check: '16:30', email: 'oah@sandboxnetwork.net', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '지피티', cat: ['종합'], fav: '7.5만', favN: 75000, sub: 227, streamT: '2시간 이상', streamH: 2, viewers: 2427, check: '16:30', email: 'tjrdbs999@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '제갈금자', cat: ['종합'], fav: '6.7만', favN: 67000, sub: 348, streamT: '2시간 이상', streamH: 2, viewers: 1803, check: '16:30', email: 'jejegal911@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '단츄', cat: ['종합'], fav: '5.2만', favN: 52000, sub: 306, streamT: '4시간 이상', streamH: 4, viewers: 1613, check: '16:30', email: 'danchu@sandboxnetwork.net', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '천양', cat: ['종합게임'], fav: '6.9만', favN: 69000, sub: 647, streamT: '2시간 이상', streamH: 2, viewers: 1655, check: '16:30', email: 'Changhwa@parable-asia.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '차쯔키', cat: ['종합'], fav: '1.6만', favN: 16000, sub: 93, streamT: '2시간 이상', streamH: 2, viewers: 1004, check: '16:30', email: 'contact@verseti.me', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '양도끼', cat: ['종합'], fav: '4.1만', favN: 41000, sub: 218, streamT: '5시간 이상', streamH: 5, viewers: 861, check: '16:40', email: 'yangdoki2@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '칸_김동하', cat: ['종합'], fav: '7.7만', favN: 77000, sub: 34, streamT: '1시간 이상', streamH: 1, viewers: 585, check: '16:40', email: 'sadoqqqq@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '소룡님', cat: ['종합'], fav: '5.3만', favN: 53000, sub: 436, streamT: '2시간 이상', streamH: 2, viewers: 562, check: '16:40', email: 'soryong1@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '햇비', cat: ['종합'], fav: '2.4만', favN: 24000, sub: 195, streamT: '1시간 이내', streamH: 0.9, viewers: 576, check: '16:40', email: 'htvv2i@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '해리', cat: ['종합'], fav: '3.6만', favN: 36000, sub: 92, streamT: '1시간 이상', streamH: 1, viewers: 531, check: '16:40', email: 'gofl2237@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '오뀨!', cat: ['롤'], fav: '6.1만', favN: 61000, sub: 22, streamT: '1시간 이내', streamH: 0.9, viewers: 419, check: '16:40', email: 'starfish@starfishentertainment.co.kr', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '비숑b', cat: ['종합'], fav: '8.8천', favN: 8800, sub: 20, streamT: '4시간 이상', streamH: 4, viewers: 256, check: '16:40', email: 'qltydb@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: 'BJ피오', cat: ['배그'], fav: '5.1만', favN: 51000, sub: 61, streamT: '27시간 이상', streamH: 27, viewers: 260, check: '16:50', email: '1004pio@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '강만식', cat: ['종합'], fav: '18.3만', favN: 183000, sub: 380, streamT: '1시간 이내', streamH: 0.9, viewers: 1355, check: '16:50', email: 'imakstlr@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '노력왕먼지', cat: ['메이플'], fav: '2만', favN: 20000, sub: 2, streamT: '265시간 이상', streamH: 265, viewers: 217, check: '16:50', email: 'wwwx123456@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '유샥크', cat: ['종합'], fav: '1.1만', favN: 11000, sub: 97, streamT: '9시간 이상', streamH: 9, viewers: 213, check: '16:50', email: 'usharko0o0@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '마로니!', cat: ['종합'], fav: '2.2만', favN: 22000, sub: 151, streamT: '2시간 이상', streamH: 2, viewers: 190, check: '16:50', email: 'marronie318@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '전하_', cat: ['아이온2'], fav: '2.1만', favN: 21000, sub: 6, streamT: '3시간 이상', streamH: 3, viewers: 189, check: '16:50', email: 'dksxk1989@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '밍턴_', cat: ['종합'], fav: '2.5만', favN: 25000, sub: 169, streamT: '1시간 이상', streamH: 1, viewers: 172, check: '16:50', email: 'mingturn97@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '이미윤', cat: ['종합'], fav: '8.2천', favN: 8200, sub: 37, streamT: '2시간 이상', streamH: 2, viewers: 149, check: '16:50', email: 'yunmi4033@gmail.com', status: '회신 완료', sCls: 'status-reply' },
+    { name: '빅토리~!', cat: ['종합게임'], fav: '5.1만', favN: 51000, sub: 110, streamT: '1시간 이상', streamH: 1, viewers: 157, check: '17:00', email: 'toryvac2@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '퀸주', cat: ['종합'], fav: '3.4천', favN: 3400, sub: 79, streamT: '1시간 이상', streamH: 1, viewers: 134, check: '17:00', email: 'Queenzu@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '피유:p', cat: ['종합'], fav: '1.4만', favN: 14000, sub: 11, streamT: '3시간 이상', streamH: 3, viewers: 106, check: '17:00', email: 'piyou0728@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '쿠빈', cat: ['종합'], fav: '7만', favN: 70000, sub: 554, streamT: '2시간 이상', streamH: 2, viewers: 4006, check: '20:20', email: 'kubin@sandboxnetwork.net', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '흑운장TV', cat: ['스타크래프트'], fav: '5.6만', favN: 56000, sub: 32, streamT: '1시간 이내', streamH: 0.9, viewers: 459, check: '17:10', email: 'firebathero@naver.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '차밍챠', cat: ['종합게임'], fav: '1.4만', favN: 14000, sub: 68, streamT: '5시간 이상', streamH: 5, viewers: 101, check: '17:10', email: 'kwonyul0705@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '망구랑', cat: ['종합'], fav: '7만', favN: 70000, sub: 153, streamT: '1시간 이내', streamH: 0.9, viewers: 133, check: '17:10', email: 'mangoorang@sandboxnetwork.net', status: '메일 발송 완료', sCls: 'status-sent' },
+    { name: '누눙지', cat: ['종합'], fav: '3.2만', favN: 32000, sub: 111, streamT: '1시간 이내', streamH: 0.9, viewers: 187, check: '17:40', email: 'nunungzzzzi@gmail.com', status: '메일 발송 완료', sCls: 'status-sent' },
   ];
   const COLS = [
     { key: 'rank',    label: '#',           cls: 'rank', sortable: false },
